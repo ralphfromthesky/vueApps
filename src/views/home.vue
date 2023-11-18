@@ -2,7 +2,7 @@
   <div>
     <div class="homeContainer">
       <div class="imageContainer">
-        <img src="../images/myPhoto.jpg" alt="" />
+        <img :src="require('@/assets/myPhoto-e14c075e.jpg')" alt="" />
       </div>
       <div class="descriptionContainer">
         <h2>About Me:</h2>
