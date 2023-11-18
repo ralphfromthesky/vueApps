@@ -2,7 +2,7 @@
   <div>
     <div class="homeContainer">
       <div class="imageContainer">
-        <img src="./assets/cloudWeather-55636aa6.jpg	" alt="" />
+        <img src="../images/myPhoto.jpg" alt="" />
       </div>
       <div class="descriptionContainer">
         <h2>About Me:</h2>
