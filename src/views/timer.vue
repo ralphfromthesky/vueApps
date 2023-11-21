@@ -99,7 +99,7 @@ export default {
     flex-direction: column;
     height: 100%;
     width: 100%;
-    background-image: url('../images/christmas.jpg');
+    background-image: url('/images/christmas.jpg');
     background-position: center center;
     background-size: cover;
     box-shadow:  28px 28px 14px #8b8b8b,

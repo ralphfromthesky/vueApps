@@ -112,25 +112,25 @@ export default {
     watch(weather, (newWeather) => {
       if (newWeather === "Clouds") {
         weatherChangeBackground.value = "cloudsBackground";
-        weatherImage.value = "./src/images/cloudy.png";
+        weatherImage.value = "/images/cloudy.png";
         defaultBg.value = 'cloudBg'
         changeTextColor.value = 'cloudTextColor'
         console.log("Clouds");
       } else if (newWeather === "Rain") {
         weatherChangeBackground.value = "rainBackground";
-        weatherImage.value = "./src/images/rain.png";
+        weatherImage.value = "/images/rain.png";
         defaultBg.value = 'rainBg';
         changeTextColor.value = 'rainTextColor';
         console.log("Rains");
       } else if (newWeather === "Clear") {
         weatherChangeBackground.value = "clearBackground";
-        weatherImage.value = "./src/images/clear.png";
+        weatherImage.value = "/images/clear.png";
         defaultBg.value = 'clearBg'
         console.log("Clear");
       }
       else if (newWeather === "Mist") {
         weatherChangeBackground.value = "mistBackground";
-        weatherImage.value = "./src/images/mistWeatherBg.jpg";
+        weatherImage.value = "/images/mistWeatherBg.jpg";
         defaultBg.value = 'mistBg'
         console.log("Mist");
       }
@@ -204,7 +204,7 @@ export default {
   height: 60vh;
   width: 20vw;
   border-radius: 10px;
-  background-image: url("../images/defaultBg.jpg");
+  background-image: url("/images/defaultBg.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -212,7 +212,7 @@ export default {
   box-shadow: 11px 11px 22px #797979, -11px -11px 22px #ffffff;
 }
 .cloudsBackground {
-  background-image: url("../images/cloudWeather.jpg");
+  background-image: url("/images/cloudWeather.jpg");
   background-size: cover;
 }
 .cloudTextColor {
@@ -225,35 +225,35 @@ export default {
   flex-direction: column;
 }
 .rainBackground {
-  background-image: url("../images/mobileRain.jpg");
+  background-image: url("/images/mobileRain.jpg");
   background-size: cover;
 }
 .rainTextColor {
   color: white;
 }
 .clearBackground {
-  background-image: url("../images/clearMobile.jpg");
+  background-image: url("/images/clearMobile.jpg");
   background-size: cover;
 }
 .clearBg {
-background-image: url('../images/cloudBg.jpg');
+background-image: url('/images/cloudBg.jpg');
 background-size: cover;
 
 }
 .mistBackground {
-  background-image: url("../images/mistWeatherbg.jpg");
+  background-image: url("/images/mistWeatherbg.jpg");
   background-size: cover;
 }
 .mistBg {
-  background-image: url("../images/mistBg.jpg");
+  background-image: url("/images/mistBg.jpg");
   background-size: cover;
 }
 .rainBg {
-  background-image: url('../images/raingBg.jpg');
+  background-image: url('/images/raingBg.jpg');
 background-size: cover;
 }
 .cloudBg {
-  background-image: url('../images/clearBg.jpg');
+  background-image: url('/images/clearBg.jpg');
 background-size: cover;
 background-position: center;
 

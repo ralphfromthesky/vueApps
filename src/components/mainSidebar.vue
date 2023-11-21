@@ -43,9 +43,12 @@ export default {
 
 .sidebar {
   height: 100vh;
+
+  background-color: white;
   width: 4vw;
   box-shadow:  17px 17px 15px #868686,
              -17px -17px 15px #ffffff;  
+             
 }
 .sidebarBx {
   display: flex;
@@ -58,5 +61,10 @@ export default {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+}
+@media screen and (max-width: 430px) {
+  .sidebar {
+    width: 14vw;
+    }
 }
 </style>

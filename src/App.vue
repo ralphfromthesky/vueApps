@@ -66,6 +66,7 @@ export default {
 }
 .sidebarContainer {
   position: relative;
+  
 }
 .sidebaricon {
   position: absolute;
@@ -89,6 +90,14 @@ export default {
   cursor: pointer;
   color: rgb(59, 57, 57);
 }
+@media screen and (max-width: 430px) {
 
+  .sidebarlabel {
+    left: -30vw;
+  }
+  .sidebarContainer {
+    z-index: 1;
+  }
+}
 
 </style>

@@ -167,4 +167,16 @@ input {
 p {
   font-weight: 800;
 }
+@media screen and (max-width: 430px) {
+  p {
+    
+    font-size: .7rem;
+  }
+  .theRealMainTodo {
+    flex-direction: column;
+  }
+  .description {
+    width: 100%;
+  }
+}
 </style>

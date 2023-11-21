@@ -15,7 +15,7 @@
         class="bx bx-menu"
         id="sidebarIcon"
         @click="$emit('slideThisBack')"
-      >My Vue js tutorial</i>
+      ><h3>My Vue js tutorial</h3></i>
       <cloudBackgroundVue class="cloudBg" />
       <div class="labeledLink">
         <router-link to="/todo"><h3>Vbind</h3></router-link>
@@ -74,7 +74,7 @@ export default {
 
 <style scoped>
 .mainSidebarLabel {
-  height: 100vh;
+  /* height: 100vh; */
   width: 10vw;
   box-shadow: 17px 17px 15px #868686, -17px -17px 15px #ffffff;
 }
@@ -109,5 +109,12 @@ height: inherit;
   position: absolute;
   z-index: -1;
   height: 100%;
+}
+@media screen and (max-width: 430px) {
+  .mainSidebarLabel {
+    height: 100%;
+    width: 30vw;
+    
+  }
 }
 </style>

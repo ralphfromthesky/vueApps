@@ -2,7 +2,7 @@
   <div>
     <div class="homeContainer">
       <div class="imageContainer">
-        <img src="../images/myPhoto.jpg" alt="" />
+        <img src="/images/myPhoto.jpg" alt="" />
       </div>
       <div class="descriptionContainer">
         <h2>About Me:</h2>
@@ -58,5 +58,19 @@ h3 {
 h2 {
   font-size: 40px;
   font-weight: 800;
+}
+@media screen and (max-width: 430px) {
+  .homeContainer {
+    /* flex-direction: column; */
+    width: 90vw;
+    overflow: hidden;
+  }
+  .homeContainer img {
+    height: 300px;
+    z-index: -1;
+  }
+  h3 {
+    font-size: .5rem;
+  }
 }
 </style>
