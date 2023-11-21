@@ -1,6 +1,6 @@
 <template>
     <div>
-        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin:auto;background:#7aceff;display:block;z-index:1;position:relative" width="" height="931" preserveAspectRatio="xMidYMid" viewBox="">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin:auto;background:#7aceff;display:block;z-index:1;position:relative" width="10vw" height="931" preserveAspectRatio="xMidYMid" viewBox="0">
         <g transform="translate(960,465.5) scale(1,1) translate(-960,-465.5)"><g transform="translate(-100 703.5590143267989) rotate(0)">
           <animateTransform attributeName="transform" type="translate" keyTimes="0;1" values="-100 703.5590143267989;1920 703.5590143267989" dur="66.66666666666667s" repeatCount="indefinite" begin="-8.215008428096024s"></animateTransform>
           <path d="M84.717,33.597c0.791-2.503,1.186-5.138,1.186-7.773C85.903,11.594,74.308,0,60.079,0 c-9.881,0-18.445,5.534-22.793,13.702c-1.581-0.527-3.426-0.791-5.138-0.791c-9.486,0-17.128,7.642-17.128,17.128 c0,1.186,0.132,2.372,0.395,3.426C6.719,34.783,0,42.424,0,51.515C0,61.66,8.169,69.829,18.314,69.829h63.373 C91.831,69.829,100,61.66,100,51.515C99.868,42.556,93.281,35.046,84.717,33.597z" fill="#bddeff" transform="scale(0.55)"></path>

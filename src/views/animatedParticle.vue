@@ -1,6 +1,6 @@
 <template>
     <div>
-        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin:auto;background:#ffffff;display:block;z-index:1;position:relative" width="" height="900" preserveAspectRatio="xMidYMid" viewBox="0 0 1920 931">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin:auto;background:#ffffff;display:block;z-index:1;position:relative" width="100vw" height="900" preserveAspectRatio="xMidYMid" viewBox="0 0 1920 931">
         <g transform="translate(960,465.5) scale(1,1) translate(-960,-465.5)"><path id="path0" d="M 1035.5234563968331 381.9958883860618
         c 0 31.549142609439933 -7.7194710640118975 9.061987770796577 -16.781458834808475 9.061987770796577
         S 1001.9605387272161 413.5450309955017 1001.9605387272161 381.9958883860618
