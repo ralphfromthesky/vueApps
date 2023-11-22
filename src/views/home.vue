@@ -2,8 +2,7 @@
   <div>
     <div class="homeContainer">
       <div class="imageContainer">
-        <!-- <img src="/assets/images/myPhoto-mXA5iuwF.jpg" alt="" /> -->
-        <!-- <img src="images/myPhoto.jpg" alt=""> -->
+        <img src="images/myPhoto.jpg" alt=""> 
       </div>
       <div class="descriptionContainer">
         <h2>About Me:</h2>
