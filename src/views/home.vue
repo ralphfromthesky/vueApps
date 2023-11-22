@@ -2,7 +2,8 @@
   <div>
     <div class="homeContainer">
       <div class="imageContainer">
-        <img src="/dist/images/myPhoto.jpg" alt="" />
+        <!-- <img src="/assets/images/myPhoto-mXA5iuwF.jpg" alt="" /> -->
+        <!-- <img src="images/myPhoto.jpg" alt=""> -->
       </div>
       <div class="descriptionContainer">
         <h2>About Me:</h2>
@@ -15,24 +16,31 @@
           client needs. I thrive on tackling challenges and turning ideas into
           dynamic, efficient, and engaging digital experiences.
           <iframe
-          width="100%"
-          height="166"
-          scrolling="no"
-          frameborder="no"
-          src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/255203570&color=%23ff5500&auto_play=false&hide_related=true&show_comments=true&show_user=true&show_reposts=false&show_teaser=false"
-        >
-        </iframe>
+            width="100%"
+            height="166"
+            scrolling="no"
+            frameborder="no"
+            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/255203570&color=%23ff5500&auto_play=false&hide_related=true&show_comments=true&show_user=true&show_reposts=false&show_teaser=false"
+          >
+          </iframe>
         </h3>
       </div>
       <div class="divs">
-
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+
+export default {
+  name: "this is the home",
+  components: {
+  },
+  setup() {
+    return {};
+  },
+};
 </script>
 
 <style scoped>
@@ -70,7 +78,7 @@ h2 {
     z-index: -1;
   }
   h3 {
-    font-size: .5rem;
+    font-size: 0.5rem;
   }
 }
 </style>
