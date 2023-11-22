@@ -113,8 +113,7 @@ height: inherit;
 @media screen and (max-width: 430px) {
   .mainSidebarLabel {
     height: 100%;
-    width: 30vw;
-    
+    width: 30vw;   
   }
 }
 </style>

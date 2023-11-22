@@ -90,7 +90,7 @@ export default {
   0% {transform: translateX(0);}
   30%{ transform: translateX(20vw) translateY(-20px) translateY(-30px);}
   100%{ transform: translateY(-20px);
-    transform: translateX(90vw);}
+    transform: translateX(80vw);}
 }
 
 </style>

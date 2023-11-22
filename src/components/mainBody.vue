@@ -38,5 +38,6 @@ export default {
     z-index: -1;
     transform: translateY(-2%);
     width: 100%;
+    border: 2px solid red;
 }
 </style>
