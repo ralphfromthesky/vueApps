@@ -3,8 +3,7 @@
     <div class="homeContainer">
       <div class="imageContainer">
         <!-- <img src="/dist/images/myPhoto.jpg" alt="">  -->
-        <img src="/dist/assets/myPhoto-mXA5iuwF.jpg" alt="">
-
+        <img src="/dist/images/myPhoto.jpg" alt="">
       </div>
       <div class="descriptionContainer">
         <h2>About Me:</h2>
@@ -36,8 +35,6 @@
 
 export default {
   name: "this is the home",
-  components: {
-  },
   setup() {
     return {};
   },

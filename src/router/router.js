@@ -30,7 +30,7 @@ import sampleComputed from '../pages/sampleComputed.vue'
 import ReusabilityWithMixins from '../pages/ReusabilityWithMixins.vue'
 import provideAndInjectUsingGlobalandCompositionApi from '../pages/provideAndInjectUsingGlobalandCompositionApi.vue'
 import provideAndInjectUsingGlobalandCompositionApi2 from '../pages/provideAndInjectUsingGlobalandCompositionApi2.vue'
-
+import vueXStatemanagement from '../pages/vueXStatemanagement.vue'
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -187,7 +187,12 @@ const router = createRouter({
       {
         path: '/provideInjectglobally2',
         name: 'provide2',
-        component: provideAndInjectUsingGlobalandCompositionApi2 
+        component: provideAndInjectUsingGlobalandCompositionApi2
+      },
+      {
+        path: '/vueXStatemanagement',
+        name: 'vueXStatemanagement',
+        component:  vueXStatemanagement
       },
   
     ]

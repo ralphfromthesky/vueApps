@@ -55,6 +55,9 @@
         <router-link to="/provideInjectglobally2"
           ><h3>Provide and Inject Globally 2</h3></router-link
         >
+        <router-link to="/vueXStatemanagement"
+          ><h3>vueX Statemanagement</h3></router-link
+        >
       </div>
     </div>
   </div>
