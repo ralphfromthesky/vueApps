@@ -141,7 +141,7 @@ export default {
 .main-container {
   display: flex;
   width: 60vw;
-  align-items: center;
+
 }
 .container {
   padding: 5px;
@@ -184,6 +184,13 @@ export default {
 }
 .descriptions {
   padding: 20px;
+}
+
+@media screen and (max-width: 375px){
+  .calculator {
+        width: 250px;
+    }
+
 }
 </style>
   

@@ -5,14 +5,17 @@
     </div>
     <div class="description">
       <h3>Description:</h3>
-      <br>
+      <br />
       <p>
         Discover and enjoy your favorite music with our easy-to-use app. Browse
         songs, switch tracks, and immerse yourself in the world of music
         effortlessly. Your go-to companion for all your musical moments.
       </p>
-      <br>
-      <h3>Using Compostion API, ref, watch, component events-emits, onMounted and props.</h3>
+      <br />
+      <h3>
+        Using Compostion API, ref, watch, component events-emits, onMounted and
+        props.
+      </h3>
     </div>
   </div>
 </template>
@@ -44,10 +47,20 @@ export default {
   padding: 20px;
   border-radius: 10px;
   background-color: black;
-  box-shadow:  20px 20px 22px #828282,
-             -20px -20px 22px #ffffff;
+  box-shadow: 20px 20px 22px #828282, -20px -20px 22px #ffffff;
 }
 .description {
   width: 25%;
+}
+@media screen and (max-width: 375px) {
+  .music-app-container {
+    flex-direction: column;
+  }
+  .main-container {
+    width: 70vw;
+  }
+  .description {
+  padding-left: 15px;
+  }
 }
 </style>

@@ -294,4 +294,13 @@ h2 {
   margin-bottom: 2rem;
   text-align: center;
 }
+
+@media screen and (max-width: 375px) {
+  .container {
+    flex-direction: column;
+  }
+  .quiz {
+    width: 100vw;
+  }
+}
 </style>

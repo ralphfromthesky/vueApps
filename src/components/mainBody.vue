@@ -29,7 +29,7 @@ export default {
   height: 80vh;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   padding: 20px 20px;
   position: relative;
   overflow: scroll;

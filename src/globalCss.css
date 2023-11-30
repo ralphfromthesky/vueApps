@@ -56,7 +56,5 @@
         overflow: scroll;
         padding: 0 20px;
     }
-    .main-container {
-        justify-content: flex-start !important;
-    }
+
 }
