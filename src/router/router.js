@@ -31,6 +31,9 @@ import ReusabilityWithMixins from '../pages/ReusabilityWithMixins.vue'
 import provideAndInjectUsingGlobalandCompositionApi from '../pages/provideAndInjectUsingGlobalandCompositionApi.vue'
 import provideAndInjectUsingGlobalandCompositionApi2 from '../pages/provideAndInjectUsingGlobalandCompositionApi2.vue'
 import vueXStatemanagement from '../pages/vueXStatemanagement.vue'
+import vuex from '../views/vueX/vuex.vue'
+import gitApps from '../views/gitApps.vue'
+
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -193,6 +196,16 @@ const router = createRouter({
         path: '/vueXStatemanagement',
         name: 'vueXStatemanagement',
         component:  vueXStatemanagement
+      },
+      {
+        path: '/vuex',
+        name: 'vuexApp',
+        component:  vuex 
+      },
+      {
+        path: '/ghub',
+        name: 'gitApps',
+        component:  gitApps
       },
   
     ]

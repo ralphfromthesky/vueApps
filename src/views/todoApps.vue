@@ -112,7 +112,7 @@ export default {
   align-items: center;
   width: 100%;
   height: 100%;
-  background-image: url("https://designstripe-secure.imgix.net/scene-snapshots/f3514252-6d16-4b20-a425-e23cb203fd96/1674867962894/default?auto=format&fit=clip&h=850&mark=%2Fwatermark.png&markfit=max&markalign=middle%2Ccenter&markw=1&markh=1&s=2b58ef2a29071aa7ee44fe693168a684");
+  /* background-image: url("https://designstripe-secure.imgix.net/scene-snapshots/f3514252-6d16-4b20-a425-e23cb203fd96/1674867962894/default?auto=format&fit=clip&h=850&mark=%2Fwatermark.png&markfit=max&markalign=middle%2Ccenter&markw=1&markh=1&s=2b58ef2a29071aa7ee44fe693168a684"); */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -167,16 +167,5 @@ input {
 p {
   font-weight: 800;
 }
-@media screen and (max-width: 430px) {
-  p {
-    
-    font-size: .7rem;
-  }
-  .theRealMainTodo {
-    flex-direction: column;
-  }
-  .description {
-    width: 100%;
-  }
-}
+
 </style>

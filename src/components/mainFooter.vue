@@ -8,6 +8,8 @@
        <img src="/images/marioCloud.png" alt="" />
         <img src="/images/marioCloud.png" alt="" />
         <img src="/images/sup.png" alt="" id="sup">
+        <img src="/images/ufo.png" alt="" id="ufo" />
+
     
       </div>
       <div class="greenContainer"></div>
@@ -63,7 +65,11 @@ export default {
   animation: clouds 150s linear infinite;
 
 }
-
+.cloudContainer #ufo {
+  height: 50px;
+  animation: ufo 10s linear infinite;
+  transform-origin: 10px 10px;
+}
 .greenContainer {
   background-color: #277e57;
   height: 15px;
@@ -91,6 +97,23 @@ export default {
   30%{ transform: translateX(20vw) translateY(-20px) translateY(-30px);}
   100%{ transform: translateY(-20px);
     transform: translateX(90vw);}
+}
+@keyframes ufo {
+  0%{transform: translateX(0);}
+  20%{transition: 100s;
+    transform: translateX(30vw);
+  }
+  25%{transform: translateX(0);}
+  30%{transform: scale(2) translateX(30vw);}
+  50%{transform: translateX(70vw);}
+  60%{transform: rotate(90deg) scale(.5);}
+  70%{transform: translateX(70vw) scale(.6);}
+  85%{transform: translateX(0) scale(5) rotate(90deg);}
+  100%{transform: translateX(0)
+    scale(2);}
+}
+#ufo {
+  height: 200px;
 }
 
 </style>

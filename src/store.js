@@ -13,14 +13,8 @@ export default createStore({
       { name: "xbox", price: 2000 },
       { name: "nintendo", price: 800 },
     ],
-  },
-  actions: {
-    // Actions are where you put your business logic
-    reducePrice: (context, payload) => {
-      setTimeout(() => {
-        context.commit('reducePrice', payload)
-      }, 2000);
-    },
+
+  
   },
   getters: {
     saleProducts: (state) => {
@@ -42,12 +36,23 @@ export default createStore({
       });
       return newSaleProducts;
     },
+
   },
+  actions: {
+    // Actions are where you put your business logic
+    reducePrice: (context, payload) => {
+      setTimeout(() => {
+        context.commit('reducePrice', payload)
+      }, 2000);
+    },
+  },
+
   mutations: {
     reducePrice: (state, payload) => {
       state.product.forEach((prods) => {
         prods.price -= payload;
       });
     },
+
   },
 });

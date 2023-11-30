@@ -32,6 +32,7 @@ export default {
   align-items: center;
   padding: 20px 20px;
   position: relative;
+  overflow: scroll;
 }
 .particle {
     position: absolute;
