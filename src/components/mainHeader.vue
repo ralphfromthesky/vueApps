@@ -3,22 +3,20 @@
     <h1>
       VUE JS - Ralph <span><i class="bx bxs-cat"></i></span>
     </h1>
-    <div class="account">
-      <i class="bx bxs-user-plus"></i>
-       <i class="bx bx-globe"></i>
-       
+    <div class="dayNightVue">
+     <dayNightVue/>
     </div>
 
-    <!-- <animatedParticleVue class="particle"/> -->
   </div>
 </template>
 
 <script>
-// import animatedParticleVue from '../views/animatedParticle.vue';
+import dayNightVue from './dayNight.vue';
+
 export default {
   name: "main-header",
   components: {
-    // animatedParticleVue
+    dayNightVue
   }
 };
 </script>
@@ -35,13 +33,9 @@ export default {
   color: rgb(252, 102, 3);
   font-size: 40px;
 }
-.account .bx {
-  font-size: 40px;
-  padding: 0 5px;
-  cursor: pointer;
+@media screen and (max-width: 375px) {
+.mainHeader {
+  padding-left: 15%;
 }
-.account .bx:hover {
-    color: rgb(252, 102, 3);
 }
-
 </style>

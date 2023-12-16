@@ -140,5 +140,21 @@ h3 {
   align-items: center;
   padding: 20px;
 }
+@media screen and (max-width: 375px) {
+  h1 {
+    font-size: 1rem;
+  }
+  .container {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  small {
+    margin: 0 !important;
+  }
+  .day {
+text-align: center;
+margin-left: 10px;
+  }
+}
 </style>
   

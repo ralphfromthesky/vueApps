@@ -1,21 +1,15 @@
 <template>
   <div class="mainSidebarLabel">
-    <!-- <div class="mainSidebarLabelBx">
-      <h1>VUE JS apps</h1>
-      <h1>
-        <i
-          class="bx bx-menu"
-          id="sidebarIcon"
-          @click="$emit('slideThisBack')"
-        ></i>
-      </h1>
-    </div> -->
     <div class="label">
-      <i
+      <div class="menu-bx">
+        <h4>Vue js Tuts</h4>
+        <i
         class="bx bx-menu"
         id="sidebarIcon"
         @click="$emit('slideThisBack')"
-      ><h3>My Vue js tutorial</h3></i>
+      ></i>
+      </div>
+      
       <cloudBackgroundVue class="cloudBg" />
       <div class="labeledLink">
         <router-link to="/todo"><h3>Vbind</h3></router-link>
@@ -77,7 +71,7 @@ export default {
 
 <style scoped>
 .mainSidebarLabel {
-  /* height: 100vh; */
+  height: 100vh;
   width: 10vw;
   box-shadow: 17px 17px 15px #868686, -17px -17px 15px #ffffff;
 }
@@ -90,10 +84,9 @@ export default {
 }
 .bx-menu {
   border: 2px solid black;
-  margin-bottom: 20%;
 }
 .label {
-  height: 100%;
+  height:inherit;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -113,10 +106,17 @@ height: inherit;
   z-index: -1;
   height: 100%;
 }
+.menu-bx {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-top: 10px;
+}
 @media screen and (max-width: 430px) {
   .mainSidebarLabel {
     height: 100%;
     width: 30vw;   
   }
+
 }
 </style>
