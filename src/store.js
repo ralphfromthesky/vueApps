@@ -1,7 +1,8 @@
+import axios from "axios";
 import { createStore } from "vuex";
 
 export default createStore({
-  strict: true, //this one for not editting or mutating data outside of vuex
+  strict: true, 
   state: {
     product: [
       { name: "bag", price: 10000 },
@@ -13,6 +14,7 @@ export default createStore({
       { name: "xbox", price: 2000 },
       { name: "nintendo", price: 800 },
     ],
+    counter: 0,
 
   
   },
@@ -45,6 +47,24 @@ export default createStore({
         context.commit('reducePrice', payload)
       }, 2000);
     },
+
+
+    fetchApi: async (context) => {
+      var responseData = 'https://jsonplaceholder.typicode.com/posts';
+      try {
+        const response = await axios.get(responseData)
+        console.log(response);
+        const data = response.data
+        context.commit('updateFetchedData', data)
+      } catch (error) {
+        console.log(`this is erro: ${error}`)
+      }
+      setTimeout(() => {
+        context.commit('increase');
+      }, 1000)
+    }
+
+
   },
 
   mutations: {
@@ -52,6 +72,21 @@ export default createStore({
       state.product.forEach((prods) => {
         prods.price -= payload;
       });
+    },
+
+    increase: (state) => {
+      state.counter += 1;
+    },
+
+    decrease:  (state) => {
+      state.counter -= 1;
+      if(state.counter <= 0) {
+        state.counter = 0;
+        alert('fasdfasfas')
+      }
+    },
+    updateFetchedData(state, data) {
+      state.fetchedData = data;
     },
 
   },

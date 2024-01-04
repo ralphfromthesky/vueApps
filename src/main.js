@@ -7,7 +7,6 @@ import { dataList } from './dataListSample'
 import { employees} from './employee'
 import {datas} from './anotherSampleOfData'
 import store from './store'
-import store2 from './store2'
 import './globalCss.css'
 
 // createApp(App).mount('#app')
@@ -31,4 +30,3 @@ const anotherSampleOfData = ref(datas)
 app.provide('datas', anotherSampleOfData)
 
 app.use(store) // for vuex store.js
-app.use(store2);

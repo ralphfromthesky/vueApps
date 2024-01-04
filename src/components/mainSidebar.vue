@@ -15,9 +15,10 @@
         ><i class="bx bxs-cloud-lightning"></i
       ></router-link>
       <router-link to="/music"> <i class="bx bxl-deezer"></i> </router-link>
-      <router-link to="quizz"> <i class="bx bx-task"></i> </router-link>
+      <router-link to="/nameVar"><i class='bx bxs-calendar-exclamation' ></i></router-link>
+      <router-link to="/quizz"> <i class="bx bx-task"></i> </router-link>
       <router-link to="/timer"><i class="bx bxs-watch"></i> </router-link>
-      <!-- <router-link to="/vuex"><i class='bx bxs-castle'></i></router-link> -->
+      <router-link to="/vuex"><i class='bx bxs-castle'></i></router-link>
       <router-link to="/ghub"><i class='bx bxl-github'></i></router-link>
     </div>
   </div>

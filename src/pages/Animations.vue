@@ -2,7 +2,7 @@
   <div><SlidingIn /></div>
 </template>
 
-<script>
+<script lang="ts">
 import SlidingIn from "./SlidingIn.vue";
 export default {
   name: "animation",

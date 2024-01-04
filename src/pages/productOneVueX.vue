@@ -28,7 +28,6 @@
     setup() {
       const store = useStore();
   
-      // Corrected the typo from 'poduct' to 'product' and returning the value
       const products = computed(() => store.state.product);
       const saleProducts = computed(() => {return store.getters.saleProducts});
 

@@ -1,48 +1,47 @@
-<!-- YourComponent.vue -->
 <template>
   <div>
-    <div class="vuexApps">
-      <div class="container">
-        <h1>Posts</h1>
-        <ul>
-          <li v-for="post in posts" :key="post.id">
-            {{ post.title }}
-          </li>
-        </ul>
-      </div>
+    <h1>{{ store.state.counter }}</h1>
+    <div class="btn">
+      <button @click="store.commit('increase')">+</button>
+      <button @click="store.commit('decrease')">-</button>
+      <button @click="fetchThisData">1</button>
     </div>
+
+    <!-- Loop through fetched data and display it -->
+    <ul>
+      <li v-for="item in store.state.fetchedData" :key="item.id">
+        {{ item.title }}
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
-import { computed, onMounted } from "vue";
-import { useStore } from "vuex";
-
+import { ref } from "vue";
+import { useStore } from "vuex"; // this one need for using the store.js
+useStore;
 export default {
   setup() {
     const store = useStore();
 
-    // Fetch posts when the component is mounted
-    onMounted(() => {
-      store.dispatch("fetchPosts");
-    });
-
-    // Use computed to access the posts from the store
-    const posts = computed(() => store.getters.getPosts);
-
+    const fetchThisData = async () => {
+      try {
+        await store.dispatch("fetchApi");
+      } catch (error) {
+        console.log(`this is the error: ${error}`);
+      }
+    };
     return {
-      posts,
+      store,
+      fetchThisData,
     };
   },
 };
 </script>
 
 <style scoped>
-.container  {
-  height: 60vh;
-  border: 2px solid red;
-  overflow: scroll;
-  padding: 10px;
+.btn button {
+  font-size: 50px;
+  margin: 0 10px;
 }
-
 </style>

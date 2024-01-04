@@ -33,7 +33,7 @@ import provideAndInjectUsingGlobalandCompositionApi2 from '../pages/provideAndIn
 import vueXStatemanagement from '../pages/vueXStatemanagement.vue'
 import vuex from '../views/vueX/vuex.vue'
 import gitApps from '../views/gitApps.vue'
-
+import nameVariations from '../views/nameVariations.vue'
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -206,6 +206,11 @@ const router = createRouter({
         path: '/ghub',
         name: 'gitApps',
         component:  gitApps
+      },
+      {
+        path: '/nameVar',
+        name: 'nameVariation',
+        component:  nameVariations
       },
   
     ]

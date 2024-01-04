@@ -3,7 +3,7 @@
     <div class="homeContainer">
       <div class="imageContainer">
         <!-- <img src="/dist/images/myPhoto.jpg" alt="">  -->
-        <img src="/dist/images/myPhoto.jpg" alt="">
+        <img src="public/images/myPhoto.jpg" alt="">
       </div>
       <div class="descriptionContainer">
         <h2>About Me:</h2>
@@ -50,6 +50,7 @@ img {
   width: 50vw;
   border-radius: 20px;
   box-shadow: 10px 10px 30px #bebebe, -10px -10px 20px #ffffff;
+  align-items: center;
 }
 .descriptionContainer {
   display: flex;

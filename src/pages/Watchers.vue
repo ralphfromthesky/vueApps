@@ -11,7 +11,7 @@
   </div>
 </template>
 
-<script>
+<!-- <script>
 export default {
   data() {
     return {
@@ -29,6 +29,31 @@ export default {
     },
   },
 };
+</script> -->
+
+<script>
+import { ref, watch } from 'vue';
+
+export default {
+  setup() {
+    const volume = ref(0);
+    const alertVolume = ref(16);
+
+    watch(volume, (newVolume, oldVolume) => {
+      if (newVolume > oldVolume && newVolume === alertVolume.value) {
+        alert("Your volume is high and might damage your hearing!");
+      }
+    });
+
+    return {
+      volume,
+      alertVolume,
+    };
+  },
+};
 </script>
 
+
 <style></style>
+
+

@@ -1,8 +1,10 @@
 <template>
   <div>
     <div v-for="name in names" :key="name">
-      <h1 style="color: red" v-if="name === 'santolorin'"> this is conditiona list renderings {{ name }}</h1>
+      <h1 v-if="name === 'santolorin'"> this is conditiona list renderings {{ name }}</h1>
       <h1>{{ name }}</h1>
+
+      
       <div v-for="emp in employee" :key="emp">
         <h1 style="color: blue">{{ emp }}</h1>
       </div>
