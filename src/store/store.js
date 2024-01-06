@@ -6,6 +6,7 @@ const store = createStore({
     counter: 100,
     products: [],
     less500: [],
+    high500: [],
   },
   mutations: {
     increment(state, payload) {
@@ -20,6 +21,7 @@ const store = createStore({
             console.log(response)
             context.state.products = response.data.products;
             context.state.less500 = response.data.products.filter((less) => less.price < 500)
+            context.state.high500 = response.data.products.filter((high) => high.price > 500)
         } catch (error) {
             console.log(`error: ${error}`)
         }
