@@ -3,10 +3,15 @@
     <h1 style="text-align: center">vuex state management</h1>
     <h1>total: {{ increment }}</h1>
     <div class="btn">
-      <button @click="store.commit('increment', 100)">Add 100</button>
-      <button @click="add(500)">Add 500</button>
-      <button @click="add(1000)">Add 1000</button>
-      <button @click="add(1500)">Add 1500</button>
+      <div class="btn-main">
+        <button @click="store.commit('increment', 100)">Add 100</button>
+        <button @click="add(500)">Add 500</button>
+        <button @click="add(1000)">Add 1000</button>
+        <button @click="add(1500)">Add 1500</button>
+      </div>
+      <div class="btn-cart">
+        <i class="bx bx-cart"></i>
+      </div>
     </div>
     <hr />
     <div class="products-container">
@@ -31,7 +36,10 @@
             <img :src="product.images[0]" alt="" />
             ${{ product.price }}
             <div class="prodbtn">
-              <button>Buy</button><button>Add to cart</button>
+              <button>Buy</button
+              ><button @click="addToCartThis(product.title, product.price)">
+                Add to cart
+              </button>
             </div>
           </div>
         </div>
@@ -132,14 +140,30 @@
       :class="showModal ? 'scale-in-center' : ''"
     >
       <div class="imageDiv2">
-        <i class="bx bxs-chevron-left" @click="prevImage"></i>
         <img :src="productImage" alt="" srcset="" />
-        <i class="bx bxs-chevron-right" @click="nextImage"></i>
       </div>
       <div class="imageDiv">
         <h1 style="text-align: center">{{ productData }}</h1>
 
         <p>{{ productDesc }}</p>
+      </div>
+    </div>
+    <div
+      class="addtocart"
+      v-if="addtocart"
+      @mouseleave="addtocart = !addtocart"
+    >
+      <h1>Added to your cart now!</h1>
+      <i class="bx bx-check-circle" style="color: #005c1e"></i>
+    </div>
+    <div class="addedtocart">
+      <h1>My cart</h1>
+      <hr />
+      <div v-if="productData.length">
+        <div class="cartItem" v-for="(data, index) in productData" :key="index">
+          <div class="itemData">{{ data }}</div>
+          <div class="itemPrice">{{ productPrice[index] }}</div>
+        </div>
       </div>
     </div>
   </div>
@@ -163,6 +187,8 @@ export default {
     const productData = ref([]);
     const productImage = ref([]);
     const productDesc = ref([]);
+    const productPrice = ref([]);
+    const addtocart = ref(false);
 
     const increment = computed(() => {
       return store.state.counter;
@@ -213,7 +239,11 @@ export default {
       productDesc.value = desc;
     };
 
-
+    const addToCartThis = (title, price) => {
+      addtocart.value = true;
+      productData.value.push(title);
+      productPrice.value.push(price);
+    };
 
     return {
       store,
@@ -235,7 +265,9 @@ export default {
       catchData,
       productImage,
       productDesc,
-    
+      addToCartThis,
+      addtocart,
+      productPrice,
     };
   },
 };
@@ -252,6 +284,16 @@ h1 {
   display: flex;
   gap: 10px;
   margin: 10px 0 20px 0;
+  justify-content: space-between;
+  align-items: center;
+}
+.btn .bx {
+  font-size: 50px;
+  color: #005c1e;
+}
+.btn-main {
+  display: flex;
+  gap: 10px;
 }
 .products-container {
   margin-top: 20px;
@@ -345,6 +387,35 @@ img {
   border-radius: 3px;
   cursor: pointer;
 }
+.addtocart {
+  height: 10vh;
+  width: 20vw;
+  background-color: #82c9ee;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  border-radius: 10px;
+  position: fixed;
+  left: 40%;
+  top: 40%;
+}
+.addtocart .bx {
+  font-size: 50px;
+}
+.addedtocart {
+  background-color: #82c9ee;
+  width: 15vw;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 10px;
+  padding: 10px;
+}
+.cartItem {
+  display: flex;
+  justify-content: space-between;
+}
+
 .scale-in-center {
   -webkit-animation: scale-in-center 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)
     both;

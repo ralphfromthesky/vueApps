@@ -7,6 +7,7 @@ const store = createStore({
     products: [],
     less500: [],
     high500: [],
+    addedTocart: [],
   },
   mutations: {
     increment(state, payload) {
