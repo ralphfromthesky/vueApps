@@ -3,16 +3,21 @@ import { createStore } from "vuex";
 
 const store = createStore({
   state: {
-    counter: 100,
+    counter: 10000,
     products: [],
     less500: [],
     high500: [],
-    addedTocart: [],
   },
   mutations: {
     increment(state, payload) {
       state.counter += payload;
     },
+
+    deductTotalPrice(state, payload) {
+      state.counter -= payload;
+  
+    }
+
   },
   actions: {
     async fetchData (context) {

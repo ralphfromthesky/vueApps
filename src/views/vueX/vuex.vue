@@ -9,7 +9,7 @@
         <button @click="add(1000)">Add 1000</button>
         <button @click="add(1500)">Add 1500</button>
       </div>
-      <div class="btn-cart">
+      <div class="btn-cart" @click="addedtocart = !addedtocart">
         <i class="bx bx-cart"></i>
       </div>
     </div>
@@ -37,7 +37,11 @@
             ${{ product.price }}
             <div class="prodbtn">
               <button>Buy</button
-              ><button @click="addToCartThis(product.title, product.price)">
+              ><button
+                @click="
+                  addToCartThis(product.title, product.price, product.price)
+                "
+              >
                 Add to cart
               </button>
             </div>
@@ -156,14 +160,29 @@
       <h1>Added to your cart now!</h1>
       <i class="bx bx-check-circle" style="color: #005c1e"></i>
     </div>
-    <div class="addedtocart">
-      <h1>My cart</h1>
+    <div
+      class="addedtocart"
+      v-if="addedtocart"
+      @mouseleave="addedtocart = false"
+    >
+      <h1 style="text-align: center">My cart</h1>
       <hr />
       <div v-if="productData.length">
-        <div class="cartItem" v-for="(data, index) in productData" :key="index">
-          <div class="itemData">{{ data }}</div>
-          <div class="itemPrice">{{ productPrice[index] }}</div>
+        <div
+          class="cartItem"
+          v-for="(item, data, index) in productData"
+          :key="index"
+        >
+          <!-- <p>{{ item.title }} x{{ item.quantity }} {{ item.totalPrice }}</p> -->
+          <div class="itemData">{{ item.title }}</div>
+          <div class="itemData">x{{ item.quantity }}</div>
+          <div class="itemData">{{ item.totalPrice }}</div>
         </div>
+      </div>
+      <hr />
+      <div class="totalPrice">
+        <p>Total</p>
+        <h3 v-if="productData.length">{{ totalPrice }}</h3>
       </div>
     </div>
   </div>
@@ -189,6 +208,8 @@ export default {
     const productDesc = ref([]);
     const productPrice = ref([]);
     const addtocart = ref(false);
+    const totalPrice = ref([]);
+    const addedtocart = ref(false);
 
     const increment = computed(() => {
       return store.state.counter;
@@ -239,12 +260,33 @@ export default {
       productDesc.value = desc;
     };
 
-    const addToCartThis = (title, price) => {
+    // here finish this!!!!!
+    const addToCartThis = (title, price, payload) => {
+      store.commit("deductTotalPrice", payload);
       addtocart.value = true;
-      productData.value.push(title);
-      productPrice.value.push(price);
-    };
+      const existingItemIndex = productData.value.findIndex(
+        (item) => item.title === title
+      );
+      if (existingItemIndex !== -1) {
+        productData.value[existingItemIndex].quantity++;
+        productData.value[existingItemIndex].totalPrice += price;
+      } else {
+        productData.value.push({
+          title: title,
+          quantity: 1,
+          totalPrice: price,
+        });
+      }
+      totalPrice.value = productData.value.reduce(
+        (total, item) => total + item.totalPrice,
+        0
+      );
+      addedtocart.value = true;
 
+      console.log(store.state.counter);
+      if (store.state.counter < price) {
+      }
+    };
     return {
       store,
       increment,
@@ -268,6 +310,8 @@ export default {
       addToCartThis,
       addtocart,
       productPrice,
+      totalPrice,
+      addedtocart,
     };
   },
 };
@@ -290,6 +334,7 @@ h1 {
 .btn .bx {
   font-size: 50px;
   color: #005c1e;
+  z-index: 10;
 }
 .btn-main {
   display: flex;
@@ -407,15 +452,25 @@ img {
   width: 15vw;
   position: absolute;
   top: 0;
-  right: 0;
+  right: 3vw;
   border-radius: 10px;
   padding: 10px;
+  box-shadow: 8px 8px 16px #676767, -8px -8px 16px #ffffff;
+}
+.minusProduct button {
+  margin: 0;
+  padding: 0;
 }
 .cartItem {
   display: flex;
   justify-content: space-between;
 }
 
+.totalPrice {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
 .scale-in-center {
   -webkit-animation: scale-in-center 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)
     both;
