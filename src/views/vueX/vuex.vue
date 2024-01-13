@@ -1,7 +1,7 @@
 <template>
   <div class="vuexMain">
     <h1 style="text-align: center">vuex state management</h1>
-    <h1>total: {{ increment }}</h1>
+    <h1>Account: ${{ increment }}</h1>
     <div class="btn">
       <div class="btn-main">
         <button @click="store.commit('increment', 100)">Add 100</button>
@@ -176,6 +176,10 @@
           <!-- <p>{{ item.title }} x{{ item.quantity }} {{ item.totalPrice }}</p> -->
           <div class="itemData">{{ item.title }}</div>
           <div class="itemData">x{{ item.quantity }}</div>
+          <div class="itemData">
+            <i class="bx bx-plus-circle" @click="plusQuantity(item)"></i
+            ><i class="bx bx-checkbox-minus"></i>
+          </div>
           <div class="itemData">{{ item.totalPrice }}</div>
         </div>
       </div>
@@ -260,7 +264,21 @@ export default {
       productDesc.value = desc;
     };
 
-    // here finish this!!!!!
+    const plusQuantity = (item) => {
+      const itemData = productData.value.findIndex(
+        (item) => item.title === item.title
+      );
+      if (itemData !== -1) {
+        productData.value[itemData].quantity++;
+        // productData.value[itemData].quantity = productData[itemData].quantity * item.totalPrice;
+        productData.value[itemData].totalPrice +=
+      item.totalPrice;
+
+        
+      }
+    };
+
+    // for adding cart data!!!!!
     const addToCartThis = (title, price, payload) => {
       store.commit("deductTotalPrice", payload);
       addtocart.value = true;
@@ -312,6 +330,7 @@ export default {
       productPrice,
       totalPrice,
       addedtocart,
+      plusQuantity,
     };
   },
 };
@@ -464,6 +483,16 @@ img {
 .cartItem {
   display: flex;
   justify-content: space-between;
+  cursor: pointer;
+}
+.itemData {
+  margin: 10px 0;
+}
+.itemData .bx {
+  font-size: 20px;
+}
+.itemData .bx:hover {
+  color: rgb(255, 0, 0);
 }
 
 .totalPrice {
