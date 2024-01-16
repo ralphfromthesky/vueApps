@@ -23,8 +23,8 @@ app.provide('musicList', musicSongList)
 const sampleDataList = ref(dataList) // for provide and inject data
 app.provide('sampleData', sampleDataList) // this one too provide and inject
 
-const employee = ref(employees)
-app.provide('employee', employee)
+const employers = ref(employees)
+app.provide('employee', employers)
 
 const anotherSampleOfData = ref(datas)
 app.provide('datas', anotherSampleOfData)

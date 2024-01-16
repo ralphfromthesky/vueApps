@@ -2,9 +2,9 @@
   <div>
     <h1>this data comes from  employee.js</h1>
 
-    <div v-for="employees in employee" :key="employees.id">
+    <div v-for="(employees, index) in employee" :key="employees.id">
       <h2>
-        {{ employees.id }} - {{ employees.fullname }} - {{ employees.age }}
+        {{ index + 1 }} - {{ employees.fullname }} - {{ employees.age }}
       </h2>
     </div>
   </div>

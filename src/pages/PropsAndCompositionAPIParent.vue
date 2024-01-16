@@ -4,6 +4,7 @@
       messageFromParentComponent="this is the message from parent Component"
       AnotherMessage="ralph santolorin"
       :sampleDataBindingProsp="taeKa"
+      :anoDaw="okImFine"
     />
     <hr />
 
@@ -27,8 +28,10 @@
     <PropsAndCompositionAPIChild23 :data="dataList"/>
 
     <PropsAndCompositionAPIChild23 :messageFromTheSky="messageFromSky"/>
+    <PropsAndCompositionAPIChild23 :tupacShakur="sampleData"/>
+
   </div>
-</template>
+</template>sampleData
 
 <script>
 import { reactive, ref } from "vue";
@@ -53,6 +56,7 @@ export default {
     const lastname = ref("santolorin");
     const messageFromSky = ref('how are you!!!!!')
     const taeKa = ref('tae ka tlga!!!!')
+    const okImFine = ref('im Really ok talaga')
     const dataList = reactive({
       name: 'ralph santolorin',
       age: '39',
@@ -62,6 +66,12 @@ export default {
       name: 'shenron santolorin',
       age: 10,
       location: 'navotas'
+    })
+
+    const sampleData = reactive({
+      name: 'tupac shakur',
+      age: 50,
+      location: 'usa'
     })
 
 
@@ -83,7 +93,9 @@ export default {
       newMessage,
       messageFromSky,
       newData,
-      taeKa
+      taeKa,
+      okImFine,
+      sampleData
     };
   },
 };

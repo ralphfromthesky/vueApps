@@ -13,11 +13,6 @@ const store = createStore({
       state.counter += payload;
     },
 
-    deductTotalPrice(state, payload) {
-      state.counter -= payload;
-  
-    }
-
   },
   actions: {
     async fetchData (context) {

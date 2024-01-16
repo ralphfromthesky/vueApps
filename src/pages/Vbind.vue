@@ -43,6 +43,10 @@
   <h1>this is sample of interpolation and the name is {{ namers }}</h1>
   <h1 :class="ternaryClass ? 'ternaryClass': ' applyThisIfTrue'">example of appying class ternay condition</h1>
   <h1 :class="{'dynamic1' : dynamic1, 'dynamic2': !dynamic2}">this is dynamic class binding</h1>
+  <div>
+    <h1 :class="isThisTrue ? 'true': 'false'">{{ myname }}</h1>
+    <h1 :class="{'true': isThisTrue2 , 'false' : !isThisTrue2}" @click="isThisTrue2 = !isThisTrue2">  {{ myname }}</h1>
+  </div>
 </div>
 </template>
 
@@ -63,6 +67,9 @@ export default {
       isCondition: false,
       objectClass: true,
       ternaryClass: true,
+      myname: 'this is sample of interpolation in vueJs',
+      isThisTrue: true,
+      isThisTrue2: false,
       dataPropertyStyle: {
         color: "red",
         border: "2px solid black",
@@ -84,6 +91,16 @@ export default {
 </script>
 
 <style>
+.true {
+  color: aliceblue;
+  background-color: black;
+  border: 2px solid red;
+}
+.false {
+  color: red;
+  background-color: aliceblue;
+  border: 2px solid blue;
+}
 h2 h3 {
   margin: 0;
 }

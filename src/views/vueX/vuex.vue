@@ -1,7 +1,7 @@
 <template>
   <div class="vuexMain">
     <h1 style="text-align: center">vuex state management</h1>
-    <h1>Account: ${{ increment }}</h1>
+    <h1>Total Balance: ${{ increment - totalPrice }}</h1>
     <div class="btn">
       <div class="btn-main">
         <button @click="store.commit('increment', 100)">Add 100</button>
@@ -36,10 +36,10 @@
             <img :src="product.images[0]" alt="" />
             ${{ product.price }}
             <div class="prodbtn">
-              <button>Buy</button
-              ><button
+              <button>Buy</button>
+              <button
                 @click="
-                  addToCartThis(product.title, product.price, product.price)
+                  addToCartThis(product.title, product.price)
                 "
               >
                 Add to cart
@@ -168,19 +168,14 @@
       <h1 style="text-align: center">My cart</h1>
       <hr />
       <div v-if="productData.length">
-        <div
-          class="cartItem"
-          v-for="(item, data, index) in productData"
-          :key="index"
-        >
-          <!-- <p>{{ item.title }} x{{ item.quantity }} {{ item.totalPrice }}</p> -->
+        <div class="cartItem" v-for="(item, index) in productData" :key="index">
           <div class="itemData">{{ item.title }}</div>
           <div class="itemData">x{{ item.quantity }}</div>
           <div class="itemData">
             <i class="bx bx-plus-circle" @click="plusQuantity(item)"></i
             ><i class="bx bx-checkbox-minus"></i>
           </div>
-          <div class="itemData">{{ item.totalPrice }}</div>
+          <div class="itemData">{{ item.quantityPrice }}</div>
         </div>
       </div>
       <hr />
@@ -210,7 +205,6 @@ export default {
     const productData = ref([]);
     const productImage = ref([]);
     const productDesc = ref([]);
-    const productPrice = ref([]);
     const addtocart = ref(false);
     const totalPrice = ref([]);
     const addedtocart = ref(false);
@@ -264,47 +258,41 @@ export default {
       productDesc.value = desc;
     };
 
-    const plusQuantity = (item) => {
-      const itemData = productData.value.findIndex(
-        (item) => item.title === item.title
+    const plusQuantity = (clickedItem) => {
+      clickedItem.quantity++;
+      clickedItem.quantityPrice += clickedItem.price
+      totalPrice.value = productData.value.reduce(
+        (total, item) => total + item.quantityPrice,
+        0
       );
-      if (itemData !== -1) {
-        productData.value[itemData].quantity++;
-        // productData.value[itemData].quantity = productData[itemData].quantity * item.totalPrice;
-        productData.value[itemData].totalPrice +=
-      item.totalPrice;
-
-        
-      }
+      console.log(totalPrice.value)
     };
 
     // for adding cart data!!!!!
-    const addToCartThis = (title, price, payload) => {
-      store.commit("deductTotalPrice", payload);
+    const addToCartThis = (title, price) => {
       addtocart.value = true;
+      addedtocart.value = true;
       const existingItemIndex = productData.value.findIndex(
         (item) => item.title === title
       );
       if (existingItemIndex !== -1) {
         productData.value[existingItemIndex].quantity++;
-        productData.value[existingItemIndex].totalPrice += price;
+        productData.value[existingItemIndex].quantityPrice += price;
       } else {
         productData.value.push({
           title: title,
           quantity: 1,
-          totalPrice: price,
+          quantityPrice: price,
+          price: price
         });
       }
       totalPrice.value = productData.value.reduce(
-        (total, item) => total + item.totalPrice,
+        (total, item) => total + item.quantityPrice,
         0
       );
-      addedtocart.value = true;
-
-      console.log(store.state.counter);
-      if (store.state.counter < price) {
-      }
     };
+
+
     return {
       store,
       increment,
@@ -327,10 +315,10 @@ export default {
       productDesc,
       addToCartThis,
       addtocart,
-      productPrice,
       totalPrice,
       addedtocart,
       plusQuantity,
+
     };
   },
 };

@@ -37,7 +37,6 @@
           <option value="russia">Russia</option>
         </select>
       </div>
-
       <div>
         <input
           type="checkbox"
