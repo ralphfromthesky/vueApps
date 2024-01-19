@@ -20,6 +20,8 @@
       <router-link to="/timer"><i class="bx bxs-watch"></i> </router-link>
       <router-link to="/vuex"><i class='bx bxs-castle'></i></router-link>
       <router-link to="/ghub"><i class='bx bxl-github'></i></router-link>
+      <router-link to="/shop"><i class='bx bxs-shopping-bags'></i></router-link>
+
     </div>
   </div>
 </template>

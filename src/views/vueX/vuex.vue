@@ -1,7 +1,9 @@
 <template>
   <div class="vuexMain">
     <h1 style="text-align: center">vuex state management</h1>
-    <h1>Total Balance: ${{ increment - totalPrice }}</h1>
+    <h1>Total Balance: ${{ balance}}</h1>
+    <br />
+    <!-- <h1>{{ totalPrice }}</h1> -->
     <div class="btn">
       <div class="btn-main">
         <button @click="store.commit('increment', 100)">Add 100</button>
@@ -37,11 +39,7 @@
             ${{ product.price }}
             <div class="prodbtn">
               <button>Buy</button>
-              <button
-                @click="
-                  addToCartThis(product.title, product.price)
-                "
-              >
+              <button @click="addToCartThis(product.title, product.price)">
                 Add to cart
               </button>
             </div>
@@ -172,8 +170,8 @@
           <div class="itemData">{{ item.title }}</div>
           <div class="itemData">x{{ item.quantity }}</div>
           <div class="itemData">
-            <i class="bx bx-plus-circle" @click="plusQuantity(item)"></i
-            ><i class="bx bx-checkbox-minus"></i>
+            <i class="bx bx-plus-circle" @click="plusQuantity(item)"></i>
+            <i class="bx bx-checkbox-minus" @click="minusQuantity(item)"></i>
           </div>
           <div class="itemData">{{ item.quantityPrice }}</div>
         </div>
@@ -182,6 +180,13 @@
       <div class="totalPrice">
         <p>Total</p>
         <h3 v-if="productData.length">{{ totalPrice }}</h3>
+      </div>
+      <div
+        class="checkOut"
+        style="text-align: center"
+        v-if="productData.length"
+      >
+        <h1>CHECK-OUT</h1>
       </div>
     </div>
   </div>
@@ -208,9 +213,10 @@ export default {
     const addtocart = ref(false);
     const totalPrice = ref([]);
     const addedtocart = ref(false);
+    const checkOutPrice = ref(0);
 
-    const increment = computed(() => {
-      return store.state.counter;
+    const balance = computed(() => {
+      return store.state.balance - totalPrice.value;
     });
 
     const add = (payload) => {
@@ -260,12 +266,22 @@ export default {
 
     const plusQuantity = (clickedItem) => {
       clickedItem.quantity++;
-      clickedItem.quantityPrice += clickedItem.price
+      clickedItem.quantityPrice += clickedItem.price;
       totalPrice.value = productData.value.reduce(
         (total, item) => total + item.quantityPrice,
         0
       );
-      console.log(totalPrice.value)
+ 
+    };
+
+    const minusQuantity = (clickedItem) => {
+      if (clickedItem.quantity <= 0) {
+        return;
+      } else {
+        clickedItem.quantity--;
+        clickedItem.quantityPrice -= clickedItem.price;
+        totalPrice.value -= clickedItem.price;
+      }
     };
 
     // for adding cart data!!!!!
@@ -283,19 +299,21 @@ export default {
           title: title,
           quantity: 1,
           quantityPrice: price,
-          price: price
+          price: price,
         });
       }
       totalPrice.value = productData.value.reduce(
         (total, item) => total + item.quantityPrice,
         0
       );
+      // store.commit('decrement', totalPrice.value)
+      // console.log(store.state.balance)
+    
     };
-
 
     return {
       store,
-      increment,
+      balance,
       add,
       showProducts,
       products,
@@ -318,7 +336,9 @@ export default {
       totalPrice,
       addedtocart,
       plusQuantity,
-
+      minusQuantity,
+      balance,
+      checkOutPrice,
     };
   },
 };
@@ -473,11 +493,19 @@ img {
   justify-content: space-between;
   cursor: pointer;
 }
+.checkOut {
+  padding: 10px 15px;
+  border-radius: 5px;
+  background-color: #005c1e;
+  color: white;
+  margin-top: 15px;
+}
 .itemData {
   margin: 10px 0;
 }
 .itemData .bx {
-  font-size: 20px;
+  font-size: 30px;
+  padding-left: 15px;
 }
 .itemData .bx:hover {
   color: rgb(255, 0, 0);

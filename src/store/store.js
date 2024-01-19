@@ -3,15 +3,18 @@ import { createStore } from "vuex";
 
 const store = createStore({
   state: {
-    counter: 10000,
+    balance: 10000,
     products: [],
     less500: [],
     high500: [],
   },
   mutations: {
     increment(state, payload) {
-      state.counter += payload;
+      state.balance += payload;
     },
+    decrement(state, payload) {
+      state.balance -= payload;
+    }
 
   },
   actions: {
