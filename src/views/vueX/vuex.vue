@@ -1,8 +1,12 @@
 <template>
   <div class="vuexMain">
     <h1 style="text-align: center">vuex state management</h1>
-    <h1>Total Balance: ${{ balance}}</h1>
+    <h1>Total Balance: ${{ balance }}</h1>
     <br />
+    <div class="mkart">
+      <h1>Succesfully placed order!</h1>
+      <img src="/images/mariokart.png" alt="" />
+    </div>
     <!-- <h1>{{ totalPrice }}</h1> -->
     <div class="btn">
       <div class="btn-main">
@@ -185,18 +189,55 @@
         class="checkOut"
         style="text-align: center"
         v-if="productData.length"
+        @click="checkOut = !checkOut"
       >
         <h1>CHECK-OUT</h1>
+      </div>
+    </div>
+  </div>
+  <div class="main-checkOut" v-if="checkOut">
+    <div class="exitIcons">
+      <i class="bx bx-x-circle" @click="checkOut = !checkOut"></i>
+      <div class="checkOutHeader">
+        <h1>--- CHECK OUT ---</h1>
+        <hr />
+      </div>
+      <div class="checkOut-container">
+        <div class="form">
+          <formsVue v-model="parentData" :totals="totalPrice"/>
+        </div>
+        <div class="nextCheckOutContainer">
+          <div v-if="productData.length" class="cartItemContainer">
+            <div
+              class="cartItem"
+              v-for="(item, index) in productData"
+              :key="index"
+              id="totalCheckOut"
+            >
+              <div class="itemData">{{ item.title }}</div>
+              <div class="itemData">x{{ item.quantity }}</div>
+              <div class="itemData">{{ item.quantityPrice }}</div>
+            </div>
+          </div>
+          <div class="chckBtn">
+            <h1>Total: {{ totalPrice }}</h1>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { computed, ref } from "vue";
+import { computed, reactive, ref } from "vue";
 import { useStore } from "@/store/store";
+import formsVue from "../../components/forms.vue";
+
 export default {
   name: "vuex",
+  components: {
+    formsVue,
+  },
   setup() {
     const store = useStore();
     const products = ref([]);
@@ -214,6 +255,20 @@ export default {
     const totalPrice = ref([]);
     const addedtocart = ref(false);
     const checkOutPrice = ref(0);
+    const checkOut = ref(false);
+  
+
+    const parentData = ref({
+      nameInput: "",
+      cardInput: "",
+      expiryInput: "",
+      cvvInput: "",
+      addressInput: "",
+      bool: false,
+    });
+    watch(parentData.value.bool, (newData) => {
+      console.log('formData changed:', newData);
+    }, { deep: true });
 
     const balance = computed(() => {
       return store.state.balance - totalPrice.value;
@@ -271,7 +326,6 @@ export default {
         (total, item) => total + item.quantityPrice,
         0
       );
- 
     };
 
     const minusQuantity = (clickedItem) => {
@@ -308,8 +362,9 @@ export default {
       );
       // store.commit('decrement', totalPrice.value)
       // console.log(store.state.balance)
-    
     };
+
+    const checkOutHandler = (item, price) => {};
 
     return {
       store,
@@ -339,6 +394,10 @@ export default {
       minusQuantity,
       balance,
       checkOutPrice,
+      checkOut,
+      checkOutHandler,
+      parentData,
+      mkart
     };
   },
 };
@@ -476,7 +535,6 @@ img {
 }
 .addedtocart {
   background-color: #82c9ee;
-  width: 15vw;
   position: absolute;
   top: 0;
   right: 3vw;
@@ -510,11 +568,94 @@ img {
 .itemData .bx:hover {
   color: rgb(255, 0, 0);
 }
+.mkart {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform: translateX(20%);
+  top: -60vh;
+  animation: slideDown 10s ease forwards;
+}
 
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    transform: translateY(80vh);
+  }
+
+  60% {
+    transform: translateY(75vh);
+    opacity: 1;
+  }
+
+  70% {
+    transform: translateX(-150vw);
+  }
+  100% {
+     transform: translateX(10vw);
+   }
+}
+.mkart h1 {
+  font-size: 50px;
+  color: rgb(24, 24, 18);
+}
+.mkart img {
+  height: 50vh;
+}
 .totalPrice {
   display: flex;
   justify-content: space-between;
   margin: 10px 0;
+}
+.main-checkOut {
+  width: 50vw;
+  background-color: #ffffff;
+  position: fixed;
+  border: 2px solid gray;
+  border-radius: 10px;
+  transform: translateY(0) translateX(0);
+}
+.main-checkOut .bx {
+  font-size: 50px;
+  position: absolute;
+  right: -20px;
+  top: -20px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  color: green;
+}
+.nextCheckOutContainer {
+  width: 100%;
+}
+.checkOutHeader {
+  text-align: center;
+}
+.checkOut-container {
+  display: flex;
+  padding: 10px;
+}
+.cartItemContainer {
+  padding: 0 10px;
+  height: 40vh;
+  overflow: scroll;
+}
+/* #totalCheckOut {
+  display: flex;
+  justify-content: space-between;
+} */
+.chckBtn {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding-top: 10px;
+}
+.checkOutHeader h1 {
+  padding: 10px 0;
 }
 .scale-in-center {
   -webkit-animation: scale-in-center 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)
