@@ -34,7 +34,7 @@ import vueXStatemanagement from '../pages/vueXStatemanagement.vue'
 import vuex from '../views/vueX/vuex.vue'
 import gitApps from '../views/gitApps.vue'
 import nameVariations from '../views/nameVariations.vue'
-import shopping from '../views/shopping.vue'
+import hotelApp from '../views/hotelApp.vue'
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -214,10 +214,11 @@ const router = createRouter({
         component:  nameVariations
       },
       {
-        path: '/shop',
-        name: 'shopping',
-        component:  shopping
+        path: '/hotel',
+        name: 'hotel',
+        component:  hotelApp
       },
+  
   
     ]
 })

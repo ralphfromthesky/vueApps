@@ -3,7 +3,7 @@
     <h1 style="text-align: center">vuex state management</h1>
     <h1>Total Balance: ${{ balance }}</h1>
     <br />
-    <div class="mkart">
+    <div class="mkart" v-if="parentData.boolFromParent">
       <h1>Succesfully placed order!</h1>
       <img src="/images/mariokart.png" alt="" />
     </div>
@@ -204,7 +204,7 @@
       </div>
       <div class="checkOut-container">
         <div class="form">
-          <formsVue v-model="parentData" :totals="totalPrice"/>
+          <formsVue v-model="parentData" :totals="totalPrice" />
         </div>
         <div class="nextCheckOutContainer">
           <div v-if="productData.length" class="cartItemContainer">
@@ -221,6 +221,7 @@
           </div>
           <div class="chckBtn">
             <h1>Total: {{ totalPrice }}</h1>
+            {{ parentData }}
           </div>
         </div>
       </div>
@@ -229,7 +230,7 @@
 </template>
 
 <script>
-import { computed, reactive, ref } from "vue";
+import { computed, reactive, ref, watch } from "vue";
 import { useStore } from "@/store/store";
 import formsVue from "../../components/forms.vue";
 
@@ -256,19 +257,15 @@ export default {
     const addedtocart = ref(false);
     const checkOutPrice = ref(0);
     const checkOut = ref(false);
-  
 
     const parentData = ref({
-      nameInput: "",
-      cardInput: "",
-      expiryInput: "",
-      cvvInput: "",
-      addressInput: "",
-      bool: false,
+      nameInputFromParent: "",
+      cardInputFromParent: "",
+      expiryInputFromParent: "",
+      cvvInputFromParent: "",
+      addressInputFromParent: "",
+      boolFromParent: false,
     });
-    watch(parentData.value.bool, (newData) => {
-      console.log('formData changed:', newData);
-    }, { deep: true });
 
     const balance = computed(() => {
       return store.state.balance - totalPrice.value;
@@ -397,7 +394,6 @@ export default {
       checkOut,
       checkOutHandler,
       parentData,
-      mkart
     };
   },
 };
@@ -577,6 +573,7 @@ img {
   transform: translateX(20%);
   top: -60vh;
   animation: slideDown 10s ease forwards;
+  z-index: 11;
 }
 
 @keyframes slideDown {
@@ -597,8 +594,8 @@ img {
     transform: translateX(-150vw);
   }
   100% {
-     transform: translateX(10vw);
-   }
+    transform: translateX(10vw);
+  }
 }
 .mkart h1 {
   font-size: 50px;

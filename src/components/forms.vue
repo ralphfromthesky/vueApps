@@ -154,11 +154,11 @@
             <label for="">complete address</label>
             <input type="text" v-model="addressInput" />
           </div>
+          {{ totals }}
         </div>
         <button class="purchase--btn" style="cursor: pointer">
           PLACE-ORDER
         </button>
-        {{ totals }}
       </form>
     </div>
   </div>
@@ -170,27 +170,33 @@ import axios from "axios";
 export default {
   name: "forms",
   props: {
-    modelValue: Object, totals: Number, bool: Boolean
+    modelValue: Object,
+    totals: Number,
+    boolFromParent: Boolean,
   },
   setup(props, { emit }) {
-    const nameInput = ref(props.modelValue.nameInput);// this one from the value of the input values from child to parent and rendering to parent template
-    const cardInput = ref(props.modelValue.cardInput);// this one from the value of the input values from child to parent and rendering to parent template
-    const expiryInput = ref(props.modelValue.expiryInput);// this one from the value of the input values from child to parent and rendering to parent template
-    const cvvInput = ref(props.modelValue.cvvInput);// this one from the value of the input values from child to parent and rendering to parent template
-    const addressInput = ref(props.modelValue.addressInput);// this one from the value of the input values from child to parent and rendering to parent template
-    const totals = ref(props.totals) //this one is from the totalprice.value
-    const bool = ref(false)
+    const nameInput = ref(props.modelValue.nameInputFromParent); // this one from the value of the input values from child to parent and rendering to parent template
+    const cardInput = ref(props.modelValue.cardInputFromParent); // this one from the value of the input values from child to parent and rendering to parent template
+    const expiryInput = ref(props.modelValue.expiryInputFromParent); // this one from the value of the input values from child to parent and rendering to parent template
+    const cvvInput = ref(props.modelValue.cvvInputFromParent); // this one from the value of the input values from child to parent and rendering to parent template
+    const addressInput = ref(props.modelValue.addressInputFromParent); // this one from the value of the input values from child to parent and rendering to parent template
+    const totals = ref(props.totals); //this one is from the totalprice.value
+    const bool = ref(false);
 
-    watch([nameInput, cardInput, expiryInput, cvvInput, addressInput,bool], () => { //watch for emit event child to parent component
-      emit("update:modelValue", {
-        nameInput: nameInput.value,
-        cardInput: cardInput.value,
-        expiryInput: expiryInput.value,
-        cvvInput: cvvInput.value,
-        addressInput: addressInput.value,
-        bool: bool.value
-      });
-    });
+    watch(
+      [nameInput, cardInput, expiryInput, cvvInput, addressInput, bool],
+      () => {
+        //watch for emit event child to parent component
+        emit("update:modelValue", {
+          nameInput: nameInput.value,
+          cardInput: cardInput.value,
+          expiryInput: expiryInput.value,
+          cvvInput: cvvInput.value,
+          addressInput: addressInput.value,
+          boolFromParent: bool.value,
+        });
+      }
+    );
 
     const submitData = async () => {
       if (nameInput.value.trim() === "") {
@@ -221,12 +227,23 @@ export default {
           addressInput: addressInput.value,
           expiryInput: expiryInput.value,
           cardInput: cardInput.value,
-          cvvInput: cardInput.value,
-          totals: totals.value
+          cvvInput: cvvInput.value,
+          totals: totals.value,
         };
         const response = await axios.post(url, formdata);
         console.log(response.data);
-        bool.value = true
+        console.log(formdata.value);
+
+        bool.value = true;
+        nameInput.value = "";
+        addressInput.value = "";
+        expiryInput.value = "";
+        cardInput.value = "";
+        cvvInput.value = "";
+
+        setTimeout(() => {
+          window.location.reload()
+        }, 7000);
       } catch (error) {
         alert(`error: ${error}`);
       }
@@ -239,8 +256,7 @@ export default {
       cvvInput,
       addressInput,
       submitData,
-      formData,
-      bool
+      bool,
     };
   },
 };
