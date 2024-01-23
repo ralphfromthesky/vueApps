@@ -221,7 +221,6 @@
           </div>
           <div class="chckBtn">
             <h1>Total: {{ totalPrice }}</h1>
-            {{ parentData }}
           </div>
         </div>
       </div>

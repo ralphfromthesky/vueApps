@@ -154,7 +154,6 @@
             <label for="">complete address</label>
             <input type="text" v-model="addressInput" />
           </div>
-          {{ totals }}
         </div>
         <button class="purchase--btn" style="cursor: pointer">
           PLACE-ORDER
@@ -407,7 +406,7 @@ export default {
 }
 
 .input_field[type="number"] {
-  -moz-appearance: textfield;
+  -moz-appearan: textfield;
 }
 .labeled label {
   font-size: 15px;
