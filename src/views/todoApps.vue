@@ -1,6 +1,6 @@
 <template>
-  <div class="theRealMainTodo">
-    <div class="mainTodo">
+  <div class="theRealMainTodo" :class="{'night': store.state.isNight, 'light': !store.state.isNight}">
+    <div class="mainTodo" :class="{'night': store.state.isNight, 'light': !store.state.isNight}">
       <div class="todolabel">
         <h1>what is your name <input type="text" v-model="name" />?</h1>
       </div>
@@ -31,10 +31,12 @@
 
 <script>
 import { onMounted, ref, watch } from "vue";
+import { useStore } from "@/store/store";
 export default {
   name: "todoApps",
 
   setup() {
+    const store = useStore();
     const name = ref("");
     const input_todo = ref("");
     const todos = ref([]);
@@ -99,12 +101,21 @@ export default {
       input_todo,
       addTodo,
       deleteTodo,
+      store
     };
   },
 };
 </script>
 
 <style scoped>
+.light {
+  box-shadow:  17px 17px 15px #868686,
+             -17px -17px 15px #ffffff; 
+}
+.night {
+  border:2px solid gray;
+  border-radius: 10px;
+}
 .theRealMainTodo {
   display: flex;
   width: 60vw;
@@ -116,7 +127,6 @@ export default {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  box-shadow: 20px 20px 9px #a1a1a1, -20px -20px 9px #ffffff;
 }
 .mainTodo {
   height: 50vh;
@@ -124,7 +134,6 @@ export default {
   border-radius: 10px;
   border-radius: 50px;
   border-radius: 9px;
-  box-shadow: 20px 20px 9px #a1a1a1, -20px -20px 9px #ffffff;
 }
 .todolabel {
   display: flex;
@@ -169,3 +178,4 @@ p {
 }
 
 </style>
+

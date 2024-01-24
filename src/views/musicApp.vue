@@ -1,8 +1,9 @@
 <template>
   <div class="music-app-container">
-    <div class="main-container">
+    <div class="main-container"  :class="{'night': store.state.isNight, 'light': !store.state.isNight}">
       <musicSongListVue />
     </div>
+    
     <div class="description">
       <h3>Description:</h3>
       <br />
@@ -23,18 +24,31 @@
 <script>
 import { ref } from "vue";
 import musicSongListVue from "./musicSongList.vue";
+import { useStore } from '@/store/store';
 export default {
   name: "music-app",
   components: {
     musicSongListVue,
   },
   setup() {
-    return {};
+    const store = useStore();
+    return {
+      store
+    };
   },
 };
 </script>
 
 <style scoped>
+
+.light {
+  box-shadow:  17px 17px 15px #868686,
+             -17px -17px 15px #ffffff; 
+}
+.night {
+  border:2px solid gray;
+  border-radius: 10px;
+}
 .music-app-container {
   display: flex;
   justify-content: center;
@@ -47,7 +61,6 @@ export default {
   padding: 20px;
   border-radius: 10px;
   background-color: black;
-  box-shadow: 20px 20px 22px #828282, -20px -20px 22px #ffffff;
 }
 .description {
   width: 25%;

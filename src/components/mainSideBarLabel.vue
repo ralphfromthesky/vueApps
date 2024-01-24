@@ -1,5 +1,5 @@
 <template>
-  <div class="mainSidebarLabel">
+  <div class="mainSidebarLabel" :class="{'night': store.state.isNight, 'light': !store.state.isNight} ">
     <div class="label">
       <div class="menu-bx">
         <h4>Vue js Tuts</h4>
@@ -59,21 +59,33 @@
 
 <script>
 import cloudBackgroundVue from "../views/cloudBackground.vue";
-
+import { useStore } from "@/store/store";
 export default {
   name: "sidebar-label",
   emits: ["slideThisBack"],
   components: {
     cloudBackgroundVue,
   },
+  setup () {
+    const store = useStore()
+return {
+store  
+}
+  }
 };
 </script>
 
 <style scoped>
+.light {
+  box-shadow:  17px 17px 15px #868686,
+             -17px -17px 15px #ffffff; 
+}
+.night {
+  border:2px solid gray;
+}
 .mainSidebarLabel {
   height: 100vh;
   width: 10vw;
-  box-shadow: 17px 17px 15px #868686, -17px -17px 15px #ffffff;
 }
 .mainSidebarLabelBx {
   display: flex;

@@ -3,7 +3,7 @@
   <div class="container">
     <div class="mainContainer">
       <h1>The Quiz</h1>
-      <section class="quiz" v-if="!quizCompleted">
+      <section class="quiz" v-if="!quizCompleted"  :class="{'night': store.state.isNight, 'light': !store.state.isNight}">
         <div class="quiz-info">
           <span class="question">{{ getCurrentQuestion.question }}</span>
           <span class="score">Score {{ score }}/{{ questions.length }}</span>
@@ -73,7 +73,7 @@
 
 <script setup>
 import { ref, computed } from "vue";
-
+import { useStore } from "@/store/store";
 const questions = ref([
   {
     question: "What is the capital of France?",
@@ -151,7 +151,7 @@ const questions = ref([
     selected: null,
   },
 ]);
-
+const store = useStore()
 const quizCompleted = ref(false);
 const currentQuestion = ref(0);
 const score = computed(() => {
@@ -186,6 +186,14 @@ const NextQuestion = () => {
 };
 </script>
 <style scoped>
+.light {
+  box-shadow:  17px 17px 15px #868686,
+             -17px -17px 15px #ffffff; 
+}
+.night {
+  border:2px solid gray;
+  border-radius: 10px;
+}
 .container {
   display: flex;
   align-items: center;
@@ -214,7 +222,6 @@ h1 {
   width: 100%;
   max-width: 640px;
   border-radius: 20px;
-  box-shadow: 11px 11px 22px #797979, -11px -11px 22px #ffffff;
 }
 
 .quiz-info {

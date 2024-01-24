@@ -1,11 +1,12 @@
 <template>
-  <div class="mainApp">
+  <div class="mainApp" :class="{'night': dayNight, 'light': !dayNight}">
     <div class="sidebarContainer">
       <mainSideBarLabelVue class="sidebarlabel" :class="slideSidebar ? 'slideForward': 'slideBackward' " @slide-this-back="slideBack"/>
       <mainSidebarVue class="sidebaricon" @slide-this="slideForward" :class="slideSidebar ? 'slideBackward': ''"/>
     </div>
-    <div class="container" :class="slideSidebar ? 'paddingLeft': 'paddingRight'">
+    <div class="container" :class="slideSidebar ? 'paddingLeft': 'paddingRight'" >
       <mainHeaderVue />
+      {{ dayNight }}
       <mainBodyVue />
       <mainFooterVue />
     </div>
@@ -13,8 +14,8 @@
 </template>
 
 <script>
-
-import { ref } from "vue";
+import { useStore } from "@/store/store";
+import { computed, ref } from "vue";
 import mainBodyVue from "./components/mainBody.vue";
 import mainFooterVue from "./components/mainFooter.vue";
 import mainHeaderVue from "./components/mainHeader.vue";
@@ -31,6 +32,10 @@ export default {
   },
 
   setup() {
+    const store = useStore();
+    const dayNight = computed(() => {
+      return store.state.isNight
+    })
     const slideSidebar = ref(false);
     
     const slideForward = () => {
@@ -42,7 +47,9 @@ export default {
     return {
       slideSidebar,
       slideForward,
-      slideBack
+      slideBack,
+      store,
+      dayNight
     };
   },
 };
@@ -55,7 +62,16 @@ export default {
   box-sizing: border-box;
   font-family: 'Sometype Mono', monospace;
 }
-
+.night {
+  background-color: black;
+  color: white  !important;
+  transition: .3s ease;
+}
+.light {
+  background-color: white;
+  color: black !important;
+  transition: .3s ease;
+}
 .mainApp {
   display: flex;
 }

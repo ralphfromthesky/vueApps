@@ -1,4 +1,5 @@
-<template>
+<template  :class="{'night': store.state.isNight, 'light': !store.state.isNight}">
+ 
   <div class="mainContainer" :class="defaultBg">
     <div class="weatherApps" :class="weatherChangeBackground">
       <div class="mainForm form-control">
@@ -187,6 +188,15 @@ export default {
 </script>
 
 <style scoped>
+
+.light {
+  box-shadow:  17px 17px 15px #868686,
+             -17px -17px 15px #ffffff; 
+}
+.night {
+  border:2px solid gray;
+  border-radius: 10px;
+}
 .mainForm {
   display: flex;
   justify-content: center;
@@ -197,8 +207,7 @@ export default {
   width: 100%;
   justify-content: center;
   align-items: center;
-  box-shadow:  28px 28px 14px #8b8b8b,
-             -28px -28px 14px #ffffff;
+
 }
 .weatherApps {
   height: 60vh;

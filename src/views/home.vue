@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="homeContainer">
+    <div class="homeContainer" :class="{'night': store.state.isNight, 'light ': !store.state.isNight}">
       <div class="imageContainer">
         <!-- <img src="/dist/images/myPhoto.jpg" alt="">  -->
         <img src="/images/myPhoto.jpg" alt="">
@@ -32,16 +32,28 @@
 </template>
 
 <script>
+import { useStore } from '@/store/store';
+
 
 export default {
   name: "this is the home",
   setup() {
-    return {};
+    const store = useStore()
+    return {
+      store
+    };
   },
 };
 </script>
 
 <style scoped>
+.night {
+  border: 2px solid gray;
+  padding: 10px;
+}
+.light {
+  box-shadow: 10px 10px 30px #bebebe, -10px -10px 20px #ffffff;
+}
 img {
   height: 40vh;
 }
@@ -49,7 +61,6 @@ img {
   display: flex;
   width: 50vw;
   border-radius: 20px;
-  box-shadow: 10px 10px 30px #bebebe, -10px -10px 20px #ffffff;
   align-items: center;
 }
 .descriptionContainer {

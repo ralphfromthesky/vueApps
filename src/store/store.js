@@ -7,6 +7,7 @@ const store = createStore({
     products: [],
     less500: [],
     high500: [],
+    isNight: false,
   },
   mutations: {
     increment(state, payload) {
@@ -14,6 +15,9 @@ const store = createStore({
     },
     decrement(state, payload) {
       state.balance -= payload;
+    },
+    changeValue(state) {
+      state.isNight = !state.isNight;
     }
 
   },

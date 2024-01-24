@@ -35,6 +35,7 @@ import vuex from '../views/vueX/vuex.vue'
 import gitApps from '../views/gitApps.vue'
 import nameVariations from '../views/nameVariations.vue'
 import hotelApp from '../views/hotelApp.vue'
+import flipGames from '../views/flipGames.vue'
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -211,13 +212,20 @@ const router = createRouter({
       {
         path: '/nameVar',
         name: 'nameVariation',
-        component:  nameVariations
+        component:  nameVariations 
       },
       {
         path: '/hotel',
         name: 'hotel',
         component:  hotelApp
       },
+      {
+        path: '/flipGames',
+        name: 'flipGames',
+        component:  flipGames
+      },
+  
+  
   
   
     ]

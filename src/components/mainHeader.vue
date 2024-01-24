@@ -3,21 +3,27 @@
     <h1>
       VUE JS - Ralph <span><i class="bx bxs-cat"></i></span>
     </h1>
-    <div class="dayNightVue">
-     <dayNightVue/>
-    </div>
 
+    <div class="dayNightVue">
+      <dayNightVue />
+    </div>
   </div>
 </template>
 
 <script>
-import dayNightVue from './dayNight.vue';
+import dayNightVue from "./dayNight.vue";
 
 export default {
   name: "main-header",
   components: {
-    dayNightVue
-  }
+    dayNightVue,
+  },
+  setup() {
+
+    return {
+
+    };
+  },
 };
 </script>
 
@@ -33,9 +39,10 @@ export default {
   color: rgb(252, 102, 3);
   font-size: 40px;
 }
+
 @media screen and (max-width: 375px) {
-.mainHeader {
-  padding-left: 15%;
-}
+  .mainHeader {
+    padding-left: 15%;
+  }
 }
 </style>

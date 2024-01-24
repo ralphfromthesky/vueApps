@@ -1,5 +1,5 @@
 <template>
-  <div class="main-forms">
+  <div class="main-forms" >
     <div class="modal">
       <form class="form" @submit.prevent="submitData">
         <div class="payment--options">
@@ -164,7 +164,7 @@
 </template>
 
 <script>
-import { reactive, ref, watch } from "vue";
+import { computed, reactive, ref, watch } from "vue";
 import axios from "axios";
 export default {
   name: "forms",
@@ -232,14 +232,13 @@ export default {
         const response = await axios.post(url, formdata);
         console.log(response.data);
         console.log(formdata.value);
-
         bool.value = true;
         nameInput.value = "";
         addressInput.value = "";
         expiryInput.value = "";
         cardInput.value = "";
         cvvInput.value = "";
-
+console.log('asdfasfsd')
         setTimeout(() => {
           window.location.reload()
         }, 7000);
@@ -262,6 +261,7 @@ export default {
 </script>
 
 <style scoped>
+
 .modal {
   width: fit-content;
   height: fit-content;
@@ -414,6 +414,7 @@ export default {
   top: -7px;
   left: 10px;
   background-color: white;
+  color: black;
 }
 .labeled {
   position: relative;

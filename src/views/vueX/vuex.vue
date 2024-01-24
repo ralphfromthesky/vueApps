@@ -61,7 +61,7 @@
             <img :src="product.images[0]" alt="" />
             ${{ product.price }}
             <div class="prodbtn">
-              <button>Buy</button><button>Add to cart</button>
+              <!-- <button>Buy</button><button>Add to cart</button> -->
             </div>
           </div>
         </div>
@@ -76,7 +76,7 @@
             :key="product"
             class="allProducts"
             @click="
-              catchData(product.title, product.images[0], product.description)
+              catchData(product.images[0], product.description)
             "
           >
             <table class="table" border="1">
@@ -149,7 +149,7 @@
         <img :src="productImage" alt="" srcset="" />
       </div>
       <div class="imageDiv">
-        <h1 style="text-align: center">{{ productData }}</h1>
+        <!-- <h1 style="text-align: center">{{ productData }}</h1> -->
 
         <p>{{ productDesc }}</p>
       </div>
@@ -163,9 +163,10 @@
       <i class="bx bx-check-circle" style="color: #005c1e"></i>
     </div>
     <div
-      class="addedtocart"
+      class="addedtocarts"
       v-if="addedtocart"
       @mouseleave="addedtocart = false"
+      :class="{'night': store.state.isNight, 'light': !store.state.isNight}"
     >
       <h1 style="text-align: center">My cart</h1>
       <hr />
@@ -206,7 +207,7 @@
         <div class="form">
           <formsVue v-model="parentData" :totals="totalPrice" />
         </div>
-        <div class="nextCheckOutContainer">
+        <div class="nextCheckOutContainer" :class="{'night': store.state.isNight,  'light': !store.state.isNight}">
           <div v-if="productData.length" class="cartItemContainer">
             <div
               class="cartItem"
@@ -309,8 +310,8 @@ export default {
       product4.value = true;
     };
 
-    const catchData = (title, images, desc) => {
-      productData.value = title;
+    const catchData = ( images, desc) => {
+      // productData.value = title;
       productImage.value = images;
       productDesc.value = desc;
     };
@@ -399,6 +400,15 @@ export default {
 </script>
 
 <style scoped>
+
+.light {
+  box-shadow:  17px 17px 15px #868686,
+             -17px -17px 15px #ffffff; 
+}
+.night {
+  border:2px solid gray;
+  border-radius: 10px;
+}
 .vuexMain {
   position: relative;
 }
@@ -495,6 +505,7 @@ img {
   height: 50vh;
   width: 50vw;
   background-color: black;
+  padding: 0 15px;
   border-radius: 10px;
   top: 25vh;
   left: 25vw;
@@ -528,14 +539,13 @@ img {
 .addtocart .bx {
   font-size: 50px;
 }
-.addedtocart {
+.addedtocarts {
   background-color: #82c9ee;
   position: absolute;
   top: 0;
   right: 3vw;
   border-radius: 10px;
   padding: 10px;
-  box-shadow: 8px 8px 16px #676767, -8px -8px 16px #ffffff;
 }
 .minusProduct button {
   margin: 0;

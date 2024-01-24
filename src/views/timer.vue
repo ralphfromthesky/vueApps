@@ -1,5 +1,5 @@
 <template>
-  <div class="mainContainer">
+  <div class="mainContainer" :class="{'night': store.state.isNight, 'light': !store.state.isNight}">
     <h1>{{ displayDays }} Days before Christmas!!!</h1>
     <div class="container">
       <div class="main">
@@ -35,7 +35,7 @@
   
   <script>
 import { computed, onMounted, ref } from "vue";
-
+import {useStore} from '@/store/store'
 export default {
   name: "CounterTimer",
   components: {},
@@ -44,7 +44,7 @@ export default {
     const displayHours = ref(0);
     const displayMinutes = ref(0);
     const displaySeconds = ref(0);
-
+const store = useStore()
     const now = new Date();
     const end = new Date(2023, 11, 31, 23, 59, 59, 999);
     const distance = ref(end.getTime() - now.getTime());
@@ -86,12 +86,21 @@ export default {
       now,
       end,
       distance,
+      store
     };
   },
 };
 </script>
   
   <style scoped>
+  .light {
+  box-shadow:  17px 17px 15px #868686,
+             -17px -17px 15px #ffffff; 
+}
+.night {
+  border:2px solid gray;
+  border-radius: 10px;
+}
   .mainContainer {
     display: flex;
     justify-content: center;
@@ -102,8 +111,7 @@ export default {
     background-image: url('/images/christmas.jpg');
     background-position: center center;
     background-size: cover;
-    box-shadow:  28px 28px 14px #8b8b8b,
-             -28px -28px 14px #ffffff;
+
 
   }
 .container {
