@@ -5,6 +5,7 @@
       AnotherMessage="ralph santolorin"
       :sampleDataBindingProsp="taeKa"
       :anoDaw="okImFine"
+
     />
     <hr />
 
@@ -40,11 +41,13 @@
         <h1 style="text-align: center;">this is the Parent</h1>
 
         {{ parentData }}
+        <br>
+
+
       </div>
     </div>
   </div>
 </template>
-sampleData
 
 <script>
 import { reactive, ref } from "vue";
@@ -62,6 +65,11 @@ export default {
     propsPassingDataFromChildToParentComponentVue,
   },
   setup() {
+    const newParetntData = ref({
+      name: "",
+      location: "",
+      age: ""
+    })
     const MessageFromParentComponent = ref(
       "a bind message from Parent App.vue"
     );
@@ -118,6 +126,7 @@ export default {
       okImFine,
       sampleData,
       parentData,
+      newParetntData
     };
   },
 };

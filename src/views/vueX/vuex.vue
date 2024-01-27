@@ -1,12 +1,13 @@
 <template>
+  <div class="mkart" v-if="parentData.boolFromParent">
+    <h1>Succesfully placed order!</h1>
+    <img src="/images/mariokart.png" alt="" />
+  </div>
   <div class="vuexMain">
     <h1 style="text-align: center">vuex state management</h1>
     <h1>Total Balance: ${{ balance }}</h1>
     <br />
-    <div class="mkart" v-if="parentData.boolFromParent">
-      <h1>Succesfully placed order!</h1>
-      <img src="/images/mariokart.png" alt="" />
-    </div>
+
     <!-- <h1>{{ totalPrice }}</h1> -->
     <div class="btn">
       <div class="btn-main">
@@ -75,9 +76,7 @@
             v-for="product in products"
             :key="product"
             class="allProducts"
-            @click="
-              catchData(product.images[0], product.description)
-            "
+            @click="catchData(product.images[0], product.description)"
           >
             <table class="table" border="1">
               <thead>
@@ -166,7 +165,7 @@
       class="addedtocarts"
       v-if="addedtocart"
       @mouseleave="addedtocart = false"
-      :class="{'night': store.state.isNight, 'light': !store.state.isNight}"
+      :class="{ night: store.state.isNight, light: !store.state.isNight }"
     >
       <h1 style="text-align: center">My cart</h1>
       <hr />
@@ -207,7 +206,10 @@
         <div class="form">
           <formsVue v-model="parentData" :totals="totalPrice" />
         </div>
-        <div class="nextCheckOutContainer" :class="{'night': store.state.isNight,  'light': !store.state.isNight}">
+        <div
+          class="nextCheckOutContainer"
+          :class="{ night: store.state.isNight, light: !store.state.isNight }"
+        >
           <div v-if="productData.length" class="cartItemContainer">
             <div
               class="cartItem"
@@ -310,7 +312,7 @@ export default {
       product4.value = true;
     };
 
-    const catchData = ( images, desc) => {
+    const catchData = (images, desc) => {
       // productData.value = title;
       productImage.value = images;
       productDesc.value = desc;
@@ -400,17 +402,16 @@ export default {
 </script>
 
 <style scoped>
-
 .light {
-  box-shadow:  17px 17px 15px #868686,
-             -17px -17px 15px #ffffff; 
+  box-shadow: 17px 17px 15px #868686, -17px -17px 15px #ffffff;
 }
 .night {
-  border:2px solid gray;
+  border: 2px solid gray;
   border-radius: 10px;
 }
 .vuexMain {
   position: relative;
+  z-index: 1;
 }
 h1 {
   font-size: 20px;
@@ -582,7 +583,7 @@ img {
   transform: translateX(20%);
   top: -60vh;
   animation: slideDown 10s ease forwards;
-  z-index: 11;
+  z-index: 2;
 }
 
 @keyframes slideDown {
@@ -625,6 +626,7 @@ img {
   border: 2px solid gray;
   border-radius: 10px;
   transform: translateY(0) translateX(0);
+  z-index: 1;
 }
 .main-checkOut .bx {
   font-size: 50px;
@@ -634,6 +636,7 @@ img {
   background-color: #ffffff;
   border-radius: 50%;
   color: green;
+  z-index: 2;
 }
 .nextCheckOutContainer {
   width: 100%;

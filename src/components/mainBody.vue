@@ -1,26 +1,28 @@
 <template>
   <div class="mainBody">
-       <RouterView/>
-       <animatedParticleVue class="particle"/>
+    <!-- <RouterView class="route"/> -->
+    <animatedParticleVue class="particle" />
+    <RouterView class="route"/>
   </div>
 </template>
 
 <script>
 import { ref } from "vue";
-import animatedParticleVue from '../views/animatedParticle.vue';
+import animatedParticleVue from "../views/animatedParticle.vue";
+import Router from "../pages/router.vue";
 
 export default {
   name: "main-body",
   components: {
-    animatedParticleVue
+    animatedParticleVue,
+    Router,
   },
-  setup () {
-    const show = ref(false)
+  setup() {
+    const show = ref(false);
     return {
-
-      show
-    }
-  }
+      show,
+    };
+  },
 };
 </script>
 
@@ -29,15 +31,18 @@ export default {
   height: 80vh;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  padding: 20px 20px;
+  padding: 20px 0;
   position: relative;
-  overflow: scroll;
+  overflow-x: hidden;
 }
 .particle {
-    position: absolute;
-    z-index: -1;
-    transform: translateY(-2%);
-    width: 100%;
+  position: absolute;
+
+  transform: translateY(-2%);
+  width: 100%;
 }
+.route {
+  z-index: 1;
+}
+
 </style>

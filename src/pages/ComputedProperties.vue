@@ -14,12 +14,33 @@
         {{ item.items }} {{ item.price }}
       </h1>
     </template>
+
+    <br>
+    <input type="text" v-model="count">
+    {{ counting }} / 200
   </div>
 </template>
 
 <script>
+import { computed, ref } from 'vue';
 export default {
+  setup () {
+    const count = ref('')
+    const counting = computed(() => {
+      if(count.value.length === 10) {
+       count.value = ''
+
+      }
+      return count.value.length
+
+    })
+    return {
+  count,
+  counting
+    }
+  },
   data() {
+
     return {
       firstName: "ralph",
       lastName: "santolorin",

@@ -71,6 +71,10 @@ export default {
   justify-content: space-evenly;
   align-items: center;
 }
+ svg:hover {
+transform: scale(1.5);
+transition: .3s ease-in;
+ }
 @media screen and (max-width: 430px) {
   .sidebar {
     width: 14vw;

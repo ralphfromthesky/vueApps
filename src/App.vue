@@ -6,7 +6,7 @@
     </div>
     <div class="container" :class="slideSidebar ? 'paddingLeft': 'paddingRight'" >
       <mainHeaderVue />
-      {{ dayNight }}
+ 
       <mainBodyVue />
       <mainFooterVue />
     </div>
@@ -74,6 +74,7 @@ export default {
 }
 .mainApp {
   display: flex;
+
 }
 .container {
   width: 100%;

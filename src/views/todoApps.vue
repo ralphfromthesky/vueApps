@@ -109,8 +109,8 @@ export default {
 
 <style scoped>
 .light {
-  box-shadow:  17px 17px 15px #868686,
-             -17px -17px 15px #ffffff; 
+background-color: transparent;
+
 }
 .night {
   border:2px solid gray;
@@ -121,12 +121,6 @@ export default {
   width: 60vw;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 100%;
-  /* background-image: url("https://designstripe-secure.imgix.net/scene-snapshots/f3514252-6d16-4b20-a425-e23cb203fd96/1674867962894/default?auto=format&fit=clip&h=850&mark=%2Fwatermark.png&markfit=max&markalign=middle%2Ccenter&markw=1&markh=1&s=2b58ef2a29071aa7ee44fe693168a684"); */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 .mainTodo {
   height: 50vh;
@@ -134,6 +128,8 @@ export default {
   border-radius: 10px;
   border-radius: 50px;
   border-radius: 9px;
+  border: 2px solid black;
+
 }
 .todolabel {
   display: flex;
@@ -175,6 +171,14 @@ input {
 }
 p {
   font-weight: 800;
+}
+button {
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 5px;
+  background-color: rgb(89, 221, 221);
+  border: none;
+  cursor: pointer;
 }
 
 </style>

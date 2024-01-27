@@ -52,6 +52,9 @@
         <router-link to="/vueXStatemanagement"
           ><h3>vueX Statemanagement</h3></router-link
         >
+        <router-link to="/thisRouter"
+          ><h3>router-view</h3></router-link
+        >
       </div>
     </div>
   </div>
@@ -110,7 +113,8 @@ store
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-height: inherit;
+  height: inherit;
+
 }
 
 .cloudBg {
@@ -123,6 +127,12 @@ height: inherit;
   align-items: center;
   justify-content: space-evenly;
   margin-top: 10px;
+}
+a {
+  text-decoration: none;
+}
+a.router-link-active{
+border-left: 5px solid black;
 }
 @media screen and (max-width: 430px) {
   .mainSidebarLabel {

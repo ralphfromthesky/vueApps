@@ -48,8 +48,8 @@ export default {
 
 <style scoped>
 .night {
-  border: 2px solid gray;
-  padding: 10px;
+border: 1px solid white;
+  padding: 5px;
 }
 .light {
   box-shadow: 10px 10px 30px #bebebe, -10px -10px 20px #ffffff;
@@ -62,6 +62,7 @@ img {
   width: 50vw;
   border-radius: 20px;
   align-items: center;
+  background-color: transparent;
 }
 .descriptionContainer {
   display: flex;
