@@ -1,7 +1,13 @@
 import axios from "axios";
 import { createStore } from "vuex";
+import crud from "./modules/crud";
+import calendar from "./modules/calendar";
 
 const store = createStore({
+  modules: {
+    account: crud,
+    calendars: calendar    
+  },
   state: {
     balance: 10000,
     products: [],
