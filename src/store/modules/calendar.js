@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import { useApi } from "./api";
 const calendar = {
   namespaced: true,
 
@@ -16,9 +16,9 @@ const calendar = {
       state.balance += payload;
     },
 
-    async deleteProducts(state, tae) {
-      const url = `https://65b37959770d43aba479d655.mockapi.io/foods/${tae}`;
-      state.products = state.products.filter((x) => x.id !== tae);
+    async deleteProducts(state, id) {
+      const url = useApi().deleteApi + id;
+      state.products = state.products.filter((x) => x.id !== id);
       try {
         const response = await axios.delete(url);
         console.log(`deleted with the id of ${response.data.id}`);
@@ -28,7 +28,7 @@ const calendar = {
     },
 
     async addData (state, yagballs) {
-      const url = "https://65b37959770d43aba479d655.mockapi.io/foods";
+      const url = useApi().addApi;
       try {
       const response =  await axios.post(url, yagballs)  
        state.products.push(response.data)
@@ -41,7 +41,7 @@ const calendar = {
   },
   actions: {
     async fetchData(context, payload) {
-      const url = "https://65b37959770d43aba479d655.mockapi.io/foods";
+      const url = useApi().fetchApi;
       try {
         const response = await axios.get(url);
         context.state.products = response.data;

@@ -34,7 +34,7 @@
   </h2>
   <h1 :class="['firstClass, secondClass']">this is combined class</h1>
   <h1 :class="{ 'trueClass': objectClass, 'notTrueClass': isTestStyle }" @click="objectClass = !objectClass">
-    ralph santolorinnnnn
+    ralph santolorinnnnnfasdfasdfasdfasdfs
   </h1>
   <h1 :class="'trueClass'">sHENRON SANTOLORIN</h1>
   <h1 :class="'textColor'"> c shenron ay makulit</h1>
@@ -46,6 +46,7 @@
   <div>
     <h1 :class="isThisTrue ? 'true': 'false'">{{ myname }}</h1>
     <h1 :class="{'true': isThisTrue2 , 'false' : !isThisTrue2}" @click="isThisTrue2 = !isThisTrue2">  {{ myname }}</h1>
+    <h1 :class="{'exam': exam, 'falses': native}">ralph santolorin</h1>
   </div>
 </div>
 </template>
@@ -54,6 +55,9 @@
 export default {
   data() {
     return {
+      exam: true,
+      native: true,
+
       test: "this is the test",
       message: "this is the message",
       number: 9617587967,
@@ -98,11 +102,20 @@ export default {
 }
 .false {
   color: red;
-  background-color: aliceblue;
+  background-color: pink;
   border: 2px solid blue;
+}
+.falses {
+  color: red;
 }
 h2 h3 {
   margin: 0;
+}
+.exam {
+  border: 2px solid blue;
+}
+.exams {
+  border: 2px solid yellow;
 }
 .testStyle {
   color: red;

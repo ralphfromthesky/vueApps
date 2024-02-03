@@ -15,7 +15,7 @@
 import { ref } from "vue";
 export default {
   props: ["data", "messageFromTheSky", "tupacShakur"],
-  setup() {
+  setup(props) {
     return {};
   },
 };
