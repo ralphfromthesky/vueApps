@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@media screen and (max-width:1162px) {
+    p {
+        font-size: .7rem;
+    }
+
+    .main-container {
+        flex-direction: column;
+
+    }
+}
+
+@media screen and (max-width: 430px) {
+    p {
+
+        font-size: .7rem;
+    }
+
+    .theRealMainTodo {
+        flex-direction: column;
+    }
+
+    .description {
+        width: 70% !important;
+    }
+}
+
+@media screen and (max-width:375px) {
+    .mainContainer {
+        flex-direction: column;
+        overflow: scroll;
+        justify-content: flex-start !important;
+
+    }
+
+    .weatherApps {
+        background-color: red;
+        width: 70vw !important;
+
+    }
+
+    .description {
+        width: 70vw !important;
+    }
+
+    .homeContainer {
+        margin-top: 20px;
+        align-items: center;
+    }
+
+    .todolabel {
+        white-space: normal !important;
+        text-align: center;
+    }
+    .theRealMainTodo {
+        justify-content: flex-start !important;
+        overflow: scroll;
+        padding: 0 20px;
+    }
+
+}

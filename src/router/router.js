@@ -1,0 +1,325 @@
+import { createRouter, createWebHistory } from 'vue-router'
+import home from '../views/home.vue'
+import todoApps from '../views/todoApps.vue'
+import calculator from '../views/calculator.vue'
+import weather from '../views/weather.vue'
+import musicApp from  '../views/musicApp.vue'
+import quizzApp from  '../views/quizzApp.vue'
+import timer from '../views/timer.vue';
+
+import Vbind from '../pages/Vbind.vue';
+import ConditionalRendering from '../pages/ConditionalRendering.vue';
+import ListRendering from '../pages/ListRendering.vue'
+import ConditionalListRendering from '../pages/ConditionalListRendering.vue'
+import Methods from '../pages/Methods.vue';
+import EventHandling from '../pages/EventHandling.vue'
+import FormHandling from '../pages/FormHandling.vue'
+import ComputedProperties from '../pages/ComputedProperties.vue';
+import Wathchers from '../pages/Watchers.vue';
+import Component from '../pages/Components.vue';
+import HttpGetRequest from '../pages/HttpGetRequest.vue'
+import Http from '../pages/Http.vue'
+import PropsAndCompositionAPIParent from '../pages/PropsAndCompositionAPIParent.vue';
+import PropsParent from '../pages/PropsParent.vue'
+import ProvideAndInjectParenComponent from '../pages/ProvideAndInjectParenComponent.vue'
+import ReplacingDataWithRef from '../pages/ReplacingDataWithRef.vue'
+import ComponentsEventsParents from '../pages/ComponentsEventsParents.vue'
+import SlotsParent from '../pages/Slots/SlotsParent.vue';
+import Animations from '../pages/Animations.vue'
+import sampleComputed from '../pages/sampleComputed.vue'
+import ReusabilityWithMixins from '../pages/ReusabilityWithMixins.vue'
+import provideAndInjectUsingGlobalandCompositionApi from '../pages/provideAndInjectUsingGlobalandCompositionApi.vue'
+import provideAndInjectUsingGlobalandCompositionApi2 from '../pages/provideAndInjectUsingGlobalandCompositionApi2.vue'
+import vueXStatemanagement from '../pages/vueXstateManagementPersisted/vueXStatemanagement.vue'
+import vuex from '../views/vueX/vuex.vue'
+import gitApps from '../views/gitApps.vue'
+import nameVariations from '../views/nameVariations.vue'
+import hotelApp from '../views/hotelApp.vue'
+import flipGames from '../views/flipGames.vue'
+import thisRouter from '@/pages/router.vue'
+import definePropsParent from '@/pages/definePropsParent.vue'
+import defineEmitsParent from '@/pages/defineEmitsParent.vue'
+import HomeSlotLink from '../pages/Slots/linkSlots/Home.vue'
+import AboutSlotLink  from '../pages/Slots/linkSlots/About.vue'
+import ContactSlotLink  from '../pages/Slots/linkSlots/Contact.vue'
+import Layout  from '../pages/Slots/Layout.vue'
+import LifeCycleHooks from '@/pages/LifeCycleHooks.vue'
+import DefineModel from '@/pages/DefineModel.vue'
+import TwElements from '@/pages/TwElements.vue'
+import cars from '@/pages/vueXstateManagementPersisted/car.vue'
+import motor from '@/pages/vueXstateManagementPersisted/motor.vue'
+import settings from '@/pages/vueXstateManagementPersisted/settings.vue'
+import spareParts from '@/pages/vueXstateManagementPersisted/spareParts.vue'
+import inventory from '@/pages/vueXstateManagementPersisted/inventory.vue'
+
+
+
+
+
+const router = createRouter({
+    history: createWebHistory(import.meta.env.BASE_URL),
+    routes: [
+      {
+        path: '/',
+        name: 'home',
+        component: home
+      },
+      {
+        path: '/home',
+        name: 'home',
+        component: home
+      },
+      {
+        path: '/todoAndSaved',
+        name: 'todos',
+        component: todoApps
+      },
+      {
+        path: '/calculator',
+        name: 'calculator',
+        component: calculator
+      },
+      {
+        path: '/weather',
+        name: 'weather',
+        component: weather
+      },
+      {
+        path: '/music',
+        name: 'music',
+        component: musicApp
+      },
+      {
+        path: '/quizz',
+        name: 'quizz',
+        component: quizzApp
+      },
+      {
+        path: '/timer',
+        name: 'timer',
+        component: timer
+      },
+      {
+        path: '/todo',
+        name: 'todo',
+        component: Vbind
+      },
+      {
+        path: '/con',
+        name: 'conditionalrenderging',
+        component: ConditionalRendering
+      },
+      {
+        path: '/listRendering',
+        name: 'listrenderging',
+        component: ListRendering
+      },
+      {
+        path: '/conditionallistRendering',
+        name: 'conditionallistrenderging',
+        component: ConditionalListRendering
+      },
+      {
+        path: '/method',
+        name: 'method',
+        component: Methods
+      },
+      {
+        path: '/event',
+        name: 'EventHandling',
+        component: EventHandling
+      },
+      {
+        path: '/form',
+        name: 'FormHandling',
+        component: FormHandling
+      },
+      {
+        path: '/computed',
+        name: 'ComputedProperties',
+        component: ComputedProperties
+      },
+      {
+        path: '/watchers',
+        name: 'watchers',
+        component: Wathchers
+      },
+      {
+        path: '/components',
+        name: 'component',
+        component: Component
+      },
+      {
+        path: '/http',
+        name: 'http',
+        component: HttpGetRequest
+      },
+      {
+        path: '/https',
+        name: 'https',
+        component: Http
+      },
+      {
+        path: '/PropsAndCompositionAPiI',
+        name: 'propscompAPI',
+        component: PropsAndCompositionAPIParent
+      },
+      {
+        path: '/props',
+        name: 'props',
+        component: PropsParent
+      }, {
+        path: '/provideInject',
+        name: 'provideinject',
+        component: ProvideAndInjectParenComponent
+      },
+      {
+        path: '/ReplacingDataWithRef',
+        name: 'ReplacingDataWithRef',
+        component: ReplacingDataWithRef 
+      },
+      {
+        path: '/ComponentsEventsParents',
+        name: 'ComponentsEventsParents',
+        component: ComponentsEventsParents 
+      },
+      {
+        path: '/SlotsParent',
+        name: 'SlotsParent',
+        component:  SlotsParent
+      },
+      {
+        path: '/animation',
+        name: 'animationsliding',
+        component:  Animations
+      },
+      {
+        path: '/computed',
+        name: 'computedPropery',
+        component: sampleComputed
+      },
+      {
+        path: '/reuse',
+        name: 'PropReusabilityWithMixinsery',
+        component: ReusabilityWithMixins
+      },
+      {
+        path: '/provideInjectglobally',
+        name: 'provide',
+        component: provideAndInjectUsingGlobalandCompositionApi
+      },
+      {
+        path: '/provideInjectglobally2',
+        name: 'provide2',
+        component: provideAndInjectUsingGlobalandCompositionApi2
+      },
+      {
+        path: '/vueXStatemanagement',
+        name: 'vueXStatemanagement',
+        component:  vueXStatemanagement
+      },
+      {
+        path: '/vuex',
+        name: 'vuexApp',
+        component:  vuex 
+      },
+      {
+        path: '/ghub',
+        name: 'gitApps',
+        component:  gitApps 
+      },
+      {
+        path: '/nameVar',
+        name: 'nameVariation',
+        component:  nameVariations 
+      },
+      {
+        path: '/hotel',
+        name: 'hotel',
+        component:  hotelApp 
+      },
+      {
+        path: '/flipGames',
+        name: 'flipGames',
+        component:  flipGames
+      },
+      {
+        path: '/thisRouter',
+        name: 'thisRouter',
+        component:  thisRouter
+      },
+      {
+        path: '/defineProps',
+        name: 'defineProps',
+        component:  definePropsParent 
+      },
+      {
+        path: '/defineEmits',
+        name: 'defineEmits',
+        component:  defineEmitsParent 
+      },
+      {
+        path: '/homeSlotLink',
+        name: 'slotlinkhome',
+        component:  HomeSlotLink 
+      },
+      {
+        path: '/contactSlotLink',
+        name: 'slotlinkcontact',
+        component:  ContactSlotLink 
+      },
+      {
+        path: '/aboutSlotLink',
+        name: 'slotlinkabout',
+        component:  AboutSlotLink  
+      },
+      {
+        path: '/layout',
+        name: 'layout',
+        component:  Layout  
+      },
+      {
+        path: '/hooks',
+        name: 'lifeCycle',
+        component:  LifeCycleHooks 
+      },
+      {
+        path: '/defineModel',
+        name: 'defineModel',
+        component:  DefineModel 
+      },
+      {
+        path: '/twElements',
+        name: 'twElements',
+        component:  TwElements 
+      },
+      {
+        path: '/car',
+        name: 'car',
+        component:  cars 
+      },
+      {
+        path: '/inventory',
+        name: 'inventory',
+        component:  inventory 
+      },
+      {
+        path: '/settings',
+        name: 'settings',
+        component:  settings 
+      },
+      {
+        path: '/spareParts',
+        name: 'spareParts',
+        component:  spareParts 
+      },
+      {
+        path: '/motor',
+        name: 'motor',
+        component:  motor 
+      },
+
+    ]
+})
+
+export default router;
