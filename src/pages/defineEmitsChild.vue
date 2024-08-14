@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1>this is the child emits</h1>
-        <button @click="openDivs" >CLICK</button>
+        <button @click="openDivs">close</button>
     </div>
 </template>
 

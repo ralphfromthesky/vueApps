@@ -3,7 +3,7 @@
     <div class="homeContainer" :class="{'night': store.state.isNight, 'light ': !store.state.isNight}">
       <div class="imageContainer">
         <!-- <img src="/dist/images/myPhoto.jpg" alt="">  -->
-        <img src="/public/images/myPhoto.jpg" alt="">
+        <img src="/vueApplication/images/myPhoto.jpg" alt="">
       </div>
       <div class="descriptionContainer">
         <h2>About Me:</h2>
