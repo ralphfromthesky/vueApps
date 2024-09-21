@@ -1,6 +1,6 @@
 <template>
   <div class="mainContainer" :class="{'night': store.state.isNight, 'light': !store.state.isNight}">
-    <div class="text-[2rem]">{{ displayDays }} Days before Christmas!!!</div>
+    <div class="text-[2rem] text-center">{{ displayDays }} Days before Christmas!!!</div>
     <div class="container">
       <div class="main">
         <div class="day">
@@ -125,7 +125,6 @@ const store = useStore()
   padding: 20px;
   border-radius: 20px;
   white-space: nowrap;
-  border: 2px solid black;
   
 }
 .day small {
@@ -171,6 +170,8 @@ margin-left: 10px;
   }
   .container {
     flex-direction: column;
+    margin-top: 5rem;
+    padding: 0;
   }
   .description {
     padding: 0;

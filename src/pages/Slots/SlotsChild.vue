@@ -1,11 +1,29 @@
 <template>
     <div>
+        <div>
+            <slot name="top"> </slot>
+        </div>
+        <div>
+            <slot name="bottom"></slot>
+        </div>
+
+        <div>
+            <slot name="datafromchild" v-bind:data="datafromChild"></slot>
+        </div>
 
     </div>
 </template>
 
 <script setup>
+import {ref} from 'vue'
 
+const datafromChild = ref([
+    {name: 'jade pinkett'},
+    {name: 'mia khalifa'},
+    {name: 'harry pothead'},
+
+
+])
 </script>
 
 <style lang="scss" scoped>
