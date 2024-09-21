@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="w-auto border-2">
     <h1>{{ message + " " + name + number }}</h1>
     <h1>{{ test }}</h1>
     <h2>{{ number }}</h2>

@@ -125,4 +125,9 @@ th {
 input {
   border: 1px solid gray;
 }
+@media screen and (max-width: 430px) {
+  .mainContainer {
+    margin-top: 20vh;
+  }
+}
 </style>

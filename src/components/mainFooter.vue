@@ -102,7 +102,7 @@ export default {
   }
   100% {
     transform: translateY(-20px);
-    transform: translateX(70vw);
+    transform: translateX(90vw);
   }
 }
 @keyframes ufo {
@@ -137,5 +137,58 @@ export default {
 }
 #ufo {
   height: 200px;
+}
+
+@media screen and (max-width: 430px) {
+  @keyframes clouds {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(70vw);
+  }
+}
+@keyframes drive {
+  0% {
+    transform: translateX(0);
+  }
+  30% {
+    transform: translateX(20vw) translateY(-20px) translateY(-30px);
+  }
+  100% {
+    transform: translateY(-20px);
+    transform: translateX(50vw);
+  }
+}
+@keyframes ufo {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transition: 100s;
+    transform: translateX(30vw);
+  }
+  25% {
+    transform: translateX(0);
+  }
+  30% {
+    transform: scale(2) translateX(30vw);
+  }
+  50% {
+    transform: translateX(70vw);
+  }
+  60% {
+    transform: rotate(90deg) scale(0.5);
+  }
+  70% {
+    transform: translateX(50vw) scale(0.6);
+  }
+  85% {
+    transform: translateX(0) scale(1.5) rotate(90deg);
+  }
+  100% {
+    transform: translateX(40vw) rotate(360deg) scale(.8) translateY(-5px) translateX(50vw);
+  }
+}
 }
 </style>

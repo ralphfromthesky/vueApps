@@ -1,39 +1,42 @@
 <template>
   <div>
-    <div class="homeContainer" :class="{'night': store.state.isNight, 'light ': !store.state.isNight}">
+    <div
+      class="homeContainer flex-col"
+      :class="{ night: store.state.isNight, 'light ': !store.state.isNight }"
+    >
       <div class="imageContainer">
         <!-- <img src="/dist/images/myPhoto.jpg" alt="">  -->
-        <img src="/images/myPhoto.jpg" alt="">
+        <img src="/images/myPhoto.jpg" alt="" />
       </div>
       <div class="descriptionContainer">
         <h2>About Me:</h2>
         <h3>
-          Hello there im Ralph, and I'm a passionate Vue.js developer with a
-          creative and detail-oriented approach to crafting user-friendly and
-          visually appealing web applications. My journey in the world of web
+          Hello there, I’m Ralph, a passionate Vue.js developer with a creative
+          and detail-oriented approach to crafting user-friendly and visually
+          appealing web applications. Along with my love for coding, I’m a solo
+          parent to two wonderful kids, and I manage our little household all on
+          my own. Balancing parenthood with my career has taught me a lot about
+          resilience, adaptability, and time management. My journey in web
           development has equipped me with a strong foundation in Vue.js,
           enabling me to build interactive and responsive solutions for diverse
           client needs. I thrive on tackling challenges and turning ideas into
           dynamic, efficient, and engaging digital experiences.
-         
         </h3>
       </div>
-      <div class="divs">
-      </div>
+      <div class="divs"></div>
     </div>
   </div>
 </template>
 
 <script>
-import { useStore } from '@/store/store';
-
+import { useStore } from "@/store/store";
 
 export default {
   name: "this is the home",
   setup() {
-    const store = useStore()
+    const store = useStore();
     return {
-      store
+      store,
     };
   },
 };
@@ -41,7 +44,7 @@ export default {
 
 <style scoped>
 .night {
-border: 1px solid white;
+  border: 1px solid white;
   padding: 5px;
 }
 .light {
@@ -76,15 +79,13 @@ h2 {
 @media screen and (max-width: 430px) {
   .homeContainer {
     flex-direction: column;
-
   }
   .homeContainer img {
     height: 300px;
     z-index: -1;
   }
   h3 {
-    font-size: 0.5rem;
+    font-size: .8rem;
   }
 }
-
 </style>

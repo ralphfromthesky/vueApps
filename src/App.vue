@@ -1,17 +1,16 @@
 <template>
   <div class="mainApp" :class="{ 'night': dayNight, 'light': !dayNight }">
     <div class="sidebarContainer">
-      <mainSideBarLabelVue class="sidebarlabel " :class="slideSidebar ? 'slideForward' : 'slideBackward'"
+      <mainSideBarLabelVue class="sidebarlabel" :class="slideSidebar ? 'slideForward' : 'slideBackward'"
         @slide-this-back="slideBack" />
       <mainSidebarVue class="sidebaricon" @slide-this="slideForward" :class="slideSidebar ? 'slideBackward' : ''" />
     </div>
     <!-- <div class="container" :class="slideSidebar ? 'paddingLeft': 'paddingRight'" > -->
-    <div class="w-screen ml-[5rem]" :class="slideSidebar ? 'paddingLeft': 'paddingRight'" >
+    <div class="w-screen pl-[5rem] pr-[1rem]" :class="slideSidebar ? 'paddingLeft': 'paddingRight'" >
       <mainHeaderVue />
       <mainBodyVue />
-      <mainFooterVue />
     </div>
-    <!-- </div> -->
+    <mainFooterVue />
   </div>
 </template>
 
@@ -81,11 +80,12 @@ export default {
 
 .mainApp {
   display: flex;
+  flex-direction: column;
 
 }
 
 .container {
-  width: 100%;
+  width: auto;
   margin-left: 5%;
   transition: .4s;
   border: 3px solid blue;
@@ -137,5 +137,8 @@ export default {
   .sidebarContainer {
     z-index: 1;
   }
+  .slideForward {
+  transform: translateX(40%);
+}
 }
 </style>

@@ -56,7 +56,7 @@ export default {
   gap: 20px;
 }
 .main-container {
-  width: 20vw;
+  width: auto;
   height: 60vh;
   padding: 20px;
   border-radius: 10px;

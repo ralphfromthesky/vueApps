@@ -93,10 +93,7 @@ const store = useStore()
 </script>
   
   <style scoped>
-  .light {
-  box-shadow:  17px 17px 15px #868686,
-             -17px -17px 15px #ffffff; 
-}
+
 .night {
   border:2px solid gray;
   border-radius: 10px;
@@ -119,7 +116,7 @@ const store = useStore()
   justify-content: center;
   align-items: center;
   height: 40vh;
-  width: 60%;
+  width: auto;
 }
 .main {
   display: flex;
@@ -162,6 +159,24 @@ h3 {
   .day {
 text-align: center;
 margin-left: 10px;
+  }
+}
+@media screen and (max-width: 430px) {
+  .mainContainer {
+    width: 80vw;
+  }
+ h1 {
+    font-size: 2rem;
+  }
+  .container {
+    flex-direction: column;
+  }
+  .description {
+    padding: 0;
+    width: auto;
+  }
+  .main {
+    padding: 10px;
   }
 }
 </style>

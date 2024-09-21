@@ -1,7 +1,7 @@
 <template>
   <div>
     <svg class="svgss" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-      style="margin:auto;background:#7aceff;display:block;z-index:1;position:relative" preserveAspectRatio="xMidYMid">
+      style="margin:auto;background: #7aceff;display:block;z-index: 1;position:relative" preserveAspectRatio="xMidYMid">
       <g transform="translate(960,465.5) scale(1,1) translate(-960,-465.5)">
         <g transform="translate(-100 703.5590143267989) rotate(0)">
           <animateTransform attributeName="transform" type="translate" keyTimes="0;1"
@@ -378,6 +378,7 @@ export default {
 .svgss {
   height: 100%;
   width: 100%;
+  background-color: red
 }
 
 @media screen and (max-width: 375px) {

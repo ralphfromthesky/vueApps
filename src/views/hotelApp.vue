@@ -53,4 +53,10 @@
 img {
   height: 10rem;
 }
+@media screen and (max-width: 430px) {
+ .tail > h1 {
+    font-size: 2rem;
+    text-align: center;
+  }
+}
 </style>
