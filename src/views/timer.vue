@@ -1,6 +1,6 @@
 <template>
   <div class="mainContainer" :class="{'night': store.state.isNight, 'light': !store.state.isNight}">
-    <h1>{{ displayDays }} Days before Christmas!!!</h1>
+    <div class="text-[2rem]">{{ displayDays }} Days before Christmas!!!</div>
     <div class="container">
       <div class="main">
         <div class="day">
@@ -163,7 +163,8 @@ margin-left: 10px;
 }
 @media screen and (max-width: 430px) {
   .mainContainer {
-    width: 80vw;
+    width: auto;
+    flex-direction: column;
   }
  h1 {
     font-size: 2rem;

@@ -1,5 +1,5 @@
 <template>
-  <div class="mainSidebarLabe" :class="{ 'night': store.state.newStore.isNight, 'light': !store.state.newStore.isNight }">
+  <div class="mainSidebarLabe bg-[red]" :class="{ 'night': store.state.newStore.isNight, 'light': !store.state.newStore.isNight }">
     <div class="label">
       <div class="menu-bx">
         <h4>Vue js Tuts</h4>

@@ -37,12 +37,9 @@ export default {
 }
 .particle {
   position: absolute;
-
   transform: translateY(-2%);
   width: 100%;
 }
-.route {
-  z-index: 1;
-}
+
 
 </style>
