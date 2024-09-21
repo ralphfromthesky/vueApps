@@ -1,30 +1,37 @@
 <template>
-  <div class="theRealMainTodo" :class="{'night': store.state.isNight, 'light': !store.state.isNight}">
-    <div class="mainTodo" :class="{'night': store.state.isNight, 'light': !store.state.isNight}">
+  <div
+    class="theRealMainTodo"
+    :class="{ night: store.state.isNight, light: !store.state.isNight }"
+  >
+    <div
+      class="mainTodo"
+      :class="{ night: store.state.isNight, light: !store.state.isNight }"
+    >
       <div class="todolabel">
-        <h1>what is your name <input type="text" v-model="name" />?</h1>
+        <h1>what is your name ?</h1>
+        <input type="text" v-model="name" />
       </div>
       <form @submit.prevent="addTodo">
         <input type="text" v-model="input_todo" />
         <button>Add Todo</button>
       </form>
       <div v-for="todo in todos" :key="todo" class="todoList">
-        <input type="text" v-model="todo.content"/>
+        <input type="text" v-model="todo.content" />
         {{ todo.createdAt }}
         <i class="bx bxs-trash" @click="deleteTodo(todo)"></i>
       </div>
     </div>
     <div class="description">
-      <p>
-        <span>Description:</span> <br> <br>The Todo application is a simple web
-        application built using Vue.js, a popular JavaScript framework. It
-        allows users to create, manage, and keep track of their tasks or to-do
-        items. The application stores user data, including the user's name and a
-        list of todos, in the browser's local storage so that the data persists
-        even after the user closes or refreshes the page. <br> <br>
-
-        <span>Using composition API, watcher, ref, onMounted, v-model.</span>
-      </p>
+      <div class="description2">
+        The Todo application is a simple web application built using Vue.js, a
+        popular JavaScript framework. It allows users to create, manage, and
+        keep track of their tasks or to-do items. The application stores user
+        data, including the user's name and a list of todos, in the browser's
+        local storage so that the data persists even after the user closes or
+        refreshes the page.
+      </div>
+      <br>
+      <span>Using composition API, watcher, ref, onMounted, v-model.</span>
     </div>
   </div>
 </template>
@@ -101,7 +108,7 @@ export default {
       input_todo,
       addTodo,
       deleteTodo,
-      store
+      store,
     };
   },
 };
@@ -109,11 +116,10 @@ export default {
 
 <style scoped>
 .light {
-background-color: transparent;
-
+  background-color: transparent;
 }
 .night {
-  border:2px solid gray;
+  border: 2px solid gray;
   border-radius: 10px;
 }
 .theRealMainTodo {
@@ -129,7 +135,6 @@ background-color: transparent;
   border-radius: 50px;
   border-radius: 9px;
   border: 2px solid black;
-
 }
 .todolabel {
   display: flex;
@@ -143,7 +148,6 @@ form {
   justify-content: center;
 }
 form input {
-  margin-right: 20px;
 }
 .todoList {
   display: flex;
@@ -161,6 +165,7 @@ input {
 }
 .description {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 0 20px;
@@ -181,6 +186,15 @@ button {
   border: none;
   cursor: pointer;
 }
+@media screen and (max-width: 430px) {
+  .description2 {
+    width: 70vw;
+  }
 
+  .todolabel {
+    display: flex;
+    flex-direction: column;
+    margin-top: 4rem;
+  }
+}
 </style>
-

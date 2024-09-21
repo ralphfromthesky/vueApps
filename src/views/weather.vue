@@ -94,22 +94,6 @@ export default {
       return `https://api.openweathermap.org/data/2.5/weather?q=${city.value}&appid=${api_key.value}`;
     });
 
-    // const api_dailyWeather = computed(() => {
-    //   return `https://api.openweathermap.org/data/2.5/onecall?lat=${city.value.coord.lat}&lon=${city.value.coord.lon}&exclude=current,minutely,hourly&appid=${api_key.value}`;
-    // });
-
-    // const getDailyWeather = async (lat, lon) => {
-    //   try {
-    //     const response = await axios.get(
-    //       `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly&appid=${api_key.value}`
-    //     );
-    //     console.log(response.data);
-    //     dailyWeather.value = response.data.daily;
-    //   } catch (error) {
-    //     console.error(`Error: ${error}`);
-    //   }
-    // };
-
     watch(weather, (newWeather) => {
       if (newWeather === "Clouds") {
         weatherChangeBackground.value = "cloudsBackground";
@@ -332,5 +316,17 @@ input {
 .form-control input:valid + label span {
   color: black;
   transform: translateY(-30px);
+}
+
+@media screen and (max-width: 430px) {
+  .mainContainer {
+    flex-direction: column;
+  }
+  .weatherApps {
+    width: auto;
+    height: auto;
+    margin-top: 30vh;
+  }
+
 }
 </style>

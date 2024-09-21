@@ -149,7 +149,7 @@ export default {
 }
 .calculator {
   margin: 0 auto;
-  width: 400px;
+  width: auto;
   font-size: 40px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);

@@ -1,7 +1,7 @@
 <template>
   <div class="mainApp" :class="{ 'night': dayNight, 'light': !dayNight }">
     <div class="sidebarContainer">
-      <mainSideBarLabelVue class="sidebarlabel" :class="slideSidebar ? 'slideForward' : 'slideBackward'"
+      <mainSideBarLabelVue class="sidebarlabel " :class="slideSidebar ? 'slideForward' : 'slideBackward'"
         @slide-this-back="slideBack" />
       <mainSidebarVue class="sidebaricon" @slide-this="slideForward" :class="slideSidebar ? 'slideBackward' : ''" />
     </div>

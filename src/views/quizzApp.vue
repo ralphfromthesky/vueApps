@@ -310,4 +310,13 @@ h2 {
     width: 100vw;
   }
 }
+
+@media screen and (max-width: 430px) {
+  .container {
+    flex-direction: column;
+  }
+  .mainContainer {
+    width: auto;
+  }
+}
 </style>

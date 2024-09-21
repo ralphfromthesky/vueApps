@@ -323,3 +323,272 @@ const router = createRouter({
 })
 
 export default router;
+
+// const router = createRouter({
+//   history: createWebHistory(import.meta.env.BASE_URL),
+//   routes: [
+//     {
+//       path: '/',
+//       name: 'home',
+//       component: () => import('@/components/home.vue'),
+//     },
+//     {
+//       path: '/home',
+//       name: 'home',
+//       component: () => import('@/components/home.vue'),
+//     },
+//     {
+//       path: '/todoAndSaved',
+//       name: 'todos',
+//       component: () => import('@/components/todoApps.vue'),
+//     },
+//     {
+//       path: '/calculator',
+//       name: 'calculator',
+//       component: () => import('@/components/calculator.vue'),
+//     },
+//     {
+//       path: '/weather',
+//       name: 'weather',
+//       component: () => import('@/components/weather.vue'),
+//     },
+//     {
+//       path: '/music',
+//       name: 'music',
+//       component: () => import('@/components/musicApp.vue'),
+//     },
+//     {
+//       path: '/quizz',
+//       name: 'quizz',
+//       component: () => import('@/components/quizzApp.vue'),
+//     },
+//     {
+//       path: '/timer',
+//       name: 'timer',
+//       component: () => import('@/components/timer.vue'),
+//     },
+//     {
+//       path: '/todo',
+//       name: 'todo',
+//       component: () => import('@/components/Vbind.vue'),
+//     },
+//     {
+//       path: '/con',
+//       name: 'conditionalrenderging',
+//       component: () => import('@/components/ConditionalRendering.vue'),
+//     },
+//     {
+//       path: '/listRendering',
+//       name: 'listrenderging',
+//       component: () => import('@/components/ListRendering.vue'),
+//     },
+//     {
+//       path: '/conditionallistRendering',
+//       name: 'conditionallistrenderging',
+//       component: () => import('@/components/ConditionalListRendering.vue'),
+//     },
+//     {
+//       path: '/method',
+//       name: 'method',
+//       component: () => import('@/components/Methods.vue'),
+//     },
+//     {
+//       path: '/event',
+//       name: 'EventHandling',
+//       component: () => import('@/components/EventHandling.vue'),
+//     },
+//     {
+//       path: '/form',
+//       name: 'FormHandling',
+//       component: () => import('@/components/FormHandling.vue'),
+//     },
+//     {
+//       path: '/computed',
+//       name: 'ComputedProperties',
+//       component: () => import('@/components/ComputedProperties.vue'),
+//     },
+//     {
+//       path: '/watchers',
+//       name: 'watchers',
+//       component: () => import('@/components/Wathchers.vue'),
+//     },
+//     {
+//       path: '/components',
+//       name: 'component',
+//       component: () => import('@/components/Component.vue'),
+//     },
+//     {
+//       path: '/http',
+//       name: 'http',
+//       component: () => import('@/components/HttpGetRequest.vue'),
+//     },
+//     {
+//       path: '/https',
+//       name: 'https',
+//       component: () => import('@/components/Http.vue'),
+//     },
+//     {
+//       path: '/PropsAndCompositionAPiI',
+//       name: 'propscompAPI',
+//       component: () => import('@/components/PropsAndCompositionAPIParent.vue'),
+//     },
+//     {
+//       path: '/props',
+//       name: 'props',
+//       component: () => import('@/components/PropsParent.vue'),
+//     },
+//     {
+//       path: '/provideInject',
+//       name: 'provideinject',
+//       component: () => import('@/components/ProvideAndInjectParenComponent.vue'),
+//     },
+//     {
+//       path: '/ReplacingDataWithRef',
+//       name: 'ReplacingDataWithRef',
+//       component: () => import('@/components/ReplacingDataWithRef.vue'),
+//     },
+//     {
+//       path: '/ComponentsEventsParents',
+//       name: 'ComponentsEventsParents',
+//       component: () => import('@/components/ComponentsEventsParents.vue'),
+//     },
+//     {
+//       path: '/SlotsParent',
+//       name: 'SlotsParent',
+//       component: () => import('@/components/SlotsParent.vue'),
+//     },
+//     {
+//       path: '/animation',
+//       name: 'animationsliding',
+//       component: () => import('@/components/Animations.vue'),
+//     },
+//     {
+//       path: '/computed',
+//       name: 'computedPropery',
+//       component: () => import('@/components/sampleComputed.vue'),
+//     },
+//     {
+//       path: '/reuse',
+//       name: 'PropReusabilityWithMixinsery',
+//       component: () => import('@/components/ReusabilityWithMixins.vue'),
+//     },
+//     {
+//       path: '/provideInjectglobally',
+//       name: 'provide',
+//       component: () => import('@/components/provideAndInjectUsingGlobalandCompositionApi.vue'),
+//     },
+//     {
+//       path: '/provideInjectglobally2',
+//       name: 'provide2',
+//       component: () => import('@/components/provideAndInjectUsingGlobalandCompositionApi2.vue'),
+//     },
+//     {
+//       path: '/vueXStatemanagement',
+//       name: 'vueXStatemanagement',
+//       component: () => import('@/components/vueXStatemanagement.vue'),
+//     },
+//     {
+//       path: '/vuex',
+//       name: 'vuexApp',
+//       component: () => import('@/components/vuex.vue'),
+//     },
+//     {
+//       path: '/ghub',
+//       name: 'gitApps',
+//       component: () => import('@/components/gitApps.vue'),
+//     },
+//     {
+//       path: '/nameVar',
+//       name: 'nameVariation',
+//       component: () => import('@/components/nameVariations.vue'),
+//     },
+//     {
+//       path: '/hotel',
+//       name: 'hotel',
+//       component: () => import('@/components/hotelApp.vue'),
+//     },
+//     {
+//       path: '/flipGames',
+//       name: 'flipGames',
+//       component: () => import('@/components/flipGames.vue'),
+//     },
+//     {
+//       path: '/thisRouter',
+//       name: 'thisRouter',
+//       component: () => import('@/components/thisRouter.vue'),
+//     },
+//     {
+//       path: '/defineProps',
+//       name: 'defineProps',
+//       component: () => import('@/components/definePropsParent.vue'),
+//     },
+//     {
+//       path: '/defineEmits',
+//       name: 'defineEmits',
+//       component: () => import('@/components/defineEmitsParent.vue'),
+//     },
+//     {
+//       path: '/homeSlotLink',
+//       name: 'slotlinkhome',
+//       component: () => import('@/components/HomeSlotLink.vue'),
+//     },
+//     {
+//       path: '/contactSlotLink',
+//       name: 'slotlinkcontact',
+//       component: () => import('@/components/ContactSlotLink.vue'),
+//     },
+//     {
+//       path: '/aboutSlotLink',
+//       name: 'slotlinkabout',
+//       component: () => import('@/components/AboutSlotLink.vue'),
+//     },
+//     {
+//       path: '/layout',
+//       name: 'layout',
+//       component: () => import('@/components/Layout.vue'),
+//     },
+//     {
+//       path: '/hooks',
+//       name: 'lifeCycle',
+//       component: () => import('@/components/LifeCycleHooks.vue'),
+//     },
+//     {
+//       path: '/defineModel',
+//       name: 'defineModel',
+//       component: () => import('@/components/DefineModel.vue'),
+//     },
+//     {
+//       path: '/twElements',
+//       name: 'twElements',
+//       component: () => import('@/components/TwElements.vue'),
+//     },
+//     {
+//       path: '/car',
+//       name: 'car',
+//       component: () => import('@/components/cars.vue'),
+//     },
+//     {
+//       path: '/inventory',
+//       name: 'inventory',
+//       component: () => import('@/components/inventory.vue'),
+//     },
+//     {
+//       path: '/settings',
+//       name: 'settings',
+//       component: () => import('@/components/settings.vue'),
+//     },
+//     {
+//       path: '/spareParts',
+//       name: 'spareParts',
+//       component: () => import('@/components/spareParts.vue'),
+//     },
+//     {
+//       path: '/motor',
+//       name: 'motor',
+//       component: () => import('@/components/motor.vue'),
+//     },
+//   ],
+// });
+
+// export default router;
+

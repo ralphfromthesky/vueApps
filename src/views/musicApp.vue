@@ -65,9 +65,11 @@ export default {
 .description {
   width: 25%;
 }
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 430px) {
   .music-app-container {
     flex-direction: column;
+    width: auto;
+
   }
   .main-container {
     width: 70vw;
