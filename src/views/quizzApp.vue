@@ -1,6 +1,6 @@
 
 <template>
-  <div class="container">
+  <div class="container z-10">
     <div class="mainContainer">
       <h1>The Quiz</h1>
       <section class="quiz" v-if="!quizCompleted"  :class="{'night': store.state.isNight, 'light': !store.state.isNight}">

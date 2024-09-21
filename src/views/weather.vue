@@ -43,7 +43,7 @@
         Weather App
       </h3>
       <br />
-      <p>
+      <p class="text-[black]">
         Stay ahead of the elements with this convenient weather app. Simply
         enter the city you want to check, and instantly access key weather
         information, including temperature and conditions. The app fetches
@@ -97,27 +97,23 @@ export default {
     watch(weather, (newWeather) => {
       if (newWeather === "Clouds") {
         weatherChangeBackground.value = "cloudsBackground";
-        weatherImage.value = "images/cloudy.png";
+        weatherImage.value = "/images/cloudy.png";
         defaultBg.value = 'cloudBg'
         changeTextColor.value = 'cloudTextColor'
-        console.log("Clouds");
       } else if (newWeather === "Rain") {
         weatherChangeBackground.value = "rainBackground";
-        weatherImage.value = "images/rain.png";
+        weatherImage.value = "/images/rain.png";
         defaultBg.value = 'rainBg';
         changeTextColor.value = 'rainTextColor';
-        console.log("Rains");
       } else if (newWeather === "Clear") {
         weatherChangeBackground.value = "clearBackground";
-        weatherImage.value = "images/clear.png";
+        weatherImage.value = "/images/clear.png";
         defaultBg.value = 'clearBg'
-        console.log("Clear");
       }
       else if (newWeather === "Mist") {
         weatherChangeBackground.value = "mistBackground";
-        weatherImage.value = "images/mistWeatherBg.jpg";
+        weatherImage.value = "/images/mistWeatherBg.jpg";
         defaultBg.value = 'mistBg'
-        console.log("Mist");
       }
     });
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="mainContainer">
+  <div class="mainContainer z-10">
     <h1>Git Apps</h1>
     <div class="formInput">
       <form @submit.prevent="searchRepository">

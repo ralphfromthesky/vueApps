@@ -1,5 +1,5 @@
 <template>
-  <div class="main-container">
+  <div class="main-container z-10">
     <div class="container">
       <div class="calculator">
         <div class="btn display">{{ current || "0" }}</div>
