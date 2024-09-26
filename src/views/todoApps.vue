@@ -147,8 +147,7 @@ form {
   display: flex;
   justify-content: center;
 }
-form input {
-}
+
 .todoList {
   display: flex;
   justify-content: space-around;

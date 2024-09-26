@@ -51,6 +51,7 @@ import motor from '@/pages/vueXstateManagementPersisted/motor.vue'
 import settings from '@/pages/vueXstateManagementPersisted/settings.vue'
 import spareParts from '@/pages/vueXstateManagementPersisted/spareParts.vue'
 import inventory from '@/pages/vueXstateManagementPersisted/inventory.vue'
+import Transitition from '@/pages/TransitionEffect.vue'
 
 
 
@@ -65,14 +66,14 @@ const router = createRouter({
         component: home
       },
       {
-        path: '/home',
-        name: 'home',
-        component: home
-      },
-      {
         path: '/todoAndSaved',
         name: 'todos',
         component: todoApps
+      },
+      {
+        path: '/keepalive',
+        name: 'keep',
+        component: Transitition
       },
       {
         path: '/calculator',

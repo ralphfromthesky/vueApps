@@ -81,7 +81,7 @@ export default {
   {
     label: 'TwElements',
     link: '/twElements',
-    title: 'TwElements' 
+    title: 'v-once and v-memo' 
   },
   {
     label: 'HTTP Get Request',
@@ -122,6 +122,11 @@ export default {
     label: 'Slots',
     link: '/SlotsParent',
     title: 'Slots'
+  },
+  {
+    label: 'keep-alive',
+    link: '/keepalive',
+    title: 'Keep-alive'
   },
   {
     label: 'Animations',
@@ -177,7 +182,8 @@ export default {
     label: '',
     link: '/hooks',
     title: 'Life Cycle Hooks'
-  }
+  },
+
 ]);
 
     const store = useStore()

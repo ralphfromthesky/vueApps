@@ -1,15 +1,9 @@
 <template>
-    <div>
-        <h1>ralph santoorin</h1>
-    </div>
+  <div>
+    <div>keepalive</div>
+  </div>
 </template>
 
-<script>
-    export default {
-        name: 'transition'
-    }
-</script>
+<script setup></script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

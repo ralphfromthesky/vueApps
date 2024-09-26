@@ -39,6 +39,7 @@ export default {
   position: absolute;
   transform: translateY(-2%);
   width: 100%;
+  z-index: -1;
 }
 
 /* .route {
