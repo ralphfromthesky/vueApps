@@ -128,6 +128,11 @@ export default {
   justify-content: center;
   align-items: center;
 }
+@media screen and (max-width: 430px) {
+  .theRealMainTodo {
+    margin-top: 15rem;
+  }
+}
 .mainTodo {
   height: 50vh;
   padding: 15px;
