@@ -57,13 +57,13 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: home
+    component: () => import('@/views/home.vue')
   },
 
   {
     path: "/home",
     name: "home",
-    component: home,
+    component: () => import('@/views/home.vue'),
     alias: "/kepweng",
     meta: {
       requiresAuth: true,
@@ -77,32 +77,33 @@ const routes = [
   {
     path: "/todoAndSaved",
     name: "todos",
-    component: todoApps,
+    component: () => import('@/views/todoApps.vue')
   },
   {
     path: "/keepalive",
     name: "keep",
-    component: Transitition,
+    component: () => import('@/pages/transitionEffect.vue'),
   },
   {
     path: "/calculator",
     name: "calculator",
-    component: calculator,
+    component: () => import('@/views/calculator.vue'),
   },
   {
     path: "/weather",
     name: "weather",
-    component: weather,
+    component: () => import('@/views/weather.vue'),
   },
   {
     path: "/music",
     name: "music",
-    component: musicApp,
+    component: () => import('@/views/musicApp.vue'),
+
   },
   {
     path: "/quizz",
     name: "quizz",
-    component: quizzApp,
+    component: () => impport('@/views/quizzApp.vue'),
   },
   {
     path: "/timer",
@@ -122,17 +123,17 @@ const routes = [
   {
     path: "/listRendering",
     name: "listrenderging",
-    component: ListRendering,
+    component: () => import('@/pages/ListRendering.vue'),
   },
   {
     path: "/conditionallistRendering",
     name: "conditionallistrenderging",
-    component: ConditionalListRendering,
+    component: () => import('@/pages/ConditionalListRendering.vue'),
   },
   {
     path: "/method",
     name: "method",
-    component: Methods,
+    component: () => import('@/pages/Methods.vue'),
   },
   {
     path: "/event",

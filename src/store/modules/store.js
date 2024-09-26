@@ -1,4 +1,5 @@
 import axios from "axios";
+import createPersistedState from 'vuex-persistedstate'
 
 const newStore = {
   namespaced: true,
@@ -44,7 +45,7 @@ plugins: [
     key: 'ralph',
     Storage: window.localStorage,
     reducer: (state) => ({
-      
+
     })
   })
 ]
