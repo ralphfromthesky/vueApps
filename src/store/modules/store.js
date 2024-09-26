@@ -38,6 +38,16 @@ const newStore = {
       }
     },
   },
+
+plugins: [
+  createPersistedState({
+    key: 'ralph',
+    Storage: window.localStorage,
+    reducer: (state) => ({
+      
+    })
+  })
+]
 };
 
 export default newStore;
