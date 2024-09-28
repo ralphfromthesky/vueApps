@@ -8,7 +8,7 @@
         </div>
 
         <div>
-            <slot name="datafromchild" v-bind:data="datafromChild"></slot>
+            <slot name="datafromchild" :data="datafromChild"></slot>
         </div>
 
     </div>
@@ -21,6 +21,7 @@ const datafromChild = ref([
     {name: 'jade pinkett'},
     {name: 'mia khalifa'},
     {name: 'harry pothead'},
+    {value: true}
 
 
 ])

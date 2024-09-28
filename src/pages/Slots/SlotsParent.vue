@@ -34,6 +34,9 @@
           
           <div v-for="d in data" :key="d.name">
             {{ d.name }}
+            <div v-if="d.value === false">
+fsdfsadf
+            </div>
           </div>
           </SlotsChild>
         </div>
