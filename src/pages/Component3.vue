@@ -6,26 +6,110 @@
         <Component3 />
       </template>
       <template #fallback>
-        loading.... using SUSPENSE
+        <div class="pyramid-loader">
+          <div class="wrapper">
+            <span class="side side1"></span>
+            <span class="side side2"></span>
+            <span class="side side3"></span>
+            <span class="side side4"></span>
+            <span class="shadow"></span>
+          </div>
+        </div>
       </template>
     </Suspense>
   </div>
 </template>
 
 <script setup>
-import { defineAsyncComponent } from 'vue'
+import { defineAsyncComponent } from "vue";
 
 const Component3 = defineAsyncComponent({
   loader: () => {
     return new Promise((resolve) => {
       setTimeout(() => {
-        resolve(import('@/pages/Component3Suspense.vue'))
-      }, 3000) // 5-second delay before loading the component
-    })
+        resolve(import("@/pages/Component3Suspense.vue"));
+      }, 4000); // 5-second delay before loading the component
+    });
   },
   // Optionally, you can add a delay before showing the fallback:
   delay: 200, // Delay before showing fallback loading state
-})
+});
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+
+/* From Uiverse.io by mRcOol7 */ 
+.pyramid-loader {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  display: block;
+  transform-style: preserve-3d;
+  transform: rotateX(-20deg);
+}
+
+.wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  animation: spin 6s linear infinite;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+.pyramid-loader .wrapper .side {
+  width: 70px;
+  height: 70px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  transform-origin: center top;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  box-shadow: 0 0 10px rgba(255, 99, 71, 0.5);
+}
+
+.pyramid-loader .wrapper .side1 {
+  transform: rotateZ(-30deg) rotateY(90deg);
+  background: conic-gradient(#ff6d70, #ff6d70, #ffe600, #ffe600);
+}
+
+.pyramid-loader .wrapper .side2 {
+  transform: rotateZ(30deg) rotateY(90deg);
+  background: conic-gradient(#ffe600, #ffe600, #6cffd6, #6cffd6);
+}
+
+.pyramid-loader .wrapper .side3 {
+  transform: rotateX(30deg);
+  background: conic-gradient(#6cffd6, #6cffd6, #ff6d70, #ff6d70);
+}
+
+.pyramid-loader .wrapper .side4 {
+  transform: rotateX(-30deg);
+  background: conic-gradient(#ff6d70, #ff6d70, #ffe600, #ffe600);
+}
+
+.pyramid-loader .wrapper .shadow {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(rgba(255, 99, 71, 0.8), rgba(255, 99, 71, 0.4));
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  transform: rotateX(90deg) translateZ(-40px);
+  filter: blur(8px);
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(255, 99, 71, 0.8);
+}
+
+</style>
