@@ -125,7 +125,7 @@ const routes = [
   {
     path: "/components",
     name: "component",
-    component: () => import("@/pages/Component.vue"),
+    component: () => import("@/pages/Components.vue"),
   },
   {
     path: "/http",
