@@ -120,7 +120,7 @@ const routes = [
   {
     path: "/watchers",
     name: "watchers",
-    component: () => import("@/pages/Wathchers.vue"),
+    component: () => import("@/pages/Watchers.vue"),
   },
   {
     path: "/components",
