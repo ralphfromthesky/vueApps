@@ -38,7 +38,6 @@ const DefineChild = defineAsyncComponent({
   loader: () => import("@/pages/DefineModelChild.vue"),
   delay: 5000, // Delay showing the loading state by 5 seconds
   timeout: 5000, // Fail after 5 seconds if component doesn’t load
-  errorComponent: () => import("@/page/Component3.vue"), // Component to show on error
   suspense: true // Use with <Suspense> to handle loading and error states
 });
 </script>

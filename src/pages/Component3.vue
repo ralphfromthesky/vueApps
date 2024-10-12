@@ -6,7 +6,7 @@
         <Component3 />
       </template>
       <template #fallback>
-        loading....
+        loading.... using SUSPENSE
       </template>
     </Suspense>
   </div>
@@ -20,7 +20,7 @@ const Component3 = defineAsyncComponent({
     return new Promise((resolve) => {
       setTimeout(() => {
         resolve(import('@/pages/Component3Suspense.vue'))
-      }, 5000) // 5-second delay before loading the component
+      }, 3000) // 5-second delay before loading the component
     })
   },
   // Optionally, you can add a delay before showing the fallback:
