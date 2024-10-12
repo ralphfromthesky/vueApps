@@ -79,7 +79,7 @@ const routes = [
   {
     path: "/con",
     name: "conditionalrenderging",
-    component: () => import("@/pagee/ConditionalRendering"),
+    component: () => import("@/pagee/ConditionalRendering.vue"),
   },
   {
     path: "/listRendering",
