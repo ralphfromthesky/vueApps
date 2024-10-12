@@ -79,7 +79,7 @@ const routes = [
   {
     path: "/con",
     name: "conditionalrenderging",
-    component: () => import("@/pagee/ConditionalRendering.vue"),
+    component: () => import("@/pages/ConditionalRendering.vue"),
   },
   {
     path: "/listRendering",
@@ -277,7 +277,7 @@ const routes = [
   {
     path: "/thisRouter",
     name: "thisRouter",
-    component: () => import('@/pages/flipGamthisRouteres.vue'),
+    component: () => import('@/views/flipGames.vue'),
 
   },
   {
