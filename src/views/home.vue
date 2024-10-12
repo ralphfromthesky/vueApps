@@ -4,7 +4,7 @@
       class="homeContainer flex-col"
       :class="{ night: store.state.isNight, 'light ': !store.state.isNight }"
     >
-      <div class="imageContainer">
+      <div class="imageContainer "  draggable="true">
         <!-- <img src="/dist/images/myPhoto.jpg" alt="">  -->
         <img src="/images/myPhoto.png" alt="" />
       </div>

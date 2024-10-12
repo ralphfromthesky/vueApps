@@ -174,6 +174,11 @@ export default {
     title: 'defineEmits'
   },
   {
+    label: 'Suspense',
+    link: '/suspense',
+    title: '<Suspense/>'
+  },
+  {
     label: 'defineEmits',
     link: '/defineModel',
     title: 'defrineAsyncComponent'

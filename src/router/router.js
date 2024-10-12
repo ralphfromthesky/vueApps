@@ -96,6 +96,12 @@ const routes = [
     name: "method",
     component: () => import("@/pages/Methods.vue"),
   },
+
+  {
+    path: "/suspense",
+    name: "suspense",
+    component: () => import("@/pages/Component3.vue"),
+  },
   {
     path: "/event",
     name: "EventHandling",
@@ -187,7 +193,6 @@ const routes = [
     path: "/animation",
     name: "animationsliding",
     component: () => import("@/pages/Animations.vue"),
-
   },
   {
     path: "/car",
