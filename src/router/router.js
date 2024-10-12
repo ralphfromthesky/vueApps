@@ -69,7 +69,7 @@ const routes = [
   {
     path: "/timer",
     name: "timer",
-    component: () => import('@/views/timer.vue";'),
+    component: () => import('@/views/timer.vue'),
   },
   {
     path: "/todo",
