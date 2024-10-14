@@ -1,27 +1,22 @@
 <template>
   <div>
-    <div>QUIZ APP</div>
+    <div>QUIZ APP {{ rightAns }}</div>
     <div v-for="(q, index) in quizQuestions" :index="q.index">
       <div v-if="index === selectedQuestion">
-        <div>Question - {{ q.index }}</div>
+        <div>Question - {{ q.index }}/10 </div>
         <div>
           {{ q.question }}
         </div>
-        <div>
-          <div @click="selectAns(q.options[0])" :class="selected ? 'border-2 border-[gray] bg-[#dddfdd]' : ''">
-            A.{{ q.options[0] }}
-          </div>
-          <div @click="selectAns(q.options[1])" :class="selected ? 'border-2 border-[gray] bg-[#dddfdd]' : ''">
-            b.{{ q.options[1] }}
-          </div>
-          <div @click="selectAns(q.options[2])">
-            C.{{ q.options[2] }}
-          </div>
-          <div @click="selectAns(q.options[3])">
-            D.{{ q.options[3] }}
-          </div>
-        </div>
 
+        <div
+          v-for="(o, i) in q.options"
+          :class="[o === selected ? 'bg-gray-200 border-red-200' : '', 'leading-[2.5rem]']"
+          :key="index"
+          @click="selectAns(o, q.answer)"
+        >
+          <div>{{ o }}</div>
+        </div>
+        <!-- <div class="border-2 border-[red]">{{ q.answer }}</div> -->
         <button
           class="p-1 rounded border-2"
           :disabled="lastQuestion"
@@ -37,15 +32,35 @@
 <script setup>
 import { reactive, ref, computed } from "vue";
 const selectedQuestion = ref(0);
-const selected = ref(null)
+const selected = ref(null);
+const rightAns = ref(0)
+const alreadyAnswer = ref(false)
 
-const switchQuestion = () => {
-  selectedQuestion.value++;
+
+
+const selectAns = (i, ans) => {
+  selected.value = i;
+  if (i === ans && !alreadyAnswer.value) {
+    rightAns.value += 1;  
+    alreadyAnswer.value = true;
+  }
+  
+  else if (i !== ans && alreadyAnswer.value) {
+    rightAns.value -= 1;  
+    alreadyAnswer.value = false;  
+  }
 };
 
-const selectAns = (ans) =>{
-    selected.value = ans
-}
+const switchQuestion = () => {
+  alreadyAnswer.value = false
+  if(!selected.value) {
+    alert('fadfa')
+    return
+  }
+  selectedQuestion.value++;
+
+};
+
 
 const lastQuestion = computed(() => {
   return selectedQuestion.value === quizQuestions.value.length - 1;
