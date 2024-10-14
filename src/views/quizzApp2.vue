@@ -3,7 +3,7 @@
     <div>QUIZ APP {{ rightAns }}</div>
     <div v-for="(q, index) in quizQuestions" :index="q.index">
       <div v-if="index === selectedQuestion">
-        <div>Question - {{ q.index }}/10 </div>
+        <div>Question - {{ q.index }}/10 - {{ selectedQuestion }} </div>
         <div>
           {{ q.question }}
         </div>
@@ -30,7 +30,7 @@
 </template>
 
 <script setup>
-import { reactive, ref, computed } from "vue";
+import { reactive, ref, computed, watch } from "vue";
 const selectedQuestion = ref(0);
 const selected = ref(null);
 const rightAns = ref(0)
@@ -54,12 +54,19 @@ const selectAns = (i, ans) => {
 const switchQuestion = () => {
   alreadyAnswer.value = false
   if(!selected.value) {
-    alert('fadfa')
+    alert('please choose answer')
     return
   }
   selectedQuestion.value++;
+//   selected.value = null
 
 };
+
+watch(() => selectedQuestion.value, (newVal) => {
+    if(newVal === 9) {
+        alert(newVal)
+    }
+} )
 
 
 const lastQuestion = computed(() => {
