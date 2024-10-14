@@ -1,16 +1,19 @@
 <template>
   <div>
     <div>QUIZ APP {{ rightAns }}</div>
-    <div v-for="(q, index) in quizQuestions" :index="q.index">
+    <div v-for="(q, index) in quizQuestions" :index="q.index" v-if="hideQuestion">
       <div v-if="index === selectedQuestion">
-        <div>Question - {{ q.index }}/10 - {{ selectedQuestion }} </div>
+        <div>Question - {{ q.index }}/10 - {{ selectedQuestion }}</div>
         <div>
           {{ q.question }}
         </div>
 
         <div
           v-for="(o, i) in q.options"
-          :class="[o === selected ? 'bg-gray-200 border-red-200' : '', 'leading-[2.5rem]']"
+          :class="[
+            o === selected ? 'bg-gray-200 border-red-200' : '',
+            'leading-[2.5rem]',
+          ]"
           :key="index"
           @click="selectAns(o, q.answer)"
         >
@@ -21,10 +24,22 @@
           class="p-1 rounded border-2"
           :disabled="lastQuestion"
           @click="switchQuestion()"
+          v-if="selectedQuestion < 9"
         >
-          next Question
+          Next question...
+        </button>
+        <button
+          class="p-1 rounded border-2"
+          :disabled="lastQuestion"
+          @click="submitAns()"
+          v-if="selectedQuestion === 9"
+        >
+          Submits
         </button>
       </div>
+    </div>
+    <div v-else>
+
     </div>
   </div>
 </template>
@@ -33,41 +48,35 @@
 import { reactive, ref, computed, watch } from "vue";
 const selectedQuestion = ref(0);
 const selected = ref(null);
-const rightAns = ref(0)
-const alreadyAnswer = ref(false)
-
-
+const rightAns = ref(0);
+const alreadyAnswer = ref(false);
+const hideQuestion = ref(true);
 
 const selectAns = (i, ans) => {
   selected.value = i;
   if (i === ans && !alreadyAnswer.value) {
-    rightAns.value += 1;  
+    rightAns.value += 1;
     alreadyAnswer.value = true;
-  }
-  
-  else if (i !== ans && alreadyAnswer.value) {
-    rightAns.value -= 1;  
-    alreadyAnswer.value = false;  
+  } else if (i !== ans && alreadyAnswer.value) {
+    rightAns.value -= 1;
+    alreadyAnswer.value = false;
   }
 };
 
 const switchQuestion = () => {
-  alreadyAnswer.value = false
-  if(!selected.value) {
-    alert('please choose answer')
-    return
+  alreadyAnswer.value = false;
+  if (!selected.value) {
+    alert("please choose answer");
+    return;
   }
   selectedQuestion.value++;
-//   selected.value = null
-
+  //selected.value = null
 };
 
-watch(() => selectedQuestion.value, (newVal) => {
-    if(newVal === 9) {
-        alert(newVal)
-    }
-} )
-
+const submitAns = () => {
+  hideQuestion.value = false;
+  alert('fdasdf')
+};
 
 const lastQuestion = computed(() => {
   return selectedQuestion.value === quizQuestions.value.length - 1;
