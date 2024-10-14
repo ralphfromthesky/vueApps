@@ -1,6 +1,6 @@
 
 <template>
-  <div class="container z-10">
+  <div class="container z-10" v-if="false">
     <div class="mainContainer">
       <h1>The Quiz</h1>
       <section class="quiz" v-if="!quizCompleted"  :class="{'night': store.state.isNight, 'light': !store.state.isNight}">
@@ -69,10 +69,14 @@
       </p>
     </div>
   </div>
+  <div v-else>
+<quizzApp2/>
+  </div>
 </template>
 
 <script setup>
 import { ref, computed } from "vue";
+import quizzApp2 from "./quizzApp2.vue";
 import { useStore } from "@/store/store";
 const questions = ref([
   {
