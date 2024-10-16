@@ -1,8 +1,9 @@
 <template>
-  <div>
-    <div class="text-center text-[2rem] font-bold">SIMPLE QUIZ APP</div>
-    <div v-if="hideQuestion">
-      <div v-for="(q, index) in quizQuestions" :index="q.index" bor>
+  <div class="main mx-[10vw]">
+    <div class="border-2 p-2 rounded-[.5rem]">
+      <div class="text-center text-[2rem] font-bold">SIMPLE QUIZ APP</div>
+      <div v-if="hideQuestion">
+        <div v-for="(q, index) in quizQuestions" :index="q.index" bor>
           <div v-if="index === selectedQuestion" class="text-[1.8rem]">
             <div class="flex justify-end text-[1rem]">
               Question - {{ q.index }}/10
@@ -17,43 +18,66 @@
                 o === selected
                   ? 'bg-gray-200 text-[#000000] border-red-200'
                   : ' text-[#7a7a7a]',
-                'leading-[2.5rem] my-2 text-[1.5rem]',
+                'leading-[2.5rem] my-2 text-[1.5rem] hover:bg-[#f8f5f5] hover:text-[#000000]',
               ]"
               :key="index"
               @click="selectAns(o, q.answer)"
             >
               <div>{{ o }}</div>
             </div>
-            <div class="border-2 border-[red]">{{ q.answer }}</div>
+            <!-- <div class="border-2 border-[red]">{{ q.answer }}</div> -->
           </div>
+        </div>
+        <div class="text-center">
+          <button
+            :class="['p-1 rounded-[.5rem] w-full border-2 my-5', selected ? 'bg-[#c7c5c5] transition-all duration-300 ease-in-out' : 'border-[white]']"
+            :disabled="lastQuestion"
+            @click="switchQuestion()"
+            v-if="selectedQuestion < 9 && selected"
+          >
+            Next question...
+          </button>
+          <button
+            class="p-1 rounded bg-[green] w-full text-white border-2"
+            @click="submitAns()"
+            v-if="selectedQuestion === 9 && selected"
+          >
+            Submits
+          </button>
+        </div>
       </div>
-      <div class="text-center">
-        <button
-          class="p-1 rounded-[.5rem] w-full border-2 border-[gray] my-5"
-          :disabled="lastQuestion"
-          @click="switchQuestion()"
-          v-if="selectedQuestion < 9"
-        >
-          Next question...
-        </button>
-        <button
-          class="p-1 rounded bg-[green] w-full text-white border-2"
-          @click="submitAns()"
-          v-if="selectedQuestion === 9"
-        >
-          Submits
-        </button>
+      <div v-else class="text-[1.6rem] text-center">
+        CONGRATULATION!!! you got {{ rightAns }} out of 10
+        {{
+          rightAns <= 5
+            ? "you failed the tests &#128516;"
+            : "you pass the test! &#128512;"
+        }}
+        <div class="flex justify-center mt-10" v-if="rightAns <= 5">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSerNfJr-vJiOL5j90bVNFehH8_y8U2U_DR5g&s"
+            alt=""
+          />
+        </div>
+        <div class="flex justify-center mt-10" v-if="rightAns >= 6">
+          <img
+            src="https://i.pinimg.com/originals/86/d1/76/86d1767ba3ecb6af8df3e4e5dda376eb.gif"
+            alt=""
+          />
+        </div>
       </div>
     </div>
-    <div v-else class="text-[1.6rem]">
-      CONGRATULATION!!! you got {{ rightAns }} out of 10
-      {{ rightAns <= 5 ? "you failed the tests" : "you pass the test!" }}
-      <div class="flex justify-center mt-10" v-if="rightAns <= 5">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSerNfJr-vJiOL5j90bVNFehH8_y8U2U_DR5g&s" alt="">
-      </div>
-      <div class="flex justify-center mt-10" v-if="rightAns >= 6">
-        <img src="https://i.pinimg.com/originals/86/d1/76/86d1767ba3ecb6af8df3e4e5dda376eb.gif" alt="">
-      </div>
+    <div class="mt-[2rem] text-center">
+      <h2>Description:</h2>
+      <p>
+        "The Quiz" is an interactive web app that challenges your knowledge with
+        multiple-choice questions. Test yourself, earn points for correct
+        answers, and see how well you perform. When you've completed the quiz,
+        when you answer it right it turns green if wrong turns red and your
+        final score is revealed. Enjoy a fun and educational experience! <br />
+        <br />
+        <b> Using composition API: ref, computed, watch</b>
+      </p>
     </div>
   </div>
 </template>
@@ -84,7 +108,7 @@ const switchQuestion = () => {
     return;
   }
   selectedQuestion.value++;
-   selected.value = null;
+  selected.value = null;
 };
 
 const submitAns = () => {
@@ -99,70 +123,67 @@ const lastQuestion = computed(() => {
 const quizQuestions = ref([
   {
     index: 1,
-    question: "What is the capital of France?",
-    options: ["Berlin", "Madrid", "Paris", "Rome"],
-    answer: "Paris",
+    question: "Who is the Greek goddess of wisdom and warfare?",
+    options: ["Aphrodite", "Athena", "Hera", "Artemis"],
+    answer: "Athena"
   },
   {
     index: 2,
-    question: "Which planet is known as the Red Planet?",
-    options: ["Earth", "Mars", "Jupiter", "Venus"],
-    answer: "Mars",
+    question: "In Roman mythology, who is the counterpart of the Greek goddess Demeter, goddess of the harvest?",
+    options: ["Ceres", "Venus", "Juno", "Minerva"],
+    answer: "Ceres"
   },
   {
     index: 3,
-    question: "What is the largest mammal in the world?",
-    options: ["Elephant", "Blue Whale", "Giraffe", "Great White Shark"],
-    answer: "Blue Whale",
+    question: "Which Norse goddess is known as the goddess of love, beauty, and fertility?",
+    options: ["Frigg", "Hel", "Freya", "Sif"],
+    answer: "Freya"
   },
   {
     index: 4,
-    question: "Which element has the chemical symbol 'O'?",
-    options: ["Gold", "Oxygen", "Silver", "Iron"],
-    answer: "Oxygen",
+    question: "Who is the Hindu goddess of wealth and prosperity?",
+    options: ["Parvati", "Durga", "Lakshmi", "Saraswati"],
+    answer: "Lakshmi"
   },
   {
     index: 5,
-    question: "What is the boiling point of water?",
-    options: ["100°C", "0°C", "50°C", "25°C"],
-    answer: "100°C",
+    question: "In Egyptian mythology, which goddess is associated with motherhood and magic?",
+    options: ["Isis", "Bastet", "Nephthys", "Hathor"],
+    answer: "Isis"
   },
   {
     index: 6,
-    question: "Who wrote 'Romeo and Juliet'?",
-    options: [
-      "Charles Dickens",
-      "Mark Twain",
-      "William Shakespeare",
-      "Jane Austen",
-    ],
-    answer: "William Shakespeare",
+    question: "Which goddess in Greek mythology is known as the queen of the gods and goddess of marriage?",
+    options: ["Hera", "Aphrodite", "Demeter", "Persephone"],
+    answer: "Hera"
   },
   {
     index: 7,
-    question: "What is the smallest prime number?",
-    options: ["0", "1", "2", "3"],
-    answer: "2",
+    question: "Who is the Aztec goddess of fertility and agriculture?",
+    options: ["Chalchiuhtlicue", "Tlazolteotl", "Coatlicue", "Xochiquetzal"],
+    answer: "Xochiquetzal"
   },
   {
     index: 8,
-    question: "Which gas do plants absorb from the atmosphere?",
-    options: ["Oxygen", "Carbon Dioxide", "Nitrogen", "Hydrogen"],
-    answer: "Carbon Dioxide",
+    question: "In Celtic mythology, who is the goddess of the river Boyne and knowledge?",
+    options: ["Brigid", "Danu", "Morrigan", "Boann"],
+    answer: "Boann"
   },
   {
     index: 9,
-    question: "What is the capital of Japan?",
-    options: ["Beijing", "Seoul", "Tokyo", "Bangkok"],
-    answer: "Tokyo",
+    question: "Who is the Shinto goddess of the sun and the universe?",
+    options: ["Amaterasu", "Inari", "Izanami", "Hachiman"],
+    answer: "Amaterasu"
   },
   {
     index: 10,
-    question: "Which organ is responsible for pumping blood in the human body?",
-    options: ["Liver", "Brain", "Heart", "Lungs"],
-    answer: "Heart",
-  },
+    question: "In Greek mythology, who is the goddess of the hunt and the moon?",
+    options: ["Hestia", "Athena", "Artemis", "Demeter"],
+    answer: "Artemis"
+  }
 ]);
+
+
 </script>
 
 <style scoped>
@@ -182,5 +203,11 @@ const quizQuestions = ref([
 
 .route-leave-active {
   transition: all 0.3s ease-in;
+}
+
+@media screen and (max-width: 500px) {
+  .main {
+    margin: 0 2vw 0 2vw;
+  }
 }
 </style>
