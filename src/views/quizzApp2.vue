@@ -4,11 +4,11 @@
       <div class="text-center text-[2rem] font-bold">SIMPLE QUIZ APP</div>
       <div v-if="hideQuestion">
         <div v-for="(q, index) in quizQuestions" :index="q.index" bor>
-          <div v-if="index === selectedQuestion" class="text-[1.8rem]">
+          <div v-if="index === selectedQuestion" class="text-[1.6rem]">
             <div class="flex justify-end text-[1rem]">
               Question - {{ q.index }}/10
             </div>
-            <div class="my-2">
+            <div class="my-2 font-bold">
               {{ q.question }}
             </div>
 
@@ -18,7 +18,7 @@
                 o === selected
                   ? 'bg-gray-200 text-[#000000] border-red-200'
                   : ' text-[#7a7a7a]',
-                'leading-[2.5rem] my-2 text-[1.5rem] hover:bg-[#f8f5f5] hover:text-[#000000]',
+                'leading-[2.5rem] my-2 text-[1.4rem] hover:bg-[#f8f5f5] hover:text-[#000000]',
               ]"
               :key="index"
               @click="selectAns(o, q.answer)"
