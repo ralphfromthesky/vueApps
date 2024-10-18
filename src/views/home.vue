@@ -5,8 +5,8 @@
       :class="{ night: store.state.isNight, 'light ': !store.state.isNight }"
     >
       <div class="imageContainer "  draggable="true">
-        <!-- <img src="/dist/images/myPhoto.jpg" alt="">  -->
-        <img src="/images/myPhoto.png" alt="" />
+        <img src="/images/myPhoto.jpg" alt=""> 
+        <!-- <img src="https://github.com/ralphfromthesky/images/blob/main/withkids.jpg?raw=true" alt="" /> -->
       </div>
       <div class="descriptionContainer">
         <h2>About Me:</h2>
