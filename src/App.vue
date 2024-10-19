@@ -81,6 +81,7 @@ export default {
 .mainApp {
   display: flex;
   flex-direction: column;
+  position: relative;
 
 }
 
@@ -114,6 +115,9 @@ export default {
 .slideForward {
   transform: translateX(100%);
 }
+@media screen {
+  
+}
 
 .slideBackward {
   transform: translateX(-120%);
@@ -126,6 +130,18 @@ export default {
 .bx {
   cursor: pointer;
   color: rgb(59, 57, 57);
+}
+
+@media screen and (max-width: 1900px){
+  .slideForward {
+  transform: translateX(16vw);
+}
+}
+
+@media screen and (max-width: 1501px){
+  .slideForward {
+  transform: translateX(16vw);
+}
 }
 
 @media screen and (max-width: 430px) {
