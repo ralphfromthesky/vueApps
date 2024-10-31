@@ -35,16 +35,43 @@
         You can use the 'hidden' attribute to hide the element on the web page.
         This is useful for controlling visibility through JavaScript or CSS.
         This is a global attribute.
-        <div :hidden="ishidden" class="h-[2rem] bg-[blue] text-white">this is hidden</div>
+        <div :hidden="ishidden" class="h-[2rem] bg-[blue] text-white">
+          this is hidden
+        </div>
       </span>
+      <span class="flex flex-col">
+        The loading attribute can be used with the <img /> element to control
+        how the browser loads the image. It has three values: “eager,” “lazy,”
+        and “auto.”
+        <img
+          src="/images/mariokart.png"
+          class="h-[5rem] w-[4rem]"
+          loading="lazy"
+        />
+      </span>
+      <span class="flex flex-col">
+        The multiple attribute can be used with the input and select elements to
+        allow users to select/enter multiple values at once.
+        <div class="flex flex-col">
+          <input type="file" multiple />
+          <br />
+          <select multiple>
+            <option value="apple">Apple</option>
+            <option value="banana">Banana</option>
+            <option value="cherry">Cherry</option>
+            <option value="date">Date</option>
+          </select>
+        </div>
+      </span>
+ 
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref } from "vue";
 
-const ishidden = ref(false) 
+const ishidden = ref(false);
 </script>
 
 <style lang="scss" scoped></style>
