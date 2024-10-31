@@ -1,0 +1,1 @@
+import{r as s,o as e,c as t,a as o,z as n,J as c,K as r,L as l}from"./index-e1cc45f4.js";const i=o("h1",null,"this is the dynamic components",-1),d={__name:"Components",setup(m){const a=s(!0);return(_,p)=>(e(),t("div",null,[o("div",null,[i,(e(),n(c(a.value?r:l)))])]))}};export{d as default};
