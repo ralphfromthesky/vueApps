@@ -188,6 +188,11 @@ export default {
     link: '/hooks',
     title: 'Life Cycle Hooks'
   },
+  {
+    label: '',
+    link: '/htmlTemp',
+    title: 'Must know HTML'
+  }
 
 ]);
 

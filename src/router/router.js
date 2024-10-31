@@ -311,6 +311,11 @@ const routes = [
     component: () => import('@/pages/TwElements.vue'),
 
   },
+  {
+    path: '/htmlTemp',
+    name: 'html',
+    component: () => import('@/pages/htmlTemplates.vue')
+  }
 
 ];
 
@@ -319,7 +324,6 @@ const router = createRouter({
   routes,
 });
 
-router.replace
 
 router.beforeEach((to, from, next) => {
   const protectedRoute = routes.map((p) => p.path);

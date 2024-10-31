@@ -8,7 +8,7 @@
         <img src="/images/myPhoto.jpg" alt=""> 
         <!-- <img src="https://github.com/ralphfromthesky/images/blob/main/withkids.jpg?raw=true" alt="" /> -->
       </div>
-      <div class="descriptionContainer">
+      <div class="descriptionContainer border-2 ">
         <h2>About Me:</h2>
         <h3>
           Hello there, I’m Ralph, a passionate Vue.js developer with a creative
