@@ -2,7 +2,10 @@
   <div class="mainBody">
     <!-- <RouterView class="route"/> -->
     <animatedParticleVue class="particle" />
-    <RouterView class="route"/>
+    <transition name="zoom-fade" mode="out-in" appear="">
+      <RouterView class="route"/>
+
+    </transition>
   </div>
 </template>
 
@@ -45,5 +48,20 @@ export default {
 /* .route {
   z-index: 1;
 } */
+
+.zoom-fade-enter-active,
+.zoom-fade-leave-active {
+  transition:
+    transform 0.2s,
+    opacity 0.3s ease-out;
+}
+.zoom-fade-enter-from {
+  opacity: 0;
+  transform: scale(0.92);
+}
+.zoom-fade-leave-to {
+  opacity: 0;
+  transform: scale(1.06);
+}
 
 </style>
