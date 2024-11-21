@@ -10,7 +10,7 @@
           </div>
           <div class="w-[50rem]">
 
-            <transition name="route" appear>
+            <transition name="zoom-fade" appear>
               <div v-if="$slots.default">
                 <slot></slot>
               </div>
@@ -76,5 +76,19 @@ import SlotsChild from './SlotsChild.vue';
 
 .route-leave-active {
   transition: all 0.3s ease-in;
+}
+.zoom-fade-enter-active,
+.zoom-fade-leave-active {
+  transition:
+    transform 0.2s,
+    opacity 0.3s ease-out;
+}
+.zoom-fade-enter-from {
+  opacity: 0;
+  transform: scale(0.92);
+}
+.zoom-fade-leave-to {
+  opacity: 0;
+  transform: scale(1.06);
 }
 </style>
