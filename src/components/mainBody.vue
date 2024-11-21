@@ -2,7 +2,7 @@
   <div class="mainBody">
     <!-- <RouterView class="route"/> -->
     <animatedParticleVue class="particle" />
-    <transition name="zoom-fade" mode="out-in" appear="">
+    <transition name="zoom-fade" mode="out-in" appear>
       <RouterView class="route"/>
 
     </transition>
