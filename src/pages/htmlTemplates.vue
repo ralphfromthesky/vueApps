@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="p-2">
     <div>Must know this HTML attributes tips....</div>
     <div class="flex flex-col gap-[4rem]">
       <span class="flex flex-col">
