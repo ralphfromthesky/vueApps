@@ -4,7 +4,13 @@
       VUE JS - Ralph <span><i class="bx bxs-cat"></i></span>
     </h1>
 
-    <div class="dayNightVue">
+    <div class="dayNightVue flex items-center">
+      <a href="cv.pdf" download="cv.pdf">
+        <div>
+          <img src="https://cdn-icons-png.flaticon.com/512/8347/8347432.png" class="h-[2rem]" alt="" srcset="">
+        </div>
+      </a>
+
       <dayNightVue />
     </div>
   </div>
@@ -35,6 +41,7 @@ export default {
   justify-content: space-between;
   align-items: center;
 }
+
 .mainHeader span .bx {
   color: rgb(252, 102, 3);
   font-size: 40px;

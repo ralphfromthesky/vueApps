@@ -1,8 +1,10 @@
 <template>
   <div>
+    <div class="text-[3rem]">
+      BINGO GAME
+    </div>
     <div class="mb-[5rem]">
-      <input type="number" v-model="bingNum" @change="showNums()">
-      {{ bingNum }}
+
     </div>
 
 
@@ -99,7 +101,7 @@ const showNums = () => {
 const randomNum = () => {
   const min = 1;
   const max = 60;
-  winBall.value = math.random(math.floo)
+  // winBall.value = math.random(math.flo      o)
 }
 
 </script>
