@@ -4,25 +4,36 @@
       BINGO GAME
     </div>
     <div class="mb-[5rem]">
-
+      <button @click="generateNums()">GEN</button>
+      <div class="flex flex-wrap w-[40vw] gap-2">
+        <div v-for="(a, i) in winBall" :key="a" class="border-2 border-[gray] p-1 w-[2rem] text-center rounded-[50%] ">
+          {{ a }}
+        </div>
+      </div>
     </div>
 
 
     <div class="w-[50vw] flex gap-2 flex-wrap p-1">
       <div v-for="(a, i) in bingoNums" :key="a.id">
-        <div class="p-2 border-[.05rem] border-[gray] rounded-[.5rem]" @click="showBingData(a.num)">
+        <div
+          :class="['p-2 border-[.05rem] border-[gray] rounded-[.5rem]', bingoNums.includes(winBall) ? 'bg-[green]' : '']"
+          @click="showBingData(a.num)">
           {{ a.num }}
         </div>
+
+      </div>
+      <div v-for="(a, i) in winBall" :key="i">
+        {{ a.num }}
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue';
-
-const bingNum = ref()
+import { computed, ref } from 'vue';
+const selectedNum = ref(null)
 const winBall = ref([])
+const winNum = ref(null)
 const bingoNums = ref([
   { id: 1, num: 1 },
   { id: 2, num: 2 },
@@ -86,24 +97,17 @@ const bingoNums = ref([
   { id: 60, num: 60 },
 ]);
 
-const showBingData = (num) => {
-  alert(num)
-}
-const showNums = () => {
-  const found = bingoNums.value.find((a) => a.num === bingNum.value)
-  if (found.num) {
-    alert(found.num)
-  } else {
-    alert('nothing fpund')
+
+// const generateNums = computed(() => {
+//   const match = bingoNums.value.find((a) => a.num == selectedNum.value)
+//   return match ? match.num : null 
+// })
+
+const generateNums = () => {
+  for (let i = 0; i < 40; i++) {
+    winBall.value.push(Math.floor(Math.random() * (60 - 1 + 1)));
   }
 }
-
-const randomNum = () => {
-  const min = 1;
-  const max = 60;
-  // winBall.value = math.random(math.flo      o)
-}
-
 </script>
 
 
