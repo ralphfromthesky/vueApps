@@ -1,12 +1,13 @@
 <template>
   <div>
     <div class="text-[3rem] flex gap-2 text-center justify-center">
-      <div> BINGO GAME </div> <button class="text-[1rem]" @click="generateNums()" v-if="!winBall.length">PLAY</button>
+      <div> BINGO GAME </div>
       <button v-if="winBall.length" @click="window.location.reload()">Play Again?</button>
     </div>
     <div class="main">
       <div class="border-2 flex flex-col justify-center items-center rounded-[.5rem]">
         <div class="mb-[5rem]">
+          <button class="text-[1rem]" @click="generateNums()" v-if="!winBall.length">PLAY</button>
           <div class="flex flex-wrap w-[40vw] gap-2 mt-2">
             <div v-for="(a, i) in winBall" :key="a"
               class="border-2 border-[gray] p-1 w-[2rem] text-center rounded-[50%] ">
@@ -14,7 +15,7 @@
             </div>
           </div>
         </div>
-
+        <div>Results</div>
         <div class="w-[50vw] flex gap-2 flex-wrap justify-center">
           <div v-for="(a, i) in showBingNums" :key="a.id">
             <div :class="['p-2 border-[.05rem] border-[gray] rounded-[.5rem]', winBall.includes(a.num) && 'bg-[green]']"
@@ -29,7 +30,7 @@
       <div>
         <button @click="generateCard()">Take Cards</button>
         <div class="border-2 border-[gray] grid grid-cols-3 p-1">
-          <div v-for="(a, i) in cards" :key="i" class="border-2 text-center">
+          <div v-for="(a, i) in cards" :key="i" :class="['border-2 text-center p-1', winBall.includes(a) && 'bg-[red]']">
             {{ a }}
           </div>
         </div>
@@ -37,7 +38,9 @@
 
 
     </div>
-
+<div>
+  <DialogQusar/>
+</div>
 
 
   </div>
@@ -45,6 +48,8 @@
 
 <script setup>
 import { computed, ref } from 'vue';
+import DialogQusar from '../quasarUi/DialogQusar.vue';
+
 const winBall = ref([])
 const cards = ref([])
 const bingoNums = ref([
@@ -178,10 +183,11 @@ const showBingNums = computed(() => {
 })
 
 const generateCard = () => {
-  for (let i = 0; i < 6; i++) {
+  for (let i = 0; i < 15; i++) {
     cards.value.push(Math.floor(Math.random() * 60) + 1)
   }
 }
+
 
 const generateNums = () => {
   for (let i = 0; i < 40; i++) {
@@ -189,7 +195,6 @@ const generateNums = () => {
     if (winBall.value.length == 60) {
       return
     }
-
   }
   // if (winBall.value.length <= 60) {
   //     winBall.value.push(Math.floor(Math.random() * 60) + 1)

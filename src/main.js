@@ -4,10 +4,16 @@ import App from './App.vue'
 import router from './router/router'
 import { musicList } from './musicList'
 import { dataList } from './dataListSample'
-import { employees, myGirls} from './employee.js'
-import {datas} from './anotherSampleOfData'
+import { employees, myGirls } from './employee.js'
+import { datas } from './anotherSampleOfData'
 import './style.css'
 import store from './store/store'
+import {
+    Quasar,
+    Dialog
+} from 'quasar'
+import 'quasar/dist/quasar.css'
+
 
 
 // createApp(App).mount('#app')
@@ -21,6 +27,12 @@ const anotherSampleOfData = ref(datas)
 
 const app = createApp(App)
 app.use(router)
+
+app.use(Quasar, {
+    plugins: {
+        Dialog
+    }
+})
 
 app.provide('musicList', musicSongList)
 
