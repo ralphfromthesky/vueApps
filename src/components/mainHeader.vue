@@ -1,8 +1,8 @@
 <template>
   <div class="mainHeader">
-    <h1>
+    <div class="text-[1rem]">
       VUE JS - Ralph <span><i class="bx bxs-cat"></i></span>
-    </h1>
+    </div>
 
     <div class="dayNightVue flex items-center">
       <a href="cv.pdf" download="cv.pdf">
