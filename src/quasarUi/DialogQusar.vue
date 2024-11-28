@@ -1,69 +1,52 @@
 <template>
-    <div class="q-pa-md q-gutter-sm">
-      <q-btn label="Alert" color="primary" @click="alert" />
-      <q-btn label="Confirm" color="primary" @click="confirm" />
-      <q-btn label="Prompt" color="primary" @click="prompt" />
-    </div>
-  </template>
-  
-  <script>
-  import { useQuasar } from 'quasar'
-  
-  export default {
-    setup () {
-      const $q = useQuasar()
-  
-      function alert () {
-        $q.dialog({
-          title: 'Alert',
-          message: 'Some message'
-        }).onOk(() => {
-          // console.log('OK')
-        }).onCancel(() => {
-          // console.log('Cancel')
-        }).onDismiss(() => {
-          // console.log('I am triggered on both OK and Cancel')
-        })
-      }
-  
-      function confirm () {
-        $q.dialog({
-          title: 'Confirm',
-          message: 'Would you like to turn on the wifi?',
-          cancel: true,
-          persistent: true
-        }).onOk(() => {
-          // console.log('>>>> OK')
-        }).onOk(() => {
-          // console.log('>>>> second OK catcher')
-        }).onCancel(() => {
-          // console.log('>>>> Cancel')
-        }).onDismiss(() => {
-          // console.log('I am triggered on both OK and Cancel')
-        })
-      }
-  
-      function prompt () {
-        $q.dialog({
-          title: 'Prompt',
-          message: 'What is your name?',
-          prompt: {
-            model: '',
-            type: 'text' // optional
-          },
-          cancel: true,
-          persistent: true
-        }).onOk(data => {
-          // console.log('>>>> OK, received', data)
-        }).onCancel(() => {
-          // console.log('>>>> Cancel')
-        }).onDismiss(() => {
-          // console.log('I am triggered on both OK and Cancel')
-        })
-      }
-  
-      return { alert, confirm, prompt }
-    }
+  <div class="q-pa-md q-gutter-sm">
+    <q-btn :label="props.label" style="background-color: #39D881; color: white;" @click="confirm" />
+  </div>
+<div>
+</div>
+</template>
+
+<script setup>
+import { useQuasar } from 'quasar'
+import { defineAsyncComponent, h, ref } from 'vue';
+const MainDialog = defineAsyncComponent(() => import('./MainDialog.vue'));
+
+const cards = ref(100)
+const addCards = (adds) => {
+  cards.value = adds
+}
+const emits = defineEmits(['playBingo'])
+const props = defineProps({
+  label: {
+    type: String,
+    required: true,
+    default: 'label'
+  },
+  title: {
+    type: String,
+    required: true,
+    default: "title"
+  },
+  message: {
+    type: String,
+    required: true,
+    default: 'message'
   }
-  </script>
-  
+})
+const $q = useQuasar()
+
+const confirm = () => {
+  $q.dialog({
+    title: props.title,
+    message: h(MainDialog, { cards: cards.value }),
+    cancel: true,
+    persistent: true
+  }).onOk(() => {
+    emits('plaBing', true)
+  }).onCancel(() => {
+    // Handle Cancel action
+  }).onDismiss(() => {
+    // Handle dismiss action
+  })
+}
+</script>

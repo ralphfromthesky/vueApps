@@ -9,7 +9,7 @@
       <cloudBackgroundVue class="cloudBg" />
       <div class="labeledLink" v-for="link in sidebarlabel" :key="link.link">
         <router-link :to="link.link" @click="$emit('slideThisBack')">
-          <h3>{{ link.title }}</h3>
+          <div>{{ link.title }}</div>
         </router-link>
       </div>
     </div>

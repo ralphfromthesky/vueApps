@@ -1,13 +1,15 @@
 <template>
   <div>
     <div class="text-[3rem] flex gap-2 text-center justify-center">
-      <div> BINGO GAME </div>
-      <button v-if="winBall.length" @click="window.location.reload()">Play Again?</button>
+      <div> BINGO GAME {{ cardNum }} {{ store.state.newStore.cards }}</div>
+      <button v-if="winBall.length">Play Again?</button>
     </div>
-    <div class="main">
+    <div class="main" v-if="isPlay">
       <div class="border-2 flex flex-col justify-center items-center rounded-[.5rem]">
-        <div class="mb-[5rem]">
-          <button class="text-[1rem]" @click="generateNums()" v-if="!winBall.length">PLAY</button>
+        <div class="mb-[1rem]">
+          <div class="text-center mt-2">
+            <button class="text-[1rem]" @click="generateNums()" v-if="!winBall.length">PLAY</button>
+          </div>
           <div class="flex flex-wrap w-[40vw] gap-2 mt-2">
             <div v-for="(a, i) in winBall" :key="a"
               class="border-2 border-[gray] p-1 w-[2rem] text-center rounded-[50%] ">
@@ -29,8 +31,9 @@
       </div>
       <div>
         <button @click="generateCard()">Take Cards</button>
-        <div class="border-2 border-[gray] grid grid-cols-3 p-1">
-          <div v-for="(a, i) in cards" :key="i" :class="['border-2 text-center p-1', winBall.includes(a) && 'bg-[red]']">
+        <div class="border-2 border-[gray] grid grid-cols-5 p-1">
+          <div v-for="(a, i) in cards" :key="i"
+            :class="['border-2 text-center p-1', winBall.includes(a) && 'bg-[red]']">
             {{ a }}
           </div>
         </div>
@@ -38,9 +41,9 @@
 
 
     </div>
-<div>
-  <DialogQusar/>
-</div>
+    <div class="text-center">
+      <DialogQusar title="Lets Play bingo?" @plaBing="handlePlayBingo" @cardNumber="showCardNumber" label="Play?" />
+    </div>
 
 
   </div>
@@ -48,10 +51,12 @@
 
 <script setup>
 import { computed, ref } from 'vue';
-import DialogQusar from '../quasarUi/DialogQusar.vue';
-
+import { useStore } from '../store/store';
+const store = useStore()
+const isPlay = ref(false)
 const winBall = ref([])
 const cards = ref([])
+const cardNum = ref()
 const bingoNums = ref([
   { id: 1, num: 1 },
   { id: 2, num: 2 },
@@ -114,6 +119,14 @@ const bingoNums = ref([
   { id: 59, num: 59 },
   { id: 60, num: 60 },
 ]);
+
+const handlePlayBingo = (play) => {
+  isPlay.value = true
+}
+
+const showCardNumber = (num) => {
+  cardNum.value = num
+}
 
 const showBingNums = computed(() => {
   const bingoNums = ref([
@@ -183,7 +196,7 @@ const showBingNums = computed(() => {
 })
 
 const generateCard = () => {
-  for (let i = 0; i < 15; i++) {
+  for (let i = 0; i < 24; i++) {
     cards.value.push(Math.floor(Math.random() * 60) + 1)
   }
 }

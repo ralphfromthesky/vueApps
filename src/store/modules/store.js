@@ -9,8 +9,13 @@ const newStore = {
     less500: [],
     high500: [],
     isNight: false,
+    cards: 100
+    
   },
   mutations: {
+    setcards(state, payload) {
+      state.cards = payload
+    },
     increment(state, payload) {
       state.balance += payload;
     },

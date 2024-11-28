@@ -1,6 +1,6 @@
 <template>
   <div class="mainHeader">
-    <div class="text-[1rem]">
+    <div class="text-[2rem] ml-[1rem]">
       VUE JS - Ralph <span><i class="bx bxs-cat"></i></span>
     </div>
 

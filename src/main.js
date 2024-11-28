@@ -13,6 +13,8 @@ import {
     Dialog
 } from 'quasar'
 import 'quasar/dist/quasar.css'
+import DialogQusar from './quasarUi/DialogQusar.vue'
+
 
 
 
@@ -33,6 +35,8 @@ app.use(Quasar, {
         Dialog
     }
 })
+
+app.component('DialogQusar', DialogQusar)
 
 app.provide('musicList', musicSongList)
 

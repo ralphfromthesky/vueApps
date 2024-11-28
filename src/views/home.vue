@@ -9,8 +9,8 @@
         <!-- <img src="https://github.com/ralphfromthesky/images/blob/main/withkids.jpg?raw=true" alt="" /> -->
       </div>
       <div class="descriptionContainer border-2 ">
-        <h2>About Me:</h2>
-        <h3>
+        <div>About Me:</div>
+        <div>
           Hello there, I’m Ralph, a passionate Vue.js developer with a creative
           and detail-oriented approach to crafting user-friendly and visually
           appealing web applications. Along with my love for coding, I’m a solo
@@ -21,7 +21,7 @@
           enabling me to build interactive and responsive solutions for diverse
           client needs. I thrive on tackling challenges and turning ideas into
           dynamic, efficient, and engaging digital experiences.
-        </h3>
+        </div>
       </div>
       <div class="divs"></div>
     </div>

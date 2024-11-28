@@ -8,7 +8,7 @@
       :class="{ night: store.state.isNight, light: !store.state.isNight }"
     >
       <div class="todolabel">
-        <h1>what is your name ?</h1>
+        <div>what is your name ?</div>
         <input type="text" v-model="name" />
       </div>
       <form @submit.prevent="addTodo">
