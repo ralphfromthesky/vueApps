@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="text-[3rem] flex gap-2 text-center justify-center">
-      <div> BINGO GAME {{ cardNum }} {{ store.state.newStore.cards }} - {{ indexing }}</div>
+      <div> BINGO GAME {{ cardNum }} {{ store.state.newStore.cards }}</div>
       <!-- <button v-if="winBall.length">Play Again?</button> -->
     </div>
     <div class="main flex gap-2" v-if="isPlay">
@@ -11,7 +11,7 @@
             <button class="text-[1rem]" @click="generateNums()" :disabled="!cards.length"
               v-if="!winBall.length">PLAY</button>
           </div>
-          <div class="flex flex-wrap w-[40vw] gap-2 mt-2" v-auto-animate>
+          <div class="flex flex-wrap w-[40vw] gap-2 mt-2"  v-auto-animate="{ stagger: 300 }">
             <div v-for="(a, i) in winBall" :key="a"
               class="border-2 border-[gray] p-1 w-[2rem] text-center rounded-[50%] ">
               {{ a }}
@@ -244,16 +244,12 @@ const generateCard = () => {
 
 const generateNums = () => {
   for (let i = 0; i < 40; i++) {
-    winBall.value.push(Math.floor(Math.random() * 60) + 1)
-    if (winBall.value.length == 60) {
-      return
-    }
+    setTimeout(() => {
+      winBall.value.push(Math.floor(Math.random() * 60) + 1);
+    }, i * 500); // Adding a delay of 300ms between each push
   }
-  // if (winBall.value.length <= 60) {
-  //     winBall.value.push(Math.floor(Math.random() * 60) + 1)
-  //     return
-  //   }
-}
+};
+
 
 const indexing = computed(() => {
     const balls = []
