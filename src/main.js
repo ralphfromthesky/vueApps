@@ -6,7 +6,9 @@ import { musicList } from './musicList'
 import { dataList } from './dataListSample'
 import { employees, myGirls } from './employee.js'
 import { datas } from './anotherSampleOfData'
-import './style.css'
+
+
+
 import store from './store/store'
 import {
     Quasar,
@@ -14,6 +16,10 @@ import {
 } from 'quasar'
 import 'quasar/dist/quasar.css'
 import DialogQusar from './quasarUi/DialogQusar.vue'
+import './style.css'
+import { autoAnimatePlugin } from '@formkit/auto-animate/vue';
+
+
 
 
 
@@ -29,6 +35,7 @@ const anotherSampleOfData = ref(datas)
 
 const app = createApp(App)
 app.use(router)
+app.use(autoAnimatePlugin)
 
 app.use(Quasar, {
     plugins: {

@@ -1,1 +1,0 @@
-import{S as o}from"./SlidingIn-98e4a583.js";import{_ as e,m as t,o as s,c as a,x as c}from"./index-48e0c20e.js";const i={name:"animation",components:{SlidingIn:o}};function r(m,p,_,l,d,f){const n=t("SlidingIn");return s(),a("div",null,[c(n)])}const S=e(i,[["render",r]]);export{S as default};
