@@ -42,7 +42,7 @@ const confirm = () => {
     cancel: true,
     persistent: true
   }).onOk(() => {
-    emits('plaBing', true)
+    emits('playBingo', false)
   }).onCancel(() => {
     // Handle Cancel action
   }).onDismiss(() => {

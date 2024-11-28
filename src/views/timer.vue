@@ -2,13 +2,14 @@
   <div>
     <div class="text-[3rem] flex gap-2 text-center justify-center">
       <div> BINGO GAME {{ cardNum }} {{ store.state.newStore.cards }}</div>
-      <button v-if="winBall.length">Play Again?</button>
+      <!-- <button v-if="winBall.length">Play Again?</button> -->
     </div>
-    <div class="main" v-if="isPlay">
+    <div class="main flex gap-2" v-if="isPlay">
       <div class="border-2 flex flex-col justify-center items-center rounded-[.5rem]">
         <div class="mb-[1rem]">
           <div class="text-center mt-2">
-            <button class="text-[1rem]" @click="generateNums()" v-if="!winBall.length">PLAY</button>
+            <button class="text-[1rem]" @click="generateNums()" :disabled="!cards.length"
+              v-if="!winBall.length">PLAY</button>
           </div>
           <div class="flex flex-wrap w-[40vw] gap-2 mt-2">
             <div v-for="(a, i) in winBall" :key="a"
@@ -29,12 +30,40 @@
 
         </div>
       </div>
-      <div>
-        <button @click="generateCard()">Take Cards</button>
-        <div class="border-2 border-[gray] grid grid-cols-5 p-1">
+      <div class="text-center flex justify-center items-center">
+        <div>
+
+          <div><button @click="generateCard()" class="mb-2 mt-2" v-if="!cards.length"> Take Cards</button></div>
+
+          <div>
+            <div>Patterns to win</div>
+            <div class="flex gap-1">
+              <div class="border-[black] border-2 w-[5vw] grid grid-cols-5">
+                <div v-for="(a, i) in 25" :key="i" :class="p1.includes(a) && 'bg-[pink]'"
+                  class="border-[.05rem] text-[.5rem]">
+                  {{ a }}
+                </div>
+              </div>
+              <div class="border-[black] border-2 w-[5vw] grid grid-cols-5">
+                <div v-for="(a, i) in 25" :key="i" :class="p2.includes(a) && 'bg-[pink]'"
+                  class="border-[.05rem] text-[.5rem]">
+                  {{ a }}
+                </div>
+              </div>
+              <div class="border-[black] border-2 w-[5vw] grid grid-cols-5">
+                <div v-for="(a, i) in 25" :key="i" :class="p3.includes(a) && 'bg-[pink]'"
+                  class="border-[.05rem] text-[.5rem]">
+                  {{ a }}
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="border-2 border-[gray] grid grid-cols-5 p-1" v-if="cards.length">
           <div v-for="(a, i) in cards" :key="i"
             :class="['border-2 text-center p-1', winBall.includes(a) && 'bg-[red]']">
-            {{ a }}
+            {{ a }} 
           </div>
         </div>
       </div>
@@ -42,7 +71,8 @@
 
     </div>
     <div class="text-center">
-      <DialogQusar title="Lets Play bingo?" @plaBing="handlePlayBingo" @cardNumber="showCardNumber" label="Play?" />
+      <DialogQusar title="Lets Play bingo?" v-if="hideDialog" @playBingo="handlePlayBingo" @cardNumber="showCardNumber"
+        label="Play?" />
     </div>
 
 
@@ -52,8 +82,15 @@
 <script setup>
 import { computed, ref } from 'vue';
 import { useStore } from '../store/store';
+const p1 = ref([1, 2, 3, 4, 5, 6, 11, 16, 21, 22, 23, 24, 25, 10, 15, 20])
+const p2 = ref([1, 2, 3, 4, 5, 11, 12, 13, 14,15, 21, 22, 23, 24, 25 ])
+const p3 = ref([1, 5,  21, 25 ])
+
+
+
 const store = useStore()
 const isPlay = ref(false)
+const hideDialog = ref(true)
 const winBall = ref([])
 const cards = ref([])
 const cardNum = ref()
@@ -121,7 +158,8 @@ const bingoNums = ref([
 ]);
 
 const handlePlayBingo = (play) => {
-  isPlay.value = true
+  hideDialog.value = play
+  isPlay.value = true;
 }
 
 const showCardNumber = (num) => {
@@ -195,8 +233,10 @@ const showBingNums = computed(() => {
 
 })
 
+
+
 const generateCard = () => {
-  for (let i = 0; i < 24; i++) {
+  for (let i = 0; i < 25; i++) {
     cards.value.push(Math.floor(Math.random() * 60) + 1)
   }
 }
