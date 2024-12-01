@@ -6,7 +6,7 @@
       <mainSidebarVue class="sidebaricon" @slide-this="slideForward" :class="slideSidebar ? 'slideBackward' : ''" />
     </div>
     <!-- <div class="container" :class="slideSidebar ? 'paddingLeft': 'paddingRight'" > -->
-    <div class="w-screen pl-[5rem] pr-[1rem]" :class="slideSidebar ? 'paddingLeft': 'paddingRight'" >
+    <div class="w-screen pl-[5rem] pr-[1rem]" :class="slideSidebar ? 'paddingLeft' : 'paddingRight'">
       <mainHeaderVue />
       <mainBodyVue />
     </div>
@@ -64,10 +64,10 @@ export default {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-   font-family: 'Sometype Mono', monospace; 
-   /* font-family: 'JetBrains Mono', monospace; */
+  font-family: 'Sometype Mono', monospace;
+  /* font-family: 'JetBrains Mono', monospace; */
 
-  
+
 }
 
 
@@ -101,7 +101,7 @@ export default {
 
 .sidebarContainer {
   position: relative;
-
+  /* z-index: 1; */
 }
 
 .sidebaricon {
@@ -120,9 +120,8 @@ export default {
 .slideForward {
   transform: translateX(100%);
 }
-@media screen {
-  
-}
+
+@media screen {}
 
 .slideBackward {
   transform: translateX(-120%);
@@ -137,16 +136,16 @@ export default {
   color: rgb(59, 57, 57);
 }
 
-@media screen and (max-width: 1900px){
+@media screen and (max-width: 1900px) {
   .slideForward {
-  transform: translateX(16vw);
-}
+    transform: translateX(16vw);
+  }
 }
 
-@media screen and (max-width: 1501px){
+@media screen and (max-width: 1501px) {
   .slideForward {
-  transform: translateX(16vw);
-}
+    transform: translateX(16vw);
+  }
 }
 
 @media screen and (max-width: 430px) {
@@ -158,8 +157,9 @@ export default {
   .sidebarContainer {
     z-index: 1;
   }
+
   .slideForward {
-  transform: translateX(40%);
-}
+    transform: translateX(40%);
+  }
 }
 </style>

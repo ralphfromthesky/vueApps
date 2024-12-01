@@ -269,8 +269,8 @@ const routes = [
 
   },
   {
-    path: "/flipGames",
-    name: "flipGames",
+    path: "/web",
+    name: "web",
     component: () => import('@/views/flipGames.vue'),
 
   },
