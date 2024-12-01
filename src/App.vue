@@ -101,7 +101,7 @@ export default {
 
 .sidebarContainer {
   position: relative;
-  /* z-index: 1; */
+  z-index: 1;
 }
 
 .sidebaricon {
@@ -118,7 +118,7 @@ export default {
 }
 
 .slideForward {
-  transform: translateX(100%);
+  transform: translateX(115%);
 }
 
 @media screen {}
@@ -159,7 +159,7 @@ export default {
   }
 
   .slideForward {
-    transform: translateX(40%);
+    transform: translateX(45%);
   }
 }
 </style>

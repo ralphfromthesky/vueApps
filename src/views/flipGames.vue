@@ -4,21 +4,20 @@
       <div class="text-center font-bold text-[1.5rem]">
         Deployed projects in VUE
       </div>
-      <router-link to="https://mt0.yibo22.com">
+      <a href="https://mt0.yibo22.com" target="_blank">
         <div>
           <div>
             <img src="/images/mt0.png" alt="" srcset="" class="10rem">
           </div>
         </div>
-      </router-link>
-      <router-link to="https://mt0.yibo22.com/m/index.do#/index">
-
-      <div>
+      </a>
+      <a href="https://mt0.yibo22.com/m/index.do#/index" target="_blank">
         <div>
-          <img src="/images/mt0Mobile.png" alt="" srcset="" class="10rem">
+          <div>
+            <img src="/images/mt0Mobile.png" alt="" srcset="" class="10rem">
+          </div>
         </div>
-      </div>
-      </router-link>
+      </a>
 
     </div>
   </div>

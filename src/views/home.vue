@@ -1,14 +1,13 @@
 <template>
   <div>
     <div
-      class="homeContainer flex-col"
+      class="homeContainer flex"
       :class="{ night: store.state.isNight, 'light ': !store.state.isNight }"
     >
-      <div class="imageContainer "  draggable="true">
+      <div class="imgContainer flex justify-center flex-1"  draggable="true">
         <img src="/images/myPhoto.jpg" alt=""> 
-        <!-- <img src="https://github.com/ralphfromthesky/images/blob/main/withkids.jpg?raw=true" alt="" /> -->
       </div>
-      <div class="descriptionContainer border-2 ">
+      <div class="descriptionContainer  flex-1">
         <div>About Me:</div>
         <div>
           Hello there, I’m Ralph, a passionate Vue.js developer with a creative
@@ -63,11 +62,11 @@ img {
 }
 .descriptionContainer {
   display: flex;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   padding: 20px;
   flex-direction: column;
-  width: auto;
+  width: 30vw;
 }
 h3 {
   line-height: 2;
@@ -86,6 +85,13 @@ h2 {
   }
   h3 {
     font-size: .8rem;
+  }
+  .descriptionContainer {
+    width: auto;
+  }
+  .imgContainer {
+    justify-content: center;
+    z-index: 1;
   }
 }
 </style>
