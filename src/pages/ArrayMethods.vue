@@ -1,6 +1,6 @@
 <template>
-    <div class="flex flex-col gap-2">
-        <div class="border-2 border-[gray] p-1 rounded">
+    <div>
+        <div class="border-2 border-[gray] p-1 rounded flex justify-center">
             <div>
                 this is .slice()
             </div>
@@ -13,9 +13,9 @@
                 </div>
             </div>
         </div>
-        <div class="border-2 border-[gray] p-1 rounded">
+        <div class="border-2 border-[gray] p-1 rounded flex justify-center">
 
-            <div>
+            <div >
                 this is .map() - {{ arrayNums }}
             </div>
             <div>
@@ -30,7 +30,7 @@
                 <input type="number" class="border-2 border-[green]" v-model="timesNum" min="1" max="99" />
             </div>
         </div>
-        <div class="border-2 border-[gray] p-1 rounded">
+        <div class="border-2 border-[gray] p-1 rounded flex justify-center" >
 
             <div>
                 this is .filter() and .find() <br /> {{ students }}

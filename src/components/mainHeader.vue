@@ -1,6 +1,6 @@
 <template>
   <div class="mainHeader">
-    <div class="text-[2rem] ml-[1rem]">
+    <div class="headRalph text-[2rem] ml-[1rem]">
       VUE JS - Ralph <span><i class="bx bxs-cat"></i></span>
     </div>
 
@@ -51,5 +51,17 @@ export default {
   .mainHeader {
     padding-left: 15%;
   }
+}
+@media screen and (max-width: 430px) {
+  .dayNightVue {
+    display: flex;
+    justify-content: center;
+  }
+  .headRalph {
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+  }
+
 }
 </style>
