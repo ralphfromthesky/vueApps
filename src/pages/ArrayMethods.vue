@@ -20,7 +20,7 @@
             </div>
             <div>
                 <div>
-                    Multiply - {{ returnNums.length ? returnNums :  'tae' }}
+                    Multiply - {{ returnNums.length ? returnNums : 'tae' }}
                 </div>
                 <div>
                     add - {{ adds }}
@@ -30,7 +30,28 @@
                 <input type="number" class="border-2 border-[green]" v-model="timesNum" min="1" max="99" />
             </div>
         </div>
+        <div class="border-2 border-[gray] p-1 rounded">
 
+            <div>
+                this is .filter() and .find() <br /> {{ students }}
+            </div>
+
+            <div>
+                <div>
+                    <input type="text" v-model="search" class="border-2 border-[limegreen] mr-1">
+                    <button @click="searhName">Search</button>
+                </div>
+                <div v-if="searchResult">
+                    <div>
+                        Name found {{ searchResult.name }} with a grade of {{ searchResult.grade }} and with score of {{
+                            searchResult.score }}
+                    </div>
+                </div>
+                <div v-else="search" class="text-[red]">
+                    <p>No student found with the name "{{ search }}".</p>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -39,6 +60,8 @@ import { ref, computed } from 'vue'
 const allImage = ref(true)
 const arrayNums = ref([10, 20, 30, 40, 50, 60, 70])
 const timesNum = ref()
+const search = ref('')
+const searchResult = ref([])
 const image = ref([
 
     { img: './images/christmas.jpg' },
@@ -54,6 +77,35 @@ const image = ref([
 
 
 ])
+
+const students = ref([
+    { name: 'ralph', score: 90, grade: 10 },
+    { name: 'shenron', score: 85, grade: 5 },
+    { name: 'gadwin', score: 70, grade: 1 },
+    { name: 'sophia', score: 95, grade: 12 },
+    { name: 'leo', score: 60, grade: 3 },
+    { name: 'mila', score: 88, grade: 8 },
+    { name: 'aaron', score: 75, grade: 6 },
+    { name: 'claire', score: 80, grade: 7 },
+    { name: 'erik', score: 85, grade: 9 },
+    { name: 'lara', score: 92, grade: 11 },
+]);
+
+
+const showFilter = computed(() => {
+    return students.value.filter((a) => a.score === 70 || a.score === 90)
+})
+
+
+const searhName = () => {
+
+    const result = students.value.find((a) => a.name.toLowerCase() === search.value.toLowerCase())
+    if (result) {
+        searchResult.value = result
+    } else {
+        searchResult.value = null
+    }
+}
 
 const returnNums = computed(() => {
     return arrayNums.value.map((a) => a * timesNum.value)
