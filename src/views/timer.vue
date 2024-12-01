@@ -11,7 +11,7 @@
             <button class="text-[1rem]" @click="generateNums()" :disabled="!cards.length"
               v-if="!winBall.length">PLAY</button>
           </div>
-          <div class="flex flex-wrap w-[40vw] gap-2 mt-2"  v-auto-animate="{ stagger: 300 }">
+          <div class="flex flex-wrap w-[40vw] gap-2 mt-2" v-auto-animate="{ stagger: 300 }">
             <div v-for="(a, i) in winBall" :key="a"
               class="border-2 border-[gray] p-1 w-[2rem] text-center rounded-[50%] ">
               {{ a }}
@@ -39,20 +39,22 @@
             <div>Patterns to win</div>
             <div class="flex gap-1">
               <div class="border-[black] border-2 w-[5vw] grid grid-cols-5 text-[pink]">
-                <div v-for="(a, i) in 25" :key="i" :class="[p1.includes(a) && 'bg-[pink]', p4.includes(a) && 'text-[white]' ]"
+                <div v-for="(a, i) in 25" :key="i"
+                  :class="[p1.includes(a) && 'bg-[pink]', p4.includes(a) && 'text-[white]']"
                   class="border-[.05rem] text-[.5rem]">
                   {{ a }}
                 </div>
               </div>
               <div class="border-[black] border-2 w-[5vw] grid grid-cols-5">
-                <div v-for="(a, i) in 25" :key="i" :style="{backgroundColor: a === 13 && 'white', color: a === 13 && 'white'}" :class="p2.includes(a) && 'bg-[pink]'"
-                  class="border-[.05rem] text-[.5rem]">
+                <div v-for="(a, i) in 25" :key="i"
+                  :style="{ backgroundColor: a === 13 && 'white', color: a === 13 && 'white' }"
+                  :class="p2.includes(a) && 'bg-[pink]'" class="border-[.05rem] text-[.5rem]">
                   {{ a }}
                 </div>
               </div>
               <div class="border-[black] border-2 w-[5vw] grid grid-cols-5">
                 <div v-for="(a, i) in 25" :key="i" :class="p3.includes(a) && 'bg-[pink]'"
-                  class="border-[.05rem] text-[.5rem]" :style="{color: a === 13 ? 'white' : ''}">
+                  class="border-[.05rem] text-[.5rem]" :style="{ color: a === 13 ? 'white' : '' }">
                   {{ a }}
                 </div>
               </div>
@@ -85,13 +87,14 @@ import { useStore } from '../store/store';
 const p1 = ref([1, 2, 3, 4, 5, 6, 11, 16, 21, 22, 23, 24, 25, 10, 15, 20])
 const p2 = ref([1, 2, 3, 4, 5, 11, 12, 13, 14, 15, 21, 22, 23, 24, 25])
 const p3 = ref([1, 5, 21, 25])
-const p4 = ref([7,8,9,12,13,14,17,18,19])
+const p4 = ref([7, 8, 9, 12, 13, 14, 17, 18, 19])
 
 
 const store = useStore()
 const isPlay = ref(false)
 const hideDialog = ref(true)
 const winBall = ref([])
+const ballCount = ref(30)
 const cards = ref([])
 const cardNum = ref()
 const bingoNums = ref([
@@ -241,26 +244,39 @@ const generateCard = () => {
   }
 }
 
+  // for (let i = 0; i < 40; i++) {
+  //   setTimeout(() => {
+  //     winBall.value.push(Math.floor(Math.random() * 60) + 1);
+  //   }, i * 500); // Adding a delay of 300ms between each push
+  // }
+  const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+  const generateNums = async () => {
+  while (winBall.value.length < ballCount.value) {
+    const random = Math.floor(Math.random() * 60) + 1;
 
-const generateNums = () => {
-  for (let i = 0; i < 40; i++) {
-    setTimeout(() => {
-      winBall.value.push(Math.floor(Math.random() * 60) + 1);
-    }, i * 500); // Adding a delay of 300ms between each push
+    // Check if the number is unique before adding it
+    if (!winBall.value.includes(random)) {
+      winBall.value.push(random);
+      console.log(`Generated: ${random}`);  // Log the generated number
+    }
+
+    // Wait for .5 second before generating the next number
+    await sleep(500);  // Delay execution for 1000ms (1 second)
   }
+
 };
 
 
 const indexing = computed(() => {
-    const balls = []
+  const balls = []
 
-    cards.value.forEach((a, i) => {
-      if (winBall.value.includes(a)) {
-        balls.push(a)
-      }
-    })
-    return balls;
+  cards.value.forEach((a, i) => {
+    if (winBall.value.includes(a)) {
+      balls.push(a)
+    }
   })
+  return balls;
+})
 </script>
 
 

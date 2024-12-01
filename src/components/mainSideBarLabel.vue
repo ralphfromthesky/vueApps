@@ -192,7 +192,13 @@ export default {
     label: '',
     link: '/htmlTemp',
     title: 'Must know HTML'
+  },
+  {
+    label: '',
+    link: '/arr',
+    title: 'Array Methods'
   }
+
 
 ]);
 

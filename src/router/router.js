@@ -315,6 +315,11 @@ const routes = [
     path: '/htmlTemp',
     name: 'html',
     component: () => import('@/pages/htmlTemplates.vue')
+  },
+  {
+    path: '/arr',
+    name: 'array',
+    component: () => import('@/pages/ArrayMethods.vue')
   }
 
 ];
