@@ -15,7 +15,7 @@
         </div>
         <div class="border-2 border-[gray] p-1 rounded flex justify-center">
 
-            <div >
+            <div>
                 this is .map() - {{ arrayNums }}
             </div>
             <div>
@@ -30,16 +30,18 @@
                 <input type="number" class="border-2 border-[green]" v-model="timesNum" min="1" max="99" />
             </div>
         </div>
-        <div class="border-2 border-[gray] p-1 rounded flex justify-center" >
+        <div class="border-2 border-[gray] p-1 rounded flex justify-center">
 
-            <div>
-                this is .filter() and .find() <br /> {{ students }}
+            <div class="text-center">
+                this is .filter() and .find() <br /> {{ students }} <br><br> {{ findNumber ? `found a number that is
+                equally ${findNumber}` : '' }}
             </div>
-
+            <br>
             <div>
                 <div>
-                    <input type="text" v-model="search" class="border-2 border-[limegreen] mr-1">
+                    <input type="text" v-model="search" class="border-2 border-[limegreen] mr-1" @keydown="searhName">
                     <button @click="searhName">Search</button>
+                    <button @click="findIndexOf">Find Index</button>
                 </div>
                 <div v-if="searchResult">
                     <div>
@@ -52,6 +54,47 @@
                 </div>
             </div>
         </div>
+        <div class="border-2 border-[gray] p-1 rounded flex flex-col items-center justify-center">
+
+            <div>
+                this is .reduce() <br /> {{ arrayNums }}
+            </div>
+            <div>
+                <div>
+                    <button @click="addNums">Sum all</button> {{ sums ? `total sums is ${sums}` : '' }} <br>
+
+                </div>
+                <div>
+                    <button @click="showMax"> Max number</button> {{ max }}
+                </div>
+                <div>
+                    <button @click="showMin"> Min number</button> {{ min }}
+                </div>
+            </div>
+
+        </div>
+        <div class="border-2 border-[gray] p-1 rounded flex justify-center">
+
+            <div>
+                this is .every() the reverse of some()
+                <div class="flex gap-2">
+                    <div v-for="(a, i) in people" :key="a.name">
+                        {{ a.name }}
+
+                    </div>
+                    <div class="text-[red]"> // returns {{ findNameWithA }} all name has "a"</div>
+                </div>
+                <div class="flex gap-2">
+                    <div v-for="(a, i) in people2" :key="a.name">
+                        {{ a.name }}
+
+                    </div>
+                    <div class="text-[red]"> // returns {{ findNameDoesNotHave }} not all name has "a"</div>
+
+                </div>
+            </div>
+
+        </div>
     </div>
 </template>
 
@@ -60,7 +103,28 @@ import { ref, computed } from 'vue'
 const allImage = ref(true)
 const arrayNums = ref([10, 20, 30, 40, 50, 60, 70])
 const timesNum = ref()
+const sums = ref()
+const max = ref()
+const min = ref()
 const search = ref('')
+const people = ref([
+    { name: 'randy' },
+    { name: 'ryan' },
+    { name: 'anna' },
+    { name: 'brandy' },
+    { name: 'jane' },
+
+
+])
+const people2 = ref([
+    { name: 'randy' },
+    { name: 'ryan' },
+    { name: 'anna' },
+    { name: 'brandy' },
+    { name: 'jerome' },
+
+
+])
 const searchResult = ref([])
 const image = ref([
 
@@ -91,21 +155,61 @@ const students = ref([
     { name: 'lara', score: 92, grade: 11 },
 ]);
 
+const findNameWithA = computed(() => {
+    return people.value.every((a) => a.name.includes('a'))
+})
+
+const findNameDoesNotHave = computed(() => {
+    return people2.value.every((a) => a.name.includes("a"))
+})
 
 const showFilter = computed(() => {
     return students.value.filter((a) => a.score === 70 || a.score === 90)
 })
 
+// const addNums  = computed(() => {
+//     return arrayNums.value.reduce((a, b) => a + b, 0)
+// })
 
-const searhName = () => {
+const addNums = () => {
+    sums.value = arrayNums.value.reduce((a, b) => a + b, 0)
+}
 
+const showMax = () => {
+    max.value = arrayNums.value.reduce((a, b) => a > b ? b : b)
+}
+
+const showMin = () => {
+    min.value = arrayNums.value.reduce((a, b) => a < b ? a : a)
+}
+
+
+const findNumber = computed(() => {
+    return arrayNums.value.find((a) => a === 10)
+})
+
+const searhName = (event) => {
     const result = students.value.find((a) => a.name.toLowerCase() === search.value.toLowerCase())
     if (result) {
         searchResult.value = result
+
     } else {
         searchResult.value = null
     }
 }
+
+const findIndexOf = () => {
+    const result = students.value.findIndex((a) => {
+        return a.name.toLowerCase() === search.value.toLowerCase()
+    })
+    if (result) {
+        alert(result)
+    } else {
+        return null
+    }
+
+}
+
 
 const returnNums = computed(() => {
     return arrayNums.value.map((a) => a * timesNum.value)
