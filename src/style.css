@@ -1,9 +1,10 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
 
 * {
-    font-style: jet;
+    /* font-style: jet; */
+    font-family: "JetBrains Mono", serif;
+
 }
 
 button {
@@ -21,6 +22,7 @@ button {
     border-color: #646cff;
   }
   button:focus,
+
   button:focus-visible {
     outline: 4px auto -webkit-focus-ring-color;
   }
@@ -86,3 +88,27 @@ button {
 
 }
 
+/* ::-webkit-scrollbar { // for hiding scroll
+    display: none;
+  } */
+   
+ /* for initialize fontsize
+  
+  div, 
+  span, 
+  label,
+  input,
+  button,
+  textarea {
+    font-size: initial;
+  } */
+
+/* 
+  for calculated font sizes or image
+  :root {
+    font-size: calc(100vw /(720 / 100)) !important;
+  } */
+
+  @tailwind base;
+@tailwind components;
+@tailwind utilities;

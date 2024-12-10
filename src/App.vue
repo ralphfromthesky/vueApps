@@ -111,7 +111,7 @@ export default {
 
 .sidebarlabel {
   position: fixed;
-  left: -16vw;
+  left: -16.5vw;
   transition: .4s ease;
   height: 100%;
   z-index: 5;

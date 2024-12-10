@@ -1,5 +1,8 @@
 <template>
   <div>
+    <div>
+      {{ math }}
+    </div>
     <h1>{{ 2 + 5 + 8 }}</h1>
     <h1>{{ 7 * 10 }}</h1>
     <h1>{{ (2 + 5 + 8) * 10 }}</h1>
@@ -13,7 +16,7 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref, computed} from "vue";
 export default {
 
   setup() {
@@ -32,6 +35,12 @@ export default {
     const subtraction = (num) => {
       return num - subtract.value;
     };
+    computed: {
+      const math = computed(() => {
+        return multiplier.value * basevalue.value
+      })
+    }
+
 
     return {
       multiplier,

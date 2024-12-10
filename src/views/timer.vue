@@ -6,7 +6,7 @@
     </div>
     <div class="main flex gap-2" v-if="isPlay">
       <div class="cards text-center flex flex-col gap-2 justify-center items-center">
-npm        <div>
+        <div>
 
           <div><button @click="generateCard()" class="mb-2 mt-2" v-if="!cards.length"> Take Cards</button></div>
 

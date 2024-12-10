@@ -1,0 +1,1 @@
+import{_ as n,c as s,o as t,a as e,y as o}from"./index-be731ec1.js";const c={},r=e("h1",null,[o("ralph santolorin sliding in "),e("br"),o("this is from sliding component")],-1),a=[r];function i(_,l,d,p,f,h){return t(),s("div",null,a)}const u=n(c,[["render",i]]);export{u as S};
