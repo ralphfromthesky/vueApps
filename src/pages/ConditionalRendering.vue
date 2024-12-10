@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <div v-if="showthisDiv">
+    <button @click="showthisDiv =!showthisDiv">HIDE THIS DIV</button>
     <!-- must be together or else it will not work -->
     <h2 v-if="num === 0">the number is zero</h2>
     <h2 v-else-if="num < 5">the number is negative</h2>
@@ -35,6 +36,10 @@
       </template>
     </template>
   </div>
+  <div v-else>
+    <button @click="showthisDiv = !showthisDiv">show other divs</button>
+
+  </div>
 </template>
 
 <script setup>
@@ -46,6 +51,7 @@ const showElement = ref(true);
 const showThis = ref(true);
 const ralph = ref(false);
 const showDiv = ref(true);
+const showthisDiv = ref(true)
 </script>
 
 <style></style>
