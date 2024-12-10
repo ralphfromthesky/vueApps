@@ -44,14 +44,10 @@
       <div class="mt-[3rem] text-[1.5rem] font-bold">
         Animate transition for vue
       </div>
-      <div class="flex gap-2">
-        <!-- <transition name="sample">
-          <div  v-if="motions" class="border-2 border-[red] text-[2rem] p-3">
-            A
-          </div>
-        </transition> -->
-        <transition name="sample2">
-          <div class="text-[1rem] p-3 bg-[red]" v-if="motions">
+      <div class="flex gap-2 flex-col relative">
+
+        <transition name="transitionSample">
+          <div class="text-[1rem] p-3 bg-[gray]" v-if="motions">
             Full Transition Sequence: <br>
             Enter Transition: <br>
             Element is inserted into the DOM. <br>
@@ -65,6 +61,11 @@
             -leave-active (applies for the entire transition duration).<br>
             -leave-to (final state before the element is removed).<br>
             Element is removed from the DOM.<br>
+          </div>
+        </transition>
+        <transition name="sample">
+          <div v-if="motions" class="bxs">
+            Lorem ipsum dolor sit,
           </div>
         </transition>
 
@@ -82,62 +83,73 @@ const motions = ref(false)
 </script>
 
 <style lang="scss">
-.sample-enter-active,
-.sample-leave-active {
-  transition: opacity 0.5s ease;
-  color: red;
-  border: 5px solid lime;
+.bxs {
+  transform: translateX(30vw);
+}
+.sample-enter-from {
+  opacity: 0;
+  transform: translateX(0); /* Initial position */
 }
 
-.sample-enter-from,
+.sample-enter-active {
+  transition: all 2s;
+}
+
+.sample-enter-to {
+  opacity: 1;
+  transform: translateX(30vw); /* Target position */
+}
+.sample-leave-from {
+  opacity: 1;
+  transform: translateX(30vw);
+}
+.sample-leave-active {
+  transition: all .5s;
+}
 .sample-leave-to {
   opacity: 0;
-  color: blue;
-  border: 5px solid pink;
+  transform: translateX(0);
 }
 
 
-
-// .sample2-enter-active, .sample2-leave-active {
-//   color: blue;
-//   transition: all opacity 0.5s ease;
-//   border: 2px solid blue;
-//   transform: translateX(10vw);
-//.sample2-leave-to
-// }
-
 //initial state
-.sample2-enter-from {
+.transitionSample-enter-from {
   opacity: 0;
   transform: scale(0.1);
 }
-  /* Animates the properties when element is inserting in the dom*/
-.sample2-enter-active {
+
+/* Animates the properties when element is inserting in the dom*/
+.transitionSample-enter-active {
   transition: opacity .5s, transform .5s;
 }
-  /* End fully visible final state of transition then goes back to default css */
-.sample2-enter-to {
+
+/* End fully visible final state of transition then goes back to default css */
+.transitionSample-enter-to {
   opacity: 1;
   transform: scale(1);
   color: white;
+  background-color: pink;
 }
-  /* Fully visible at the starts state before it remove in the dom */
-.sample2-leave-from {
+
+/* Fully visible at the starts state before it remove in the dom */
+.transitionSample-leave-from {
   opacity: 1;
   transform: scale(1);
+
 }
 
 // state while active removing the element in the dom, typically default or original state transition happens here
-.sample2-leave-active {
+.transitionSample-leave-active {
   transition: opacity .5s, transform .5s;
-  /* Animate properties */
+  color: aqua;
+  background-color: gray;
+
 }
 
 //final state of transition
-.sample2-leave-to {
+.transitionSample-leave-to {
   opacity: 0;
   /* Fade out completely */
   transform: scale(0.1);
-  /* Shrink slightly */
 }
 </style>
