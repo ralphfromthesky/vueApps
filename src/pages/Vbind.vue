@@ -1,5 +1,22 @@
 <template>
   <div class="w-auto border-2">
+
+    <div
+      :class="['bg-[blue]', newBind ? 'border-[1rem] text-[1rem] text-[white] text-[bold] border-[pink]' : 'bg-[pink]']">
+      applying :class="['bg-[blue]', newBind ? 'border-[1rem] text-[1rem] text-[white] text-[bold] border-[pink]' :
+      'bg-[pink]']"
+    </div>
+    <div :class="{ 'bg-[yellow] text-[1rem]': newBind }">
+      applying :class="{'bg-[yellow] text-[1rem]' : newBind}
+    </div>
+    <div :style="{ backgroundColor: newBind ? 'red' : 'black' }">
+      applying :style="{backgroundColor: newBind ? 'red' : 'black'}"
+    </div>
+    <div :style="{ backgroundColor: newBind && 'limegreen' }">
+      applying :style="{ backgroundColor: newBind && 'limegreen'}"
+    </div>
+
+
     <h1>{{ message + " " + name + number }}</h1>
     <h1>{{ test }}</h1>
     <h2>{{ number }}</h2>
@@ -46,7 +63,7 @@
       <h1 :class="{ 'true': isThisTrue2, 'false': !isThisTrue2 }" @click="isThisTrue2 = !isThisTrue2"> {{ myname }}</h1>
       <h1 :class="{ 'exam': exam, 'falses': native }">ralph santolorin</h1>
       <!-- {{ objectClass && <SlidingIn/> }} -->
-      <SlidingIn v-if="objectClass"/> 
+      <SlidingIn v-if="objectClass" />
     </div>
   </div>
 </template>
@@ -59,6 +76,7 @@ export default {
   },
   data() {
     return {
+      newBind: true,
       exam: true,
       native: true,
 
@@ -100,6 +118,16 @@ export default {
 </script>
 
 <style>
+.newBind {
+  background-color: rebeccapurple;
+  color: blanchedalmond;
+}
+
+.newBinds {
+  background-color: limegreen;
+  color: whiet;
+}
+
 .true {
   color: aliceblue;
   background-color: black;
