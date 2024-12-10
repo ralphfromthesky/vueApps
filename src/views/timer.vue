@@ -5,6 +5,46 @@
       <!-- <button v-if="winBall.length">Play Again?</button> -->
     </div>
     <div class="main flex gap-2" v-if="isPlay">
+      <div class="cards text-center flex flex-col gap-2 justify-center items-center">
+npm        <div>
+
+          <div><button @click="generateCard()" class="mb-2 mt-2" v-if="!cards.length"> Take Cards</button></div>
+
+          <div>
+            <div>Patterns to win</div>
+            <div class="flex gap-1">
+              <div class="border-[black] border-2 grid grid-cols-5 text-[pink]">
+                <div v-for="(a, i) in 25" :key="i"
+                  :class="[p1.includes(a) && 'bg-[pink]', p4.includes(a) && 'text-[white]']"
+                  class="border-[.05rem] text-[.5rem]">
+                  {{ a }}
+                </div>
+              </div>
+              <div class="border-[black] border-2 grid grid-cols-5">
+                <div v-for="(a, i) in 25" :key="i"
+                  :style="{ backgroundColor: a === 13 && 'white', color: a === 13 && 'white' }"
+                  :class="p2.includes(a) && 'bg-[pink]'" class="border-[.05rem] text-[.5rem]">
+                  {{ a }}
+                </div>
+              </div>
+              <div class="border-[black] border-2 grid grid-cols-5">
+                <div v-for="(a, i) in 25" :key="i" :class="p3.includes(a) && 'bg-[pink]'"
+                  class="border-[.05rem] text-[.5rem]" :style="{ color: a === 13 ? 'white' : '' }">
+                  {{ a }}
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div>Cards</div>
+        <div class="border-2 border-[gray] grid grid-cols-5 p-1" v-if="cards.length">
+          <div v-for="(a, i) in cards" :key="i"
+            :class="['border-2 text-center p-1', winBall.includes(a) && 'bg-[pink]', i % 2 === 0 ? 'bg-gray-200' : '']">
+            {{ a }} 
+          </div>
+        </div>
+      </div>
       <div class="border-2 flex flex-col justify-center items-center rounded-[.5rem]">
         <div class="mb-[1rem]">
           <div class="text-center mt-2">
@@ -30,45 +70,7 @@
 
         </div>
       </div>
-      <div class="text-center flex justify-center items-center">
-        <div>
 
-          <div><button @click="generateCard()" class="mb-2 mt-2" v-if="!cards.length"> Take Cards</button></div>
-
-          <div>
-            <div>Patterns to win</div>
-            <div class="flex gap-1">
-              <div class="border-[black] border-2 w-[5vw] grid grid-cols-5 text-[pink]">
-                <div v-for="(a, i) in 25" :key="i"
-                  :class="[p1.includes(a) && 'bg-[pink]', p4.includes(a) && 'text-[white]']"
-                  class="border-[.05rem] text-[.5rem]">
-                  {{ a }}
-                </div>
-              </div>
-              <div class="border-[black] border-2 w-[5vw] grid grid-cols-5">
-                <div v-for="(a, i) in 25" :key="i"
-                  :style="{ backgroundColor: a === 13 && 'white', color: a === 13 && 'white' }"
-                  :class="p2.includes(a) && 'bg-[pink]'" class="border-[.05rem] text-[.5rem]">
-                  {{ a }}
-                </div>
-              </div>
-              <div class="border-[black] border-2 w-[5vw] grid grid-cols-5">
-                <div v-for="(a, i) in 25" :key="i" :class="p3.includes(a) && 'bg-[pink]'"
-                  class="border-[.05rem] text-[.5rem]" :style="{ color: a === 13 ? 'white' : '' }">
-                  {{ a }}
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-        <div class="border-2 border-[gray] grid grid-cols-5 p-1" v-if="cards.length">
-          <div v-for="(a, i) in cards" :key="i"
-            :class="['border-2 text-center p-1', winBall.includes(a) && 'bg-[red]', i % 2 === 0 ? 'bg-gray-200' : '']">
-            {{ a }}
-          </div>
-        </div>
-      </div>
 
 
     </div>
@@ -96,6 +98,7 @@ const hideDialog = ref(true)
 const winBall = ref([])
 const ballCount = ref(30)
 const cards = ref([])
+const cardsIndex = ref([])
 const cardNum = ref()
 const bingoNums = ref([
   { id: 1, num: 1 },
@@ -239,18 +242,15 @@ const showBingNums = computed(() => {
 
 
 const generateCard = () => {
+  
   for (let i = 0; i < 25; i++) {
     cards.value.push(Math.floor(Math.random() * 60) + 1)
   }
 }
 
-  // for (let i = 0; i < 40; i++) {
-  //   setTimeout(() => {
-  //     winBall.value.push(Math.floor(Math.random() * 60) + 1);
-  //   }, i * 500); // Adding a delay of 300ms between each push
-  // }
-  const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
-  const generateNums = async () => {
+
+const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+const generateNums = async () => {
   while (winBall.value.length < ballCount.value) {
     const random = Math.floor(Math.random() * 60) + 1;
 
@@ -259,7 +259,6 @@ const generateCard = () => {
       winBall.value.push(random);
       console.log(`Generated: ${random}`);  // Log the generated number
     }
-
     // Wait for .5 second before generating the next number
     await sleep(500);  // Delay execution for 1000ms (1 second)
   }
@@ -280,12 +279,21 @@ const indexing = computed(() => {
 </script>
 
 
-
-
-
 <style scoped>
 .main {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+}
+
+@media screen and (max-width: 430px) {
+  .main {
+    display: flex;
+    justify-content: center;
+  }
+
+  .cards {
+    display: flex;
+    flex-direction: column;
+  }
 }
 </style>

@@ -16,7 +16,10 @@
         <div class="border-2 border-[gray] p-1 rounded flex justify-center">
 
             <div>
-                this is .map() - {{ arrayNums }}
+                this is .map() - {{ arrayNums }} 
+            </div>
+            <div v-for="(a, i) in personers" :key="a" class="border-2 border-[green]">
+                {{ a }}
             </div>
             <div>
                 <div>
@@ -122,7 +125,12 @@ const people2 = ref([
     { name: 'anna' },
     { name: 'brandy' },
     { name: 'jerome' },
+])
 
+const person = ref([
+    {name: 'ralph', age: 40},
+    {name: 'shenron', age: 10},
+    {name: 'gadwin', age: 5},
 
 ])
 const searchResult = ref([])
@@ -170,6 +178,10 @@ const showFilter = computed(() => {
 // const addNums  = computed(() => {
 //     return arrayNums.value.reduce((a, b) => a + b, 0)
 // })
+
+const personers = computed(() => {
+    return person.value.map((a) => a.name.toUpperCase())
+})
 
 const addNums = () => {
     sums.value = arrayNums.value.reduce((a, b) => a + b, 0)
