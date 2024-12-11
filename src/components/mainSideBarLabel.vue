@@ -64,9 +64,9 @@ export default {
     title: 'Form Handling'
   },
   {
-    label: 'Computed Properties',
-    link: '/computed',
-    title: 'Computed Properties'
+    label: 'Flex and Grid',
+    link: '/flexGrid',
+    title: 'flex and grid'
   },
   {
     label: 'Watchers',

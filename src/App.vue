@@ -6,7 +6,7 @@
       <mainSidebarVue class="sidebaricon" @slide-this="slideForward" :class="slideSidebar ? 'slideBackward' : ''" />
     </div>
     <!-- <div class="container" :class="slideSidebar ? 'paddingLeft': 'paddingRight'" > -->
-    <div class="w-screen pl-[5rem] pr-[1rem]" :class="slideSidebar ? 'paddingLeft' : 'paddingRight'">
+    <div class="pl-[5rem] pr-[1rem]" :class="slideSidebar ? 'paddingLeft' : 'paddingRight'">
       <mainHeaderVue />
       <mainBodyVue />
     </div>

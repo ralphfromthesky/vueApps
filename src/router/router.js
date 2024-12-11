@@ -317,6 +317,11 @@ const routes = [
     component: () => import('@/pages/htmlTemplates.vue')
   },
   {
+    path: '/flexGrid',
+    name: 'flexGrid',
+    component: () => import('@/pages/FlexGrid.vue')
+  },
+  {
     path: '/arr',
     name: 'array',
     component: () => import('@/pages/ArrayMethods.vue')

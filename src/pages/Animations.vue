@@ -76,9 +76,16 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, watch, watchEffect } from 'vue';
 const motions = ref(false)
 
+// watch(() => motions, (newVal) => {
+// alert(newVal)
+// })
+
+// watch(motions, (newVal) => {
+//   alert(newVal)
+// })
 
 </script>
 
@@ -86,29 +93,33 @@ const motions = ref(false)
 .bxs {
   transform: translateX(30vw);
 }
+
+
+
 .sample-enter-from {
   opacity: 0;
-  transform: translateX(0); /* Initial position */
+  transform: translateX(0);
 }
-
 .sample-enter-active {
   transition: all 2s;
 }
-
 .sample-enter-to {
   opacity: 1;
-  transform: translateX(30vw); /* Target position */
+  transform: translateX(30vw);
 }
+
 .sample-leave-from {
   opacity: 1;
   transform: translateX(30vw);
 }
+
 .sample-leave-active {
   transition: all .5s;
 }
+
 .sample-leave-to {
   opacity: 0;
-  transform: translateX(0);
+  transform: translateY(0);
 }
 
 
