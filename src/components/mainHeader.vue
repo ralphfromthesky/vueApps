@@ -5,7 +5,7 @@
     </div>
 
     <div class="dayNightVue flex items-center">
-      <a href="cv.pdf" download="cv.pdf">
+      <a href="CV.pdf" download="CV.pdf">
         <div>
           <img src="https://cdn-icons-png.flaticon.com/512/8347/8347432.png" class="h-[2rem]" alt="" srcset="">
         </div>
